@@ -1,0 +1,269 @@
+$flaticon_mycollection-font: "flaticon_mycollection";
+
+@font-face {
+    font-family: $flaticon_mycollection-font;
+    src: url("./flaticon_mycollection.woff2?005557657d1f638a1408773684aeb1a9") format("woff2"),
+url("./flaticon_mycollection.woff?005557657d1f638a1408773684aeb1a9") format("woff"),
+url("./flaticon_mycollection.eot?005557657d1f638a1408773684aeb1a9#iefix") format("embedded-opentype"),
+url("./flaticon_mycollection.ttf?005557657d1f638a1408773684aeb1a9") format("truetype"),
+url("./flaticon_mycollection.svg?005557657d1f638a1408773684aeb1a9#flaticon_mycollection") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon_mycollection !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon_mycollection-map: (
+    "location": "\f101",
+    "search": "\f102",
+    "facebook": "\f103",
+    "twitter": "\f104",
+    "instagram": "\f105",
+    "paper-plane": "\f106",
+    "mail": "\f107",
+    "basket": "\f108",
+    "checked-data": "\f109",
+    "calendar": "\f10a",
+    "comment": "\f10b",
+    "right-arrow": "\f10c",
+    "pinterest": "\f10d",
+    "maps": "\f10e",
+    "email": "\f10f",
+    "iphone": "\f110",
+    "sun": "\f111",
+    "muscle": "\f112",
+    "moon": "\f113",
+    "sun-1": "\f114",
+    "body": "\f115",
+    "gym-equipment": "\f116",
+    "stationary-bike": "\f117",
+    "gym-equipment-1": "\f118",
+    "running": "\f119",
+    "running-shoes": "\f11a",
+    "tracker": "\f11b",
+    "work-from-home": "\f11c",
+    "heart-rate": "\f11d",
+    "exercise": "\f11e",
+    "stopwatch": "\f11f",
+    "body-building": "\f120",
+    "physical-wellbeing": "\f121",
+    "waist": "\f122",
+    "gym": "\f123",
+    "healthy-life": "\f124",
+    "location-1": "\f125",
+    "yoga-mat": "\f126",
+    "gym-1": "\f127",
+    "heart": "\f128",
+    "weight-lifting": "\f129",
+    "calendar-1": "\f12a",
+    "lotus-position": "\f12b",
+    "meditation": "\f12c",
+    "weight-loss": "\f12d",
+    "weight-loss-1": "\f12e",
+    "women": "\f12f",
+    "stopwatch-1": "\f130",
+    "heart-rate-1": "\f131",
+    "training": "\f132",
+    "contact-form": "\f133",
+    "edit": "\f134",
+    "people": "\f135",
+    "edit-1": "\f136",
+    "battle-rope": "\f137",
+    "muscle-1": "\f138",
+    "pilates-ball": "\f139",
+    "jump-rope": "\f13a",
+    "swimming": "\f13b",
+    "arm": "\f13c",
+    "fitness": "\f13d",
+);
+
+.flaticon-location:before {
+    content: map-get($flaticon_mycollection-map, "location");
+}
+.flaticon-search:before {
+    content: map-get($flaticon_mycollection-map, "search");
+}
+.flaticon-facebook:before {
+    content: map-get($flaticon_mycollection-map, "facebook");
+}
+.flaticon-twitter:before {
+    content: map-get($flaticon_mycollection-map, "twitter");
+}
+.flaticon-instagram:before {
+    content: map-get($flaticon_mycollection-map, "instagram");
+}
+.flaticon-paper-plane:before {
+    content: map-get($flaticon_mycollection-map, "paper-plane");
+}
+.flaticon-mail:before {
+    content: map-get($flaticon_mycollection-map, "mail");
+}
+.flaticon-basket:before {
+    content: map-get($flaticon_mycollection-map, "basket");
+}
+.flaticon-checked-data:before {
+    content: map-get($flaticon_mycollection-map, "checked-data");
+}
+.flaticon-calendar:before {
+    content: map-get($flaticon_mycollection-map, "calendar");
+}
+.flaticon-comment:before {
+    content: map-get($flaticon_mycollection-map, "comment");
+}
+.flaticon-right-arrow:before {
+    content: map-get($flaticon_mycollection-map, "right-arrow");
+}
+.flaticon-pinterest:before {
+    content: map-get($flaticon_mycollection-map, "pinterest");
+}
+.flaticon-maps:before {
+    content: map-get($flaticon_mycollection-map, "maps");
+}
+.flaticon-email:before {
+    content: map-get($flaticon_mycollection-map, "email");
+}
+.flaticon-iphone:before {
+    content: map-get($flaticon_mycollection-map, "iphone");
+}
+.flaticon-sun:before {
+    content: map-get($flaticon_mycollection-map, "sun");
+}
+.flaticon-muscle:before {
+    content: map-get($flaticon_mycollection-map, "muscle");
+}
+.flaticon-moon:before {
+    content: map-get($flaticon_mycollection-map, "moon");
+}
+.flaticon-sun-1:before {
+    content: map-get($flaticon_mycollection-map, "sun-1");
+}
+.flaticon-body:before {
+    content: map-get($flaticon_mycollection-map, "body");
+}
+.flaticon-gym-equipment:before {
+    content: map-get($flaticon_mycollection-map, "gym-equipment");
+}
+.flaticon-stationary-bike:before {
+    content: map-get($flaticon_mycollection-map, "stationary-bike");
+}
+.flaticon-gym-equipment-1:before {
+    content: map-get($flaticon_mycollection-map, "gym-equipment-1");
+}
+.flaticon-running:before {
+    content: map-get($flaticon_mycollection-map, "running");
+}
+.flaticon-running-shoes:before {
+    content: map-get($flaticon_mycollection-map, "running-shoes");
+}
+.flaticon-tracker:before {
+    content: map-get($flaticon_mycollection-map, "tracker");
+}
+.flaticon-work-from-home:before {
+    content: map-get($flaticon_mycollection-map, "work-from-home");
+}
+.flaticon-heart-rate:before {
+    content: map-get($flaticon_mycollection-map, "heart-rate");
+}
+.flaticon-exercise:before {
+    content: map-get($flaticon_mycollection-map, "exercise");
+}
+.flaticon-stopwatch:before {
+    content: map-get($flaticon_mycollection-map, "stopwatch");
+}
+.flaticon-body-building:before {
+    content: map-get($flaticon_mycollection-map, "body-building");
+}
+.flaticon-physical-wellbeing:before {
+    content: map-get($flaticon_mycollection-map, "physical-wellbeing");
+}
+.flaticon-waist:before {
+    content: map-get($flaticon_mycollection-map, "waist");
+}
+.flaticon-gym:before {
+    content: map-get($flaticon_mycollection-map, "gym");
+}
+.flaticon-healthy-life:before {
+    content: map-get($flaticon_mycollection-map, "healthy-life");
+}
+.flaticon-location-1:before {
+    content: map-get($flaticon_mycollection-map, "location-1");
+}
+.flaticon-yoga-mat:before {
+    content: map-get($flaticon_mycollection-map, "yoga-mat");
+}
+.flaticon-gym-1:before {
+    content: map-get($flaticon_mycollection-map, "gym-1");
+}
+.flaticon-heart:before {
+    content: map-get($flaticon_mycollection-map, "heart");
+}
+.flaticon-weight-lifting:before {
+    content: map-get($flaticon_mycollection-map, "weight-lifting");
+}
+.flaticon-calendar-1:before {
+    content: map-get($flaticon_mycollection-map, "calendar-1");
+}
+.flaticon-lotus-position:before {
+    content: map-get($flaticon_mycollection-map, "lotus-position");
+}
+.flaticon-meditation:before {
+    content: map-get($flaticon_mycollection-map, "meditation");
+}
+.flaticon-weight-loss:before {
+    content: map-get($flaticon_mycollection-map, "weight-loss");
+}
+.flaticon-weight-loss-1:before {
+    content: map-get($flaticon_mycollection-map, "weight-loss-1");
+}
+.flaticon-women:before {
+    content: map-get($flaticon_mycollection-map, "women");
+}
+.flaticon-stopwatch-1:before {
+    content: map-get($flaticon_mycollection-map, "stopwatch-1");
+}
+.flaticon-heart-rate-1:before {
+    content: map-get($flaticon_mycollection-map, "heart-rate-1");
+}
+.flaticon-training:before {
+    content: map-get($flaticon_mycollection-map, "training");
+}
+.flaticon-contact-form:before {
+    content: map-get($flaticon_mycollection-map, "contact-form");
+}
+.flaticon-edit:before {
+    content: map-get($flaticon_mycollection-map, "edit");
+}
+.flaticon-people:before {
+    content: map-get($flaticon_mycollection-map, "people");
+}
+.flaticon-edit-1:before {
+    content: map-get($flaticon_mycollection-map, "edit-1");
+}
+.flaticon-battle-rope:before {
+    content: map-get($flaticon_mycollection-map, "battle-rope");
+}
+.flaticon-muscle-1:before {
+    content: map-get($flaticon_mycollection-map, "muscle-1");
+}
+.flaticon-pilates-ball:before {
+    content: map-get($flaticon_mycollection-map, "pilates-ball");
+}
+.flaticon-jump-rope:before {
+    content: map-get($flaticon_mycollection-map, "jump-rope");
+}
+.flaticon-swimming:before {
+    content: map-get($flaticon_mycollection-map, "swimming");
+}
+.flaticon-arm:before {
+    content: map-get($flaticon_mycollection-map, "arm");
+}
+.flaticon-fitness:before {
+    content: map-get($flaticon_mycollection-map, "fitness");
+}

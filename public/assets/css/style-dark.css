@@ -1,0 +1,423 @@
+body.light-d section.gap.no-top.about-style-one,
+body.light-d .team-style-two,
+body.light-d .blog-style-three,
+body.light-d .about-first,
+body.light-d .about-key-benefits,
+body.light-d .cart,
+body.light-d .checkout.detail-page,
+body.light-d .contact-form-2, 
+body.light-d .about-style-one,
+body.light-d .no-top.core-values,
+body.light-d .innovation,
+body.light-d .history.detail-page,
+body.light-d .login-register,
+body.light-d .detail-page,
+body.light-d .project-detail-slider,
+body.light-d .construction-services,
+body.light-d .service-style-one,
+body.light-d{
+    background-color: #0a0a0a;
+    z-index: 0;
+}
+body.light-d .blog-heading a.theme-btn:hover,
+body.light-d .update-cart.d-flex-all.justify-content-between .theme-btn:hover,
+body.light-d .blog-heading .theme-btn:hover,
+body.light-d .blog-style-two .blog-item:hover a i,
+body.light-d .blog-style-two .owl-item.center .blog-item a i,
+body.light-d .construction-services .services-nav ul li button.nav-link.active,
+body.light-d .about-first.service-detail-first .innovation ul li i,
+body.light-d .question h3,
+body.light-d .core-values ul li .data h3,
+body.light-d .cart .cart-table.head .c-data span,
+body.light-d .cart .cart-table.head .c-price span,
+body.light-d .cart .cart-table.head .c-quality span,
+body.light-d .cart .cart-table.head .c-total span,
+body.light-d .comment .c-data h4,
+body.light-d .acc2 .accordion-body,
+body.light-d .client-review-style-one .head-review h3,
+body.light-d .about-style-one .about-data-right span,
+body.light-d h2,
+body.light-d .pricing-plans .price-box h3,
+body.light-d h2,
+body.light-d .about-info h3,
+body.light-d .project-style-one .project-post .project-data h3 a,
+body.light-d .heading-style-2 .data h2,
+body.light-d .team-style-one .team-data .team-info h3,
+ .team-style-one .team-data .team-social-media a i,
+body.light-d  .accordion-body p,
+body.light-d .our-goal .data h4,
+body.light-d .our-goal .data ul li,
+ .blog-style-two .blog-item h2 a,
+body.light-d .blog-style-two .blog-item .blog-date,
+body.light-d .contact-us .c-cards .card ul li span,
+body.light-d .contact-us .c-cards .card .details .address,
+ .service-style-one .service-data h3 a,
+ .service-style-two .service-two-box h3 a,
+body.light-d button.owl-prev i,body.light-d button.owl-next i,
+body.light-d .certificates .c-slider .c-main .c-second h3,
+body.light-d .custom-control.custom-radio label.custom-control-label,
+body.light-d .cta-data a.theme-btn:hover,
+body.light-d .heading h2,
+body.light-d .heading.heading-style-3 h2 span,
+ .blog-style-one .blog-post h2 a,
+body.light-d .shop-style-one .product .price-range span,
+body.light-d .project-completed .proj-data .loc-date > div span:first-child,
+ .team-style-two .team-data h3 a,
+body.light-d .about-how-it-works .plans h3,
+body.light-d .sidebar .box h3,
+body.light-d .sidebar .box.recent-posts ul li p,
+body.light-d .detail-page h3,
+body.light-d .comment .c-data h4,
+body.light-d .form form input[type=checkbox]+label,
+body.light-d .cart .cart-table .c-c .c-price .orgnl,
+body.light-d .cart .cart-table .c-c .c-total span,
+body.light-d .billing input[type="text"],
+body.light-d .data button.theme-btn:hover,
+body.light-d .box h3,
+body.light-d .box input,.rev-tab .post-review .select-rating span,
+body.light-d .box.login button.theme-btn:hover,
+body.light-d .builty-pagination ul.pagination li a,
+body.light-d .project-completed .proj-data h3 a,
+body.light-d ul.pd-price li.pd-sale-price,
+body.light-d ul.pd-price li.pd-sale-price span,
+body.light-d .pd-data .free-ship,.rev-tab .total-reviews .t-r,
+body.light-d .pd-cat-tags > ul > li span,
+body.light-d .pd-details .nav-pills .nav-link,
+body.light-d .shop-style-one.addition .shop-filter .gird-list a i,
+body.light-d .shop-style-one.addition .row.list > div .product:hover a.theme-btn,
+body.light-d .detail-page p span,.tab-table .table tr td:first-child,
+body.light-d .team-detail .fav-project .f-p-box h2 a,
+body.light-d .fitness-studio-tab .nav-link span,.cart-total-box .total ul li span,
+body.light-d header.header-style-one.two a.login,.tab-table .table tr td,
+.team-style-2 h5,.shop-style-one.addition .shop-filter > p,
+.together a:hover,.common-btn .theme-btn:hover,
+.blog-style-one.blog-style-three .blog-data .blog-date
+ {
+    color: white;
+}
+body.light-d .next-prev-projects:hover li a i{
+   color: black;
+}
+body.light-d .counter-style-one .counter-data .count i{
+    color: #999;
+    -webkit-text-fill-color:#999;
+}
+body.light-d .about-style-one .about-data-right span,
+body.light-d p,
+body.light-d .about-style-one .about-data-right .about-info h3,
+body.light-d .about-style-one .about-data-right .about-info h4,
+body.light-d .about-style-one .about-data-right .about-info h4,
+body.light-d .heading span,
+body.light-d .heading-style-2 .data span,
+body.light-d .estimated-price .est-form label,
+body.light-d .contact-us .c-cards .card .details > span,
+body.light-d .certificates .data span,
+body.light-d .shop-style-one .product h3 a,
+body.light-d .project-completed .proj-data .loc-date > div span:last-child,
+body.light-d .blog-style-three .blog-posts h3 a,
+body.light-d .blog-style-three .blog-posts .date,
+body.light-d .about-first .who-we-are h3,
+body.light-d .about-first .who-we-are ul li,
+body.light-d .blog-style-one .blog-post .blog-author .details h3,
+body.light-d .c-circle li,
+body.light-d .category p a,
+body.light-d .category.social-medias ul li a,
+body.light-d .blog-detail.detail-page .comment .c-data p,
+body.light-d .comment .c-data span,
+body.light-d .cart .cart-table .c-c .c-data h2 a,
+body.light-d .billing .nice-select,
+body.light-d .billing input::placeholder,
+body.light-d .billing select::placeholder,
+body.light-d .checkout .billing input::placeholder,
+body.light-d .checkout .billing .nice-select::placeholder,
+body.light-d .checkout .order-note textarea::placeholder,
+body.light-d .checkout .billing input,
+body.light-d .innovation ul li p,
+body.light-d .innovation ul li i,
+body.light-d .box form .remember label,
+body.light-d .pd-quality span,
+body.light-d .pd-cat-tags ul li ul.pd-cat li a,
+body.light-d .pd-cat-tags ul li ul.pd-tag li a,
+body.light-d .pd-cat-tags ul li ul.pd-sku li a,
+body.light-d .pd-cat-tags ul li ul.pd-sku li,
+body.light-d .sm-circle li,
+body.light-d .detail-page .include li,
+body.light-d .construction-services .services-nav ul li button.nav-link,
+body.light-d .team-detail .team-data .t-contact span,
+body.light-d .team-detail .fav-project .f-p-box .f-p-contact li span,
+body.light-d .team-detail .fav-project .f-p-box .f-p-contact li p,
+body.light-d .client-review-slider .slider-data p,
+body.light-d .client-review-slider .slider-data .bio .details h3,
+body.light-d .client-review-slider .slider-data .bio .details p,
+body.light-d .client-review-style-one .head-review span,
+body.light-d .project-completed .proj-data h3,
+body.light-d .client-review-style-one .head-review span,
+body.light-d .heading span,
+body.light-d .heading-style-2,
+body.light-d  .data span,
+.making-people ul li,
+div#countdown ul li,
+.together span,.service-detail-first .who-we-are ul
+{
+    color: #999;
+}
+body.light-d .project-style-one,
+body.light-d .shop-style-one,
+body.light-d .certificates .c-slider .c-main .c-first,
+body.light-d .service-style-one .service-data:before,
+body.light-d .contact-us .c-cards .card.active,
+body.light-d .team-style-one .team-data .team-image:before,
+body.light-d .service-style-two .service-two-box .service-two-icon:before,
+body.light-d .estimated-price,
+body.light-d .light-bg-color,
+body.light-d .category:not(:last-child),
+body.light-d .category.shape.form,
+body.light-d .form form textarea,
+body.light-d .form form input,
+body.light-d .cart .cart-table li:nth-child(even), 
+body.light-d .checkout .order-note textarea,
+body.light-d .contact-form-2 .info,
+body.light-d .contact-faqs .acc2,
+body.light-d .box.login,section.contact-faqs,
+body.light-d .box input,.rev-tab .total-reviews .t-r,
+body.light-d .builty-pagination ul.pagination li a,
+body.light-d .pd-details .nav-pills .nav-link,
+body.light-d .team-detail .team-data .t-tel,
+body.light-d .blog-style-two .blog-item:before,
+body.light-d .blog-style-two .owl-item.center .blog-item:before,
+body.light-d .construction-services .tab-content>.tab-pane figure figcaption
+body.light-d .nice-select .option:hover,
+body.light-d .nice-select .option.focus,
+body.light-d .nice-select .option.selected.focus,
+body.light-d .nice-select .option,
+body.light-d .nice-select .list  {
+    background-color: #0f0f0f;
+}
+body.light-d .counter-style-one .counter-data h4,body.light-d .team-style-one .team-data .team-info p{
+    color: #999;
+    -webkit-text-fill-color:#999;
+}
+body.light-d .counter-style-one,
+body.light-d .project-style-one .project-post .project-data,
+body.light-d .core-features,
+body.light-d .our-goal,
+body.light-d .certificates,
+body.light-d .certificates .c-slider .owl-nav,
+body.light-d .contact-us,
+body.light-d .client-review-style-one,
+body.light-d .client-style-one,
+body.light-d .blog-style-one,
+body.light-d .shop-style-one .product,
+body.light-d .project-completed,
+body.light-d .estimated-price .bg-wh,
+body.light-d .blog-style-two,
+body.light-d .acc2 .accordion-item h2:before,
+body.light-d .about-how-it-works .plans,
+body.light-d .checkout .billing input,
+body.light-d .checkout .billing .nice-select,
+body.light-d .pd-quality input,.cart-total-box .total,
+body.light-d .shop-style-one.addition .grid .product .btn-hover figure:before {
+    background-color: #0a0a0a;
+}
+body.light-d .core-features .accordion-item,
+body.light-d .contact-form-2 form input,
+body.light-d .contact-form-2 form textarea{
+    background-color: transparent;
+}
+body.light-d .core-features button.accordion-button:before{
+    background-color: white;
+}
+ 
+/*body.light-d .shop-style-one .p-slider .owl-dots button.active,
+body.light-d .blog-style-two .blog-slider .owl-dots button.active,
+body.light-d .project-detail-slider .p-d-slider .owl-dots button.active,
+body.light-d .project-style-one .project-slider .owl-dots button.active{
+    background-color: white;
+    border-color: white;
+}*/
+.timetable-section .timetable-tabs .tabs-content .time-box .time,
+body.light-d .pricing-plans .main-price li,
+body.light-d .service-style-one .service-data h3{
+    color: white;
+}
+.checkout .billing .nice-select:before,
+body.light-d .team-style-one {
+    background-color: black;
+}
+body.light-d .certificates .c-slider .c-main .c-second span{
+    border-bottom: 1px solid white;
+    color: #999;
+}
+body.light-d .service-style-one .service-data .svg-icon:before{
+    background-color: black;
+}
+body.light-d img.light-icon {
+    display: none;
+}
+.cart .update-cart form input,
+.timetable-section .timetable-tabs .tabs-content .time-box,
+header.header-style-one.two,.tab-table:before {
+    background-color: #000;
+}
+body.light-d img.dark-icon {
+    display: block;
+}
+body.light-d .blog-style-one .blog-data .blog-date:before{
+    border: 3px solid black;
+}
+body.light-d .certificates .c-slider .owl-nav button{
+    border: 1px solid #ffffff;
+ } 
+body.light-d .fitness-studio form i,.acc2 .accordion-item button,
+body.light-d .form-control,body.light-d .fitness-studio-img p,
+body.light-d .fitness-studio h4,#countdown ul span{
+    color: white;
+}
+.acc2 .accordion-button:not(.collapsed)::after, .acc2 .accordion-button:after {
+     filter: invert(1);
+}
+.acc2 .accordion-item button.collapsed:before {
+    border-color: transparent;
+}
+body.light-d .service-style-two .service-two-box:hover .service-two-icon:before,
+body.light-d .nice-select,body.light-d input,body.light-d select {
+    background-color: transparent;
+}
+body.light-d header.header-style-one.two .desktop-nav .nav-bar .extras a#show svg,
+body.light-d header.header-style-one.two .desktop-nav .nav-bar .extras .menu-start svg,
+body.light-d .service-style-two .service-two-box .service-two-icon svg,
+body.light-d .heading.heading-style-3 svg,
+body.light-d .team-style-two .team-data .contact svg{
+    fill: white;
+} 
+header.header-style-one.two .desktop-nav .nav-bar .extras .menu-start .line {
+    stroke: #fff;
+}
+body.light-d .first .tab-data .map-pin .location .data p 
+ {
+    color: black;
+}
+body.light-d header.header-style-one.two div .slideDown,
+body.light-d .contact-us .c-cards .card{
+    background-color: black;
+ }
+body.light-d .history-style-one,body.light-d .cta-section {
+    background-color: black;
+    z-index: 0;
+}
+body.light-d .contact-form-one{
+    margin-top: 0; 
+    z-index: 0;
+} 
+
+body.light-d .contact-form-two .c-form-2 {
+    margin-top: 0;
+}
+body.light-d .builty-pagination ul.pagination li:first-child a,
+body.light-d .builty-pagination ul.pagination li:last-child a {
+    border-color: white;
+}
+body.light-d .shop-style-one.addition .grid .product .btn-hover .theme-btn:hover {
+    color: #fff;
+    background: transparent;
+}
+body.light-d .theme-btn.two:hover {
+    color: #000;
+}
+body.light-d .blog-style-two .blog-item .blog-post-num{
+    color: white;
+    -webkit-text-stroke-color:white ;
+} 
+.next-prev-projects li a{
+    background-color: #ffee02;
+}
+ .accordion-button {
+    color: #444;
+ }
+.light-d .service-style-one .service-data .icon {
+    background-color: #444444;
+}
+.light-d .service-style-one .service-data .icon:hover {
+    background-color: #fff;    
+}
+.light-d .client-review-slider .owl-dots button.active {
+    background-color: var(--theme-color) ;
+}
+.light-d span.counter,.light-d .counter-data h6 {
+    color: #fff;
+ }
+.light-d .counter-style-one .counter-data:hover { 
+    box-shadow: 0 30px 30px #eeeeee2e;
+}
+
+
+.light-d .certificates .c-slider .c-main,
+.light-d .certificates .c-slider .c-main img {
+    background-color: #000;
+}
+
+body.light-d .blog-style-two .blog-item h2 a:hover{
+    color: var(--theme-color);
+}
+body.light-d .project-detail-slider .owl-dots button.active,
+body.light-d .client-review-slider .owl-dots button.active,
+body.light-d .shop-style-one .p-slider .owl-dots button.active,
+body.light-d .blog-style-two .blog-slider .owl-dots button.active {
+    background: var(--theme-color);
+    border-color: var(--theme-color); 
+} 
+body.light-d .fitness-studio-tab  .nav-link.active  {
+    border-bottom: 1px solid var(--theme-color);
+}
+body.light-d .fitness-studio-tab  .nav-link.active span {
+    color: var(--theme-color);
+}
+/* heading color */
+.est-form .nav-pills .nav-link {
+    background-color: transparent ; 
+}
+.your-bmi h5,body.light-d .fitness-studio span {
+    color: #989A9B;
+}
+/* end */
+body.light-d .fitness-studio-tab .nav-link {
+    font-size: 28px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+/* boder color */
+.nice-select, input, select {
+    border-color: #484848 !important;
+}
+.cart .cart-table .c-c .c-data .cr-svg,.sidebar .box,
+ .cart .cart-table .c-c .c-data > img,.project-d-detail,
+  .cart .cart-table .c-c .c-quality input,.counter-style-one .counter-data,
+ .cart .cart-box,.service-style-one .service-data,.page-link,
+.form form textarea, .form form input,textarea,.prj-post .row,
+.tab-table .table tr:not(:last-child) td,.comment,.rev-tab .post-review,
+.core-values ul li,.core-values ul li:last-child,.innovation ul li,.shop-style-one.addition .shop-filter,
+.core-features .accordion-body,.blog-style-one .blog-post,.about-how-it-works .plans,.shop-style-one .product,
+body.light-d .certificates .c-slider .owl-nav button ,body.light-d .pricing-plans .main-price,.tab-table,
+.timetable-section .timetable-tabs .tabs-content .time-box ,button.accordion-button,.pd-gallery img{
+    border-color: #484848;
+}
+.page-link {
+    background-color:  #484848;
+    color: #fff;
+}
+.gym-pagination ul.pagination li a {
+    color: #fff;
+}
+.team-data svg {
+    fill: #484848;
+}
+.cart .cart-table .c-c .c-data .cr-svg img,
+.rev-tab .post-review .p-r-s img {
+     filter: contrast(0.5);
+}
+.cart .update-cart form input{
+    border: 1px solid #484848;
+}
+.checkout .billing .nice-select:after {
+    border-color: #fff !important;
+}
