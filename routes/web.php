@@ -46,5 +46,6 @@ Route::resource('roles', RolController::class);
 Route::resource('users', UserController::class);
 Route::resource('personas', PersonaController::class);
 Route::resource('clientes', ClienteController::class)->names('clientes');
+Route::post('clientes', [ClienteController::class, 'store'])->name('clientes.store');
 
 require __DIR__.'/auth.php';
