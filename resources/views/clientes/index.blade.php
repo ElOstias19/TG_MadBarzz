@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.private')
 
-@section('content')
+@section('contenido')
 <div class="container">
     <h2>Lista de Clientes</h2>
     <a href="{{ route('clientes.create') }}" class="btn btn-primary mb-3">Registrar Cliente</a>
