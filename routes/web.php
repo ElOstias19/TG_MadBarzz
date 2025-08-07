@@ -11,6 +11,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\ClienteController;
 
+use App\Http\Controllers\MembresiaController;
+use App\Http\Controllers\MembresiaClienteController;
 
 
 Route::get('/', function () {
@@ -47,5 +49,7 @@ Route::resource('users', UserController::class);
 Route::resource('personas', PersonaController::class);
 Route::resource('clientes', ClienteController::class)->names('clientes');
 Route::post('clientes', [ClienteController::class, 'store'])->name('clientes.store');
+Route::resource('membresias', MembresiaController::class);
+Route::resource('membresia_cliente', MembresiaClienteController::class);
 
 require __DIR__.'/auth.php';

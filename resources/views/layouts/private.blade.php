@@ -851,6 +851,8 @@
                             <li><a href="{{ route(name: 'personas.index')   }}">Personas</a></li>
                             <li><a href="{{ route(name: 'clientes.index')   }}">Clientes</a></li>
 
+                            <li><a href="{{ route(name: 'membresias.index')   }}">Membresías</a></li>
+                            <li><a href="{{ route(name: 'membresia_cliente.index')   }}">Membresias de Cientes</a></li>
 
                             <li><a href="ui-media-object.html">Media Object</a></li>
                             <li><a href="ui-card.html">Cards</a></li>
