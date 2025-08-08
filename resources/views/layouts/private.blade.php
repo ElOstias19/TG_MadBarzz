@@ -853,6 +853,7 @@
 
                             <li><a href="{{ route(name: 'membresias.index')   }}">Membresías</a></li>
                             <li><a href="{{ route(name: 'membresia_cliente.index')   }}">Membresias de Cientes</a></li>
+                            <li><a href="{{ route(name: 'entrenadores.index')   }}">Entrenadores</a></li>
 
                             <li><a href="ui-media-object.html">Media Object</a></li>
                             <li><a href="ui-card.html">Cards</a></li>

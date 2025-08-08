@@ -4,49 +4,57 @@
 <div class="row">
     <div class="col-xl-12">
         <div class="card custom-card">
-            <div class="card-header d-flex justify-content-between">
-                <h4 class="card-title">Lista de Membresías</h4>
-                <a href="{{ route('membresias.create') }}" class="btn btn-primary">
-                    <i class="fa fa-plus"></i> Nueva Membresía
-                </a>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="card-title">Lista de Membresías</div>
+                <div>
+                    <a href="{{ route('membresias.create') }}" class="btn btn-primary">
+                        <i class="fa-solid fa-circle-plus me-2"></i> Nueva Membresía
+                    </a>
+                </div>
             </div>
+
             <div class="card-body">
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Tipo</th>
-                            <th>Precio</th>
-                            <th>Descuento</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse($membresias as $membresia)
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover text-nowrap w-100">
+                        <thead>
                             <tr>
-                                <td>{{ $membresia->id_membresia }}</td>
-                                <td>{{ $membresia->tipo_membresia }}</td>
-                                <td>{{ $membresia->precio }}</td>
-                                <td>{{ $membresia->descuento }}</td>
-                                <td>
-                                    <a href="{{ route('membresias.edit', $membresia->id_membresia) }}" class="btn btn-warning btn-sm">Editar</a>
-                                    <form action="{{ route('membresias.destroy', $membresia->id_membresia) }}" method="POST" style="display:inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar esta membresía?')">Eliminar</button>
-                                    </form>
-                                </td>
+                                <th>ID</th>
+                                <th>Tipo</th>
+                                <th>Precio</th>
+                                <th class="text-end">Acciones</th>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="5" class="text-center">No hay membresías registradas.</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @forelse($membresias as $membresia)
+                                <tr>
+                                    <td>{{ $membresia->id_membresia }}</td>
+                                    <td>{{ $membresia->tipo_membresia }}</td>
+                                    <td>{{ number_format($membresia->precio, 2) }} Bs</td>
+                                    <td class="text-end">
+                                        <a href="{{ route('membresias.edit', $membresia->id_membresia) }}" class="btn btn-warning btn-sm me-1">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <form action="{{ route('membresias.destroy', $membresia->id_membresia) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Eliminar esta membresía?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="text-center">No hay membresías registradas.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

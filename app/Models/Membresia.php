@@ -14,7 +14,6 @@ class Membresia extends Model
     protected $fillable = [
         'tipo_membresia',
         'precio',
-        'descuento',
     ];
 
     public function clientes()

@@ -16,7 +16,12 @@ class MembresiaCliente extends Model
         'id_membresia',
         'fecha_inicio',
         'fecha_fin',
+        'nombre_descuento',   // Nombre del descuento (ej. UAGRM)
+        'descuento',          // Porcentaje descuento (ej. 20.00)
+        'precio_final',       // Precio final después del descuento
     ];
+
+    // Relaciones
 
     public function cliente()
     {

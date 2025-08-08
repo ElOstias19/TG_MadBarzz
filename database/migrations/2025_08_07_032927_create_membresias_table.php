@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id('id_membresia');
             $table->string('tipo_membresia', 50);
             $table->decimal('precio', 8, 2);
-            $table->decimal('descuento', 8, 2)->default(0);
             $table->timestamps();
             $table->softDeletes(); // Eliminación lógica
         });

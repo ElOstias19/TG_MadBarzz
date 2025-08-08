@@ -1,44 +1,99 @@
 @extends('layouts.private')
 
 @section('contenido')
-<div class="col-xl-6 offset-xl-3">
-    <div class="card custom-card">
-        <div class="card-header">
-            <h4>Asignar Membresía a Cliente</h4>
-        </div>
-        <div class="card-body">
-            <form action="{{ route('membresia_cliente.store') }}" method="POST">
-                @csrf
-                <div class="mb-3">
-                    <label>Cliente</label>
-                    <select name="id_cliente" class="form-control" required>
-                        <option value="">Seleccione un cliente</option>
-                        @foreach($clientes as $cliente)
-                            <option value="{{ $cliente->id_cliente }}">{{ $cliente->persona->nombre_completo }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label>Membresía</label>
-                    <select name="id_membresia" class="form-control" required>
-                        <option value="">Seleccione una membresía</option>
-                        @foreach($membresias as $membresia)
-                            <option value="{{ $membresia->id_membresia }}">{{ $membresia->tipo_membresia }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label>Fecha Inicio</label>
-                    <input type="date" name="fecha_inicio" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label>Fecha Fin</label>
-                    <input type="date" name="fecha_fin" class="form-control" required>
-                </div>
-                <button class="btn btn-success">Guardar</button>
-                <a href="{{ route('membresia_cliente.index') }}" class="btn btn-secondary">Cancelar</a>
-            </form>
+<div class="row">
+    <div class="col-xl-6 offset-xl-3">
+        <div class="card custom-card">
+            <div class="card-header">
+                <h4>Asignar Membresía a Cliente</h4>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('membresia_cliente.store') }}" method="POST">
+                    @csrf
+
+                    <div class="mb-3">
+                        <label for="id_cliente" class="form-label">Cliente</label>
+                        <select name="id_cliente" id="id_cliente" class="form-control" required>
+                            <option value="">Seleccione un cliente</option>
+                            @foreach($clientes as $cliente)
+                                <option value="{{ $cliente->id_cliente }}">
+                                    {{ $cliente->persona->nombre_completo ?? 'N/A' }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_membresia" class="form-label">Membresía</label>
+                        <select name="id_membresia" id="id_membresia" class="form-control" required>
+                            <option value="">Seleccione una membresía</option>
+                            @foreach($membresias as $membresia)
+                                <option value="{{ $membresia->id_membresia }}">
+                                    {{ $membresia->tipo_membresia }} - Bs {{ number_format($membresia->precio, 2) }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="fecha_inicio" class="form-label">Fecha Inicio</label>
+                        <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="fecha_fin" class="form-label">Fecha Fin</label>
+                        <input type="date" name="fecha_fin" id="fecha_fin" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="nombre_descuento" class="form-label">Nombre Descuento</label>
+                        <select name="nombre_descuento" id="nombre_descuento" class="form-control" required>
+                            <option value="">Seleccione un descuento</option>
+                            <option value="UAGRM">UAGRM</option>
+                            <option value="UNIFRANZ">UNIFRANZ</option>
+                            <option value="Colegio de Auditores">Colegio de Auditores</option>
+                            <!-- Puedes añadir más aquí -->
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="descuento" class="form-label">Descuento (%)</label>
+                        <input type="number" name="descuento" id="descuento" min="0" max="100" step="0.01" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="precio_final" class="form-label">Precio Final (Bs)</label>
+                        <input type="number" name="precio_final" id="precio_final" class="form-control" step="0.01" readonly required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a href="{{ route('membresia_cliente.index') }}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    const membresiaSelect = document.getElementById('id_membresia');
+    const descuentoInput = document.getElementById('descuento');
+    const precioFinalInput = document.getElementById('precio_final');
+
+    function calcularPrecioFinal() {
+        let precio = 0;
+        if(membresiaSelect.value){
+            const selectedOption = membresiaSelect.options[membresiaSelect.selectedIndex];
+            let texto = selectedOption.text;
+            let regex = /Bs\s?([\d,.]+)/;
+            let match = texto.match(regex);
+            if(match) precio = parseFloat(match[1].replace(',', ''));
+        }
+        let descuento = parseFloat(descuentoInput.value) || 0;
+        let precioFinal = precio - (precio * (descuento / 100));
+        precioFinalInput.value = precioFinal.toFixed(2);
+    }
+
+    membresiaSelect.addEventListener('change', calcularPrecioFinal);
+    descuentoInput.addEventListener('input', calcularPrecioFinal);
+</script>
 @endsection

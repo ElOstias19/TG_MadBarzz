@@ -17,10 +17,7 @@
                     <label>Precio</label>
                     <input type="number" step="0.01" name="precio" class="form-control" required>
                 </div>
-                <div class="mb-3">
-                    <label>Descuento</label>
-                    <input type="number" step="0.01" name="descuento" class="form-control">
-                </div>
+
                 <button class="btn btn-success">Guardar</button>
                 <a href="{{ route('membresias.index') }}" class="btn btn-secondary">Cancelar</a>
             </form>
