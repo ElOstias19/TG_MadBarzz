@@ -39,9 +39,9 @@ class EntrenadorController extends Controller
             'password'         => 'required|string|min:6|confirmed',
 
             // Entrenador
-            'especialidad'     => 'required|string|max:255',
+            'especialidad'     => 'required|array|min:1',
             'experiencia'      => 'required|string|max:255',
-            'disponibilidad'   => 'required|string|max:255',
+            'disponibilidad'   => 'required|array|min:1',
             'estado'           => 'required|in:activo,inactivo',
         ]);
 
@@ -59,15 +59,15 @@ class EntrenadorController extends Controller
             'name'     => $request->name,
             'email'    => $request->email,
             'password' => Hash::make($request->password),
-            'rol_id'   => 2, // Supongamos que 2 es entrenador
+            'rol_id'   => 2, // Entrenador
         ]);
 
         Entrenador::create([
             'id_persona'     => $persona->id_persona,
             'id_usuario'     => $usuario->id,
-            'especialidad'   => $request->especialidad,
+            'especialidad'   => implode(', ', $request->especialidad),
             'experiencia'    => $request->experiencia,
-            'disponibilidad' => $request->disponibilidad,
+            'disponibilidad' => json_encode($request->disponibilidad),
             'estado'         => $request->estado,
         ]);
 
@@ -77,6 +77,11 @@ class EntrenadorController extends Controller
     public function edit($id)
     {
         $entrenador = Entrenador::with(['persona', 'user'])->findOrFail($id);
+
+        // Pasar arrays para los selects múltiples
+        $entrenador->disponibilidad = json_decode($entrenador->disponibilidad, true);
+        $entrenador->especialidad = explode(', ', $entrenador->especialidad ?? '');
+
         return view('entrenadores.edit', compact('entrenador'));
     }
 
@@ -98,9 +103,9 @@ class EntrenadorController extends Controller
             'name'             => 'required|string|max:100',
             'email'            => 'required|email|unique:users,email,' . $usuario->id . ',id',
 
-            'especialidad'     => 'required|string|max:255',
+            'especialidad'     => 'required|array|min:1',
             'experiencia'      => 'required|string|max:255',
-            'disponibilidad'   => 'required|string|max:255',
+            'disponibilidad'   => 'required|array|min:1',
             'estado'           => 'required|in:activo,inactivo',
         ]);
 
@@ -126,9 +131,9 @@ class EntrenadorController extends Controller
         }
 
         $entrenador->update([
-            'especialidad'   => $request->especialidad,
+            'especialidad'   => implode(', ', $request->especialidad),
             'experiencia'    => $request->experiencia,
-            'disponibilidad' => $request->disponibilidad,
+            'disponibilidad' => json_encode($request->disponibilidad),
             'estado'         => $request->estado,
         ]);
 

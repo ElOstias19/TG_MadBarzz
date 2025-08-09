@@ -20,11 +20,16 @@ class Entrenador extends Model
         'disponibilidad',
         'estado',
     ];
+    protected $casts = [
+    'disponibilidad' => 'array',
+     'especialidad'   => 'array',
+]; 
 
     public function persona()
     {
         return $this->belongsTo(Persona::class, 'id_persona');
     }
+    
 
     public function user()
     {
