@@ -14,6 +14,11 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\MembresiaController;
 use App\Http\Controllers\MembresiaClienteController;
 use App\Http\Controllers\EntrenadorController;
+use App\Http\Controllers\RecepcionistaController;
+use App\Http\Controllers\AdministradorController;
+use App\Http\Controllers\AsistenciaController;
+use App\Http\Controllers\NotificacionController;
+use App\Http\Controllers\PagoController;
 
 
 
@@ -54,6 +59,34 @@ Route::post('clientes', [ClienteController::class, 'store'])->name('clientes.sto
 Route::resource('membresias', MembresiaController::class);
 Route::resource('membresia_cliente', MembresiaClienteController::class);
 Route::resource('entrenadores', EntrenadorController::class);
+Route::resource('recepcionistas', RecepcionistaController::class);
+Route::resource('administradores', AdministradorController::class);
 
+Route::resource('asistencias', AsistenciaController::class);
+
+
+Route::resource('notificaciones', NotificacionController::class)->middleware('auth'); 
+// Añade middleware auth si usas autenticación
+Route::get('/notificaciones/enviar', [NotificacionController::class, 'showForm'])->name('notificaciones.form');
+Route::post('/notificaciones/enviar', [NotificacionController::class, 'sendWhatsapp'])->name('notificaciones.sendWhatsapp');
+
+
+
+
+Route::get('/notificaciones', [NotificacionController::class, 'index'])->name('notificaciones.index');
+Route::get('/notificaciones/create', [NotificacionController::class, 'create'])->name('notificaciones.create');
+Route::post('/notificaciones/store', [NotificacionController::class, 'store'])->name('notificaciones.store');
+
+// Ruta para mostrar el formulario alternativo y enviar WhatsApp directo
+Route::get('/notificaciones/send', [NotificacionController::class, 'showForm'])->name('notificaciones.sendForm');
+Route::post('/notificaciones/sendWhatsapp', [NotificacionController::class, 'sendWhatsapp'])->name('notificaciones.sendWhatsapp');
+
+
+
+Route::post('/notificaciones/send-whatsapp', [NotificacionController::class, 'sendWhatsapp'])->name('notificaciones.sendWhatsapp');
+
+
+
+Route::resource('pagos', PagoController::class);
 
 require __DIR__.'/auth.php';

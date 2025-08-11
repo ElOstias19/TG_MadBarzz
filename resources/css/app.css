@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.form-texto-negro input,
+.form-texto-negro select,
+.form-texto-negro textarea {
+    color: black !important;
+}

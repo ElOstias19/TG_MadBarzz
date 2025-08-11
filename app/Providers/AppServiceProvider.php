@@ -3,16 +3,18 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+   use App\Services\WhatsappService;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
+
+    public function register()
     {
-        //
+        $this->app->singleton(WhatsappService::class, function ($app) {
+            return new WhatsappService();
+        });
     }
+
 
     /**
      * Bootstrap any application services.

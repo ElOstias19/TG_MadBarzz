@@ -852,8 +852,13 @@
                             <li><a href="{{ route(name: 'clientes.index')   }}">Clientes</a></li>
 
                             <li><a href="{{ route(name: 'membresias.index')   }}">Membresías</a></li>
-                            <li><a href="{{ route(name: 'membresia_cliente.index')   }}">Membresias de Cientes</a></li>
+                            <li><a href="{{ route(name: 'membresia_cliente.index')   }}">Membresias de Clientes</a></li>
                             <li><a href="{{ route(name: 'entrenadores.index')   }}">Entrenadores</a></li>
+                            <li><a href="{{ route(name: 'recepcionistas.index')   }}">Recepcionistas</a></li>
+                            <li><a href="{{ route(name: 'administradores.index')   }}">Administradores</a></li>
+                            <li><a href="{{ route(name: 'asistencias.index')   }}">Asistencias</a></li>
+                            <li><a href="{{ route(name: 'notificaciones.index')   }}">Notificaciones</a></li>
+                            <li><a href="{{ route(name: 'pagos.index')   }}">Pagos</a></li>
 
                             <li><a href="ui-media-object.html">Media Object</a></li>
                             <li><a href="ui-card.html">Cards</a></li>
