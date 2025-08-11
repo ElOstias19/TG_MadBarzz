@@ -859,6 +859,7 @@
                             <li><a href="{{ route(name: 'asistencias.index')   }}">Asistencias</a></li>
                             <li><a href="{{ route(name: 'notificaciones.index')   }}">Notificaciones</a></li>
                             <li><a href="{{ route(name: 'pagos.index')   }}">Pagos</a></li>
+                            <li><a href="{{ route(name: 'rutinas.index')   }}">Rutinas</a></li>
 
                             <li><a href="ui-media-object.html">Media Object</a></li>
                             <li><a href="ui-card.html">Cards</a></li>

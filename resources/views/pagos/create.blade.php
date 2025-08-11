@@ -34,7 +34,10 @@
             <select name="id_membresia" id="id_membresia" class="form-control" required>
                 <option value="">Seleccione una membresía</option>
                 @foreach($membresias as $membresia)
-                    <option value="{{ $membresia->id_membresia }}">
+                    <option 
+                        value="{{ $membresia->id_membresia }}" 
+                        data-precio="{{ $membresia->precio }}"
+                    >
                         {{ $membresia->tipo_membresia }} - Bs. {{ number_format($membresia->precio, 2) }}
                     </option>
                 @endforeach
@@ -83,6 +86,16 @@
 </div>
 
 <script>
+document.getElementById('id_membresia').addEventListener('change', function() {
+    const precio = this.options[this.selectedIndex].getAttribute('data-precio');
+    const montoInput = document.getElementById('monto');
+    if(precio){
+        montoInput.value = precio;
+    } else {
+        montoInput.value = '';
+    }
+});
+
 function previewImage(event) {
     let preview = document.getElementById('preview');
     let file = event.target.files[0];

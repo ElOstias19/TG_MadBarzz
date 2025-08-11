@@ -19,6 +19,7 @@ use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\NotificacionController;
 use App\Http\Controllers\PagoController;
+use App\Http\Controllers\RutinaController;
 
 
 
@@ -88,5 +89,6 @@ Route::post('/notificaciones/send-whatsapp', [NotificacionController::class, 'se
 
 
 Route::resource('pagos', PagoController::class);
+Route::resource('rutinas', RutinaController::class);
 
 require __DIR__.'/auth.php';
