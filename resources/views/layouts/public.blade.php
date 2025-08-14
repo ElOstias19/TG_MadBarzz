@@ -20,11 +20,20 @@
 <body class="light-d">
    <a id="inicio"></a> <!-- Anclaje para el inicio -->
    
-  <div class="preloader">
-    <div class="loader-wrap-heading">
-      <div class="load-text"> <span>C</span> <span>A</span> <span>R</span> <span>G</span> <span>A</span> <span>N</span> <span>D</span> <span>O</span></div>
+<div class="preloader" style="background-color: #000000;">
+  <div class="loader-wrap-heading">
+    <div class="load-text">
+      <span style="color: #FFA500;">C</span>
+      <span style="color: #FFA500;">A</span>
+      <span style="color: #FFA500;">R</span>
+      <span style="color: #FFA500;">G</span>
+      <span style="color: #FFA500;">A</span>
+      <span style="color: #FFA500;">N</span>
+      <span style="color: #FFA500;">D</span>
+      <span style="color: #FFA500;">O</span>
     </div>
   </div>
+</div>
   <header class="header-style-one two">
     <div class="top-bar" style="background-color: #FD6A01;">
       <h4>CALISTENIA MADBARZZ</h4>
@@ -178,7 +187,6 @@
             <div class="featured-text-two">
                 <h1>Clases de Calistenia</h1>
                 <p>Disfruta de nuestros programas progresivos con equipos de calistenia de primer nivel y entrenadores expertos.</p>
-                <a href="#" class="theme-btn" style="background-color: #FD6A01;">DESCUBRE MADBARZZ</a>
             </div>
         </div>
     </div>
@@ -188,17 +196,14 @@
             <div class="featured-text-two">
                 <h1>Programa de Cardio</h1>
                 <p>Mantente en forma con nuestras rutinas de cardio diseñadas para mejorar tu resistencia y fuerza.</p>
-                <a href="#" class="theme-btn" style="background-color: #FD6A01;">DESCUBRE MADBARZZ</a>
             </div>
         </div>
     </div>
-
     <div data-dot="<button><span>03</span> Estudio de Fitness</button>" class="item featured-section-three" style="background-image:url(https://via.placeholder.com/1920x770);">
         <div class="container">
             <div class="featured-text-two">
                 <h1>Estudio de Fitness</h1>
                 <p>Accede a nuestro estudio de calistenia con entrenadores especializados y áreas adaptadas para todos los niveles.</p>
-                <a href="#" class="theme-btn" style="background-color: #FD6A01;">DESCUBRE MADBARZZ</a>
             </div>
         </div>
     </div>
@@ -219,19 +224,21 @@
                       </a>
                 </div>
             </div>
-            <div class="col-lg-5">
-                <div class="cta-data">
-                    <figure>
-                        <img src="https://via.placeholder.com/858x597" alt="Imagen Calistenia MadBarzz">
-                    </figure>
-                </div>
-            </div>
+<div class="col-lg-5">
+    <div class="cta-data">
+        <figure>
+            <img src="{{ asset('assets/images/entrenaconnosotros.jpg') }}" 
+                 alt="Imagen Calistenia MadBarzz"
+                 class="img-mas-chica">
+        </figure>
+    </div>
+</div>
         </div>
     </div>
   </section>
 
   <!-- Sección de Entrenadores -->
-  <section id="entrenadores" class="gap">
+  <section id="entrenadores" class="gap" style="padding-bottom: 20px;">
     <div class="container">
         <div class="row">
             <!-- Texto principal -->
@@ -259,68 +266,10 @@
             </div>
         </div>
     </div>
-
-    <!-- Equipo de instructores -->
-    <div class="marquee_text">
-        <a href="team-detail.html">
-            <div class="team-style-2">
-                <figure>
-                    <img src="https://via.placeholder.com/240x290" alt="Instructor">
-                </figure>
-                <span style="color: #FD6A01;">Instructor de Calistenia</span>
-                <h5>Thomas Marqos</h5>
-            </div>
-        </a>
-        <a href="team-detail.html">
-            <div class="team-style-2">
-                <figure>
-                    <img src="https://via.placeholder.com/240x290" alt="Instructor">
-                </figure>
-                <span style="color: #FD6A01;">Instructor de Calistenia</span>
-                <h5>Maria Robbert</h5>
-            </div>
-        </a>
-        <a href="team-detail.html">
-            <div class="team-style-2">
-                <figure>
-                    <img src="https://via.placeholder.com/240x290" alt="Instructor">
-                </figure>
-                <span style="color: #FD6A01;">Instructor de Calistenia</span>
-                <h5>Petar Parkar</h5>
-            </div>
-        </a>
-        <a href="team-detail.html">
-            <div class="team-style-2">
-                <figure>
-                    <img src="https://via.placeholder.com/240x290" alt="Instructor">
-                </figure>
-                <span style="color: #FD6A01;">Instructor de Calistenia</span>
-                <h5>Jessica Lorance</h5>
-            </div>
-        </a>
-        <a href="team-detail.html">
-            <div class="team-style-2">
-                <figure>
-                    <img src="https://via.placeholder.com/240x290" alt="Instructor">
-                </figure>
-                <span style="color: #FD6A01;">Instructor de Calistenia</span>
-                <h5>Oliver Rankis</h5>
-            </div>
-        </a>
-        <a href="team-detail.html">
-            <div class="team-style-2">
-                <figure>
-                    <img src="https://via.placeholder.com/240x290" alt="Instructor">
-                </figure>
-                <span style="color: #FD6A01;">Instructor de Calistenia</span>
-                <h5>Moniqa Linda</h5>
-            </div>
-        </a>
-    </div>
   </section>
 
-  <!-- Sección de Guías para principiantes -->
-  <section id="guias" class="contact-form-one gap no-bottom">
+  <!-- Sección de Guías para principiantes - Reducido el padding superior -->
+  <section id="guias" class="contact-form-one gap no-bottom" style="padding-top: 20px;">
     <div class="container">
       <div class="row align-items-center">
         

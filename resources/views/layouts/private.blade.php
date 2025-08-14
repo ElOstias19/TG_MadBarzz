@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <!-- Título -->
     <title>MadBarzz</title>
@@ -9,6 +9,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="author" content="DexignZone">
     <meta name="robots" content="">
+
+    <!-- Prevenir flash de tema claro -->
+    <script>
+        // Aplicar el tema inmediatamente, antes de que el DOM se cargue
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 
     <meta name="keywords" content="admin, panel de administración, plantilla admin, bootstrap, bootstrap 5, plantilla admin bootstrap 5, fitness, admin fitness, moderno, panel de administración responsive, panel de ventas, sass, kit de interfaz, aplicación web">
     <meta name="description" content="Descubre Gymove, la solución fitness definitiva diseñada para ayudarte a lograr un estilo de vida más saludable con sus características innovadoras y programas personalizados. Gymove es una plantilla de panel de administración completamente responsive que ofrece la combinación perfecta de ejercicio, nutrición y motivación. Comienza tu viaje fitness hoy con Gymove y visita DexignZone para más información.">
@@ -598,10 +607,9 @@
                                 </form>
                             </li>
                             <li class="nav-item dropdown notification_dropdown">
-                                <a class="nav-link bell dz-theme-mode" href="javascript:void(0);">
+                                <a class="nav-link bell dz-theme-mode" href="javascript:void(0);" id="theme-toggle">
                                     <i id="icon-light" class="fas fa-sun"></i>
                                     <i id="icon-dark" class="fas fa-moon"></i>
-                                    
                                 </a>
                             </li>
 
@@ -745,7 +753,7 @@
     <!-- Esto queda al final -->
     <div class="copyright mt-auto text-center">
         <p><strong>MadBarzz</strong> © 2025 Todos los Derechos Reservados</p>
-        <p>Hecho con Laravel <span class="heart"></span> por Robert Garrado</p>
+        <p>Hecho con Laravel <span class="heart"></span> por Robert Garrido</p>
     </div>
 </div>
 
@@ -843,13 +851,68 @@
         });
     </script>
     <script>
+        // Función para cambiar el tema
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('theme-toggle');
+            const iconLight = document.getElementById('icon-light');
+            const iconDark = document.getElementById('icon-dark');
+            
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                iconLight.style.display = 'inline-block';
+                iconDark.style.display = 'none';
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                iconLight.style.display = 'none';
+                iconDark.style.display = 'inline-block';
+            }
+        }
+
+        // Verificar el tema al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('theme-toggle');
+            const iconLight = document.getElementById('icon-light');
+            const iconDark = document.getElementById('icon-dark');
+            
+            // Aplicar el tema guardado
+            if (savedTheme === 'dark') {
+                html.setAttribute('data-theme', 'dark');
+                iconLight.style.display = 'none';
+                iconDark.style.display = 'inline-block';
+            } else {
+                html.removeAttribute('data-theme');
+                iconLight.style.display = 'inline-block';
+                iconDark.style.display = 'none';
+            }
+            
+            // Configurar el evento click para el botón de cambio de tema
+            themeToggle.addEventListener('click', toggleTheme);
+        });
+
         jQuery(document).ready(function(){
             setTimeout(function(){
-                dezSettingsOptions.version = 'dark';
+                // Verificar el tema guardado
+                const savedTheme = localStorage.getItem('theme') || 'dark';
+                if (savedTheme === 'dark') {
+                    dezSettingsOptions.version = 'dark';
+                } else {
+                    dezSettingsOptions.version = 'light';
+                }
                 new dezSettings(dezSettingsOptions);
             },1000)
+            
             jQuery(window).on('resize',function(){
-                dezSettingsOptions.version = 'light';
+                const savedTheme = localStorage.getItem('theme') || 'dark';
+                if (savedTheme === 'dark') {
+                    dezSettingsOptions.version = 'dark';
+                } else {
+                    dezSettingsOptions.version = 'light';
+                }
                 new dezSettings(dezSettingsOptions);
                 jQuery('.dz-theme-mode').addClass('active');
             });

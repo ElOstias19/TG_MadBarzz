@@ -112,11 +112,20 @@
 
 <body class="light-d">
   <!-- Loader Start -->
-  <div class="preloader">
-    <div class="loader-wrap-heading">
-      <div class="load-text"> <span>L</span> <span>o</span> <span>a</span> <span>d</span> <span>i</span> <span>n</span> <span>g</span> </div>
+<div class="preloader" style="background-color: #000000;">
+  <div class="loader-wrap-heading">
+    <div class="load-text">
+      <span style="color: #FFA500;">C</span>
+      <span style="color: #FFA500;">A</span>
+      <span style="color: #FFA500;">R</span>
+      <span style="color: #FFA500;">G</span>
+      <span style="color: #FFA500;">A</span>
+      <span style="color: #FFA500;">N</span>
+      <span style="color: #FFA500;">D</span>
+      <span style="color: #FFA500;">O</span>
     </div>
   </div>
+</div>
   <!-- Loader End -->
 
   <!-- Header Style One Start -->

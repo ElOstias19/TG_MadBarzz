@@ -1,6 +1,11 @@
 @extends('layouts.auth')
 @section('contenido')
 
+@php
+    $telefonoRecepcionista = app('App\Http\Controllers\RecepcionistaController')->getRecepcionistaActivo();
+    $whatsappLink = $telefonoRecepcionista ? 'https://wa.me/591' . $telefonoRecepcionista . '?text=Hola,%20quiero%20solicitar%20acceso%20a%20MadBarzz' : '#';
+@endphp
+
 <div class="row justify-content-center align-items-center" style="margin-top: 0; padding-top: 0;">
   <div class="col-lg-6">
     <div class="box login">
@@ -28,13 +33,13 @@
             <input type="checkbox" name="remember" id="checkbox" {{ old('remember') ? 'checked' : '' }}>
             <label for="checkbox">Recuérdame</label>
           </div>
-          <div class="second">
+        <!--  <div class="second">
             <a href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
-          </div>
+          </div>-->
         </div>
         <button type="submit" class="theme-btn w-100">Iniciar sesión</button>
       </form>
-      <p style="margin-top: 30px;">¿No tienes cuenta? <a href="{{ route('register') }}">Solicita acceso en recepción</a></p>
+      <p style="margin-top: 30px;">¿Se te olvidó tu contraseña? <a href="{{ $whatsappLink }}" target="_blank">Solicita acceso en recepción</a></p>
     </div>
   </div>
   <div class="col-lg-6">

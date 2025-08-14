@@ -134,4 +134,14 @@ class RecepcionistaController extends Controller
 
         return redirect()->route('recepcionistas.index')->with('success', 'Recepcionista eliminado correctamente.');
     }
+
+    // En tu RecepcionistaController.php
+public function getRecepcionistaActivo()
+{
+    $recepcionista = Recepcionista::with('persona')
+        ->where('estado', 'activo')
+        ->first();
+    
+    return $recepcionista ? $recepcionista->persona->telefono : null;
+}
 }
