@@ -18,6 +18,7 @@
 </head>
 
 <body class="light-d">
+   <a id="inicio"></a> <!-- Anclaje para el inicio -->
    
   <div class="preloader">
     <div class="loader-wrap-heading">
@@ -25,7 +26,7 @@
     </div>
   </div>
   <header class="header-style-one two">
-    <div class="top-bar">
+    <div class="top-bar" style="background-color: #FD6A01;">
       <h4>CALISTENIA MADBARZZ</h4>
     </div>
     <div class="container">
@@ -56,7 +57,7 @@
                             </form>
                         @else
                             <!-- Si no está autenticado: mostrar login/registro -->
-                            <a href="{{ route('login') }}" class="login">Iniciar sesión / Registrarse</a>
+                            <a href="{{ route('login') }}" class="login">Iniciar sesión</a>
                         @endauth
                     </div>
 
@@ -68,108 +69,56 @@
                       </figure>
                     </a>
                   </div>
-            <div class="nav-bar">
-            <ul>
-                <li class="menu-item-has-children">
-                <a href="javascript:void(0)">Inicio</a>
-                <ul class="sub-menu">
-                    <li><a href="index.html">Inicio Uno</a></li>
-                    <li><a href="index-2.html">Inicio Dos</a></li>
-                    <li><a href="index-3.html">Inicio Tres</a></li>
-                </ul>
-                </li>
-                <li class="menu-item-has-children">
-                <a href="javascript:void(0)">Nosotros</a>
-                <ul class="sub-menu">
-                    <li><a href="about.html">Sobre la empresa</a></li>
-                    <li><a href="features-and-benefits.html">Características y beneficios</a></li>
-                    <li><a href="leadership.html">Liderazgo</a></li>
-                    <li><a href="history.html">Historia</a></li>
-                </ul>
-                </li>
-                <li class="menu-item-has-children">
-                <a href="javascript:void(0)">Tienda</a>
-                <ul class="sub-menu">
-                    <li class="menu-item-has-children">
-                    <a href="javascript:void(0)">Nuestros productos</a>
-                    <ul class="sub-menu">
-                        <li><a href="product-list.html">Lista de productos</a></li>
-                        <li><a href="product-grid.html">Cuadrícula de productos</a></li>
-                    </ul>
-                    </li>
-                    <li><a href="product-detail.html">Detalles del producto</a></li>
-                    <li><a href="cart.html">Carrito</a></li>
-                    <li><a href="checkout.html">Finalizar compra</a></li>
-                </ul>
-                </li>
-                <li class="menu-item-has-children">
-                <a href="javascript:void(0)">Páginas</a>
-                <ul class="sub-menu">
-                    <li class="menu-item-has-children">
-                    <a href="javascript:void(0)">Servicios</a>
-                    <ul class="sub-menu">
-                        <li><a href="services.html">Lo que hacemos</a></li>
-                        <li><a href="service-detail.html">Detalle del servicio</a></li>
-                    </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                    <a href="javascript:void(0)">Proyectos</a>
-                    <ul class="sub-menu">
-                        <li><a href="our-projects-1.html">Nuestros proyectos uno</a></li>
-                        <li><a href="our-projects-2.html">Nuestros proyectos dos</a></li>
-                        <li><a href="project-detail.html">Detalle del proyecto</a></li>
-                    </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                    <a href="javascript:void(0)">Equipo</a>
-                    <ul class="sub-menu">
-                        <li><a href="our-team.html">Nuestro equipo</a></li>
-                        <li><a href="team-detail.html">Detalle del equipo</a></li>
-                    </ul>
-                    </li>
-                    <li><a href="login.html">Iniciar sesión / Registrarse</a></li>
-                    <li>
-                    <!-- Cerrar sesión -->
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
-                        Cerrar sesión
-                        </a>
-                    </form>
-                    </li>
-                </ul>
-                </li>
-                <li class="menu-item-has-children">
-                <a href="javascript:void(0)">Noticias</a>
-                <ul class="sub-menu">
-                    <li><a href="our-blog-1.html">Nuestro blog uno</a></li>
-                    <li><a href="our-blog-2.html">Nuestro blog dos</a></li>
-                    <li><a href="blog-detail.html">Detalle del blog</a></li>
-                </ul>
-                </li>
-                <li>
-                <a href="contact.html">Contacto</a>
-                </li>
-            </ul>
+                  <style>
+                    .header-logo {
+                        margin-left: 315px;
+                    }
+                    </style>
 
-            <div class="extras">
-                <a href="javascript:void(0)" id="desktop-menu" class="menu-start">
-                <!-- Ícono hamburguesa -->
-                <svg id="ham-menue" viewBox="0 0 100 100">
-                    <path class="line line1" d="..." />
-                    <path class="line line2" d="..." />
-                    <path class="line line3" d="..." />
-                </svg>
-                </a>
-                <a href="javascript:void(0)" id="show">
-                <!-- Ícono carrito -->
-                <svg id="Shoping-bags" ...> ... </svg>
-                </a>
-                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="theme-btn">
-                Comenzar consulta
-                </a>
-            </div>
-            </div>
+ <div class="nav-bar">
+    <ul>
+        <li class="menu-item-has-children">
+            <a href="#inicio">Inicio</a> <!-- Lleva al principio -->
+
+        </li>
+        
+        <li class="menu-item-has-children">
+            <a href="javascript:void(0)">Nosotros</a>
+            <ul class="sub-menu">
+                <li><a href="about.html">Sobre la empresa</a></li>
+                <li><a href="features-and-benefits.html">Características y beneficios</a></li>
+                <li><a href="leadership.html">Liderazgo</a></li>
+                <li><a href="history.html">Historia</a></li>
+            </ul>
+        </li>
+        
+        <li class="menu-item-has-children">
+            <a href="#servicios">Servicios</a> <!-- Nuevo enlace a servicios -->
+            <ul class="sub-menu">
+                <li><a href="#servicios">Todos los servicios</a></li>
+                <li><a href="#guias">Guías para principiantes</a></li>
+                <li><a href="#entrenadores">Nuestros entrenadores</a></li>
+            </ul>
+        </li>
+        
+
+        
+        <li>
+            <a href="#contacto">Contacto</a> <!-- Lleva al final -->
+        </li>
+    </ul>
+
+    <div class="extras">
+        <a href="">
+            <svg id="" ...> ... </svg>
+        </a>
+        <a href="https://wa.me/59176372337?text=Hola,%20me%20llamo%20[Tu%20Nombre]%20y%20quiero%20unirme%20a%20la%20Calistenia%20MadBarzz.%20%C2%BFCu%C3%A1ndo%20puedo%20empezar?" 
+           target="_blank" class="theme-btn" style="background-color: #FD6A01;">
+            Comenzar consulta
+        </a>
+    </div>
+</div>
+
 
                 </div>
               </div>
@@ -180,101 +129,25 @@
           <div class="res-log">
             <a href="index.html">
               <img src="{{ asset('assets_private/images/log_text_mad.png') }}" alt="logoo">
-
             </a>
           </div>
             <ul>
+            <li>
+                <a href="#inicio">Inicio</a> <!-- Eliminada la clase menu-item-has-children -->
+            </li>
+
             <li class="menu-item-has-children">
-                <a href="javascript:void(0)">Inicio</a>
+                <a href="#servicios">Servicios</a>
                 <ul class="sub-menu">
-                <li><a href="index.html">Inicio Uno</a></li>
-                <li><a href="index-2.html">Inicio Dos</a></li>
-                <li><a href="index-3.html">Inicio Tres</a></li>
-                </ul>
-            </li>
-            <li class="menu-item-has-children">
-                <a href="javascript:void(0)">Acerca de</a>
-                <ul class="sub-menu">
-                <li><a href="about.html">Nosotros</a></li>
-                <li><a href="features-and-benefits.html">Características y beneficios</a></li>  
-                </ul>
-            </li>
-            <li class="menu-item-has-children"><a href="JavaScript:void(0)">Tienda</a>
-                <ul class="sub-menu">
-                <li><a href="product.html">Nuestros Productos</a></li>
-                <li><a href="product-detail.html">Detalle del Producto</a></li>
-                <li><a href="cart.html">Carrito</a></li>
-                <li><a href="checkout.html">Finalizar Compra</a></li>
-                </ul>
-            </li>
-            <li class="menu-item-has-children"><a href="JavaScript:void(0)">Páginas</a>
-                <ul class="sub-menu">
-                <li class="menu-item-has-children">
-                    <a href="javascript:void(0)">Servicios</a>
-                    <ul class="sub-menu">
-                    <li><a href="services.html">Servicios</a></li>
-                    <li><a href="service-detail.html">Detalle del Servicio</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item-has-children">
-                    <a href="javascript:void(0)">Clases</a>
-                    <ul class="sub-menu">
-                    <li><a href="our-classes.html">Nuestras Clases</a></li>
-                    <li><a href="our-classes-2.html">Nuestras Clases 2</a></li>
-                    <li><a href="class-details.html">Detalles de la Clase</a></li>
-                    <li><a href="classes-schedule.html">Horario de Clases</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item-has-children">
-                    <a href="javascript:void(0)">Equipo</a>
-                    <ul class="sub-menu">
-                    <li><a href="our-team.html">Nuestro Equipo</a></li>
-                    <li><a href="team-detail.html">Detalle del Equipo</a></li>
-                    </ul>
-                </li>
-                <li><a href="login.html">Iniciar Sesión / Registrarse</a></li>
-                </ul>
-            </li>
-            <li class="menu-item-has-children">
-                <a href="javascript:void(0)">Gestión</a>
-                <ul class="sub-menu">
-                <li><a href="{{ route('roles.index')   }}">Roles</a></li>
-                <li class="menu-item-has-children">
-                    <a href="javascript:void(0)">Clientes</a>
-                    <ul class="sub-menu">
-                    <li><a href="clientes.html">Ver Clientes</a></li>
-                    <li><a href="registrar-cliente.html">Añadir Cliente</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item-has-children">
-                    <a href="javascript:void(0)">Entrenadores</a>
-                    <ul class="sub-menu">
-                    <li><a href="entrenadores.html">Ver Entrenadores</a></li>
-                    <li><a href="registrar-entrenador.html">Añadir Entrenador</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item-has-children">
-                    <a href="javascript:void(0)">Recepcionistas</a>
-                    <ul class="sub-menu">
-                    <li><a href="recepcionistas.html">Ver Recepcionistas</a></li>
-                    <li><a href="registrar-recepcionista.html">Añadir Recepcionista</a></li>
-                    </ul>
-                </li>
-                </ul>
-            </li>
-            <li class="menu-item-has-children">
-                <a href="javascript:void(0)">Noticias</a>
-                <ul class="sub-menu">
-                <li><a href="our-blog-1.html">Nuestro Blog Uno</a></li>
-                <li><a href="our-blog-2.html">Nuestro Blog Dos</a></li>
-                <li><a href="blog-detail.html">Detalle del Blog</a></li>
+                <li><a href="#servicios">Todos los servicios</a></li>
+                <li><a href="#guias">Guías para principiantes</a></li>
+                <li><a href="#entrenadores">Nuestros entrenadores</a></li>
                 </ul>
             </li>
             <li>
-                <a href="contact.html">Contacto</a>
+                <a href="#contacto">Contacto</a>
             </li>
             </ul>
-
 
           <a href="JavaScript:void(0)" id="res-cross"></a>
         </div>
@@ -297,1468 +170,343 @@
       </div>
     </div>
   </header>
-  <section class="myslider owl-carousel owl-theme"> 
-    <div data-dot="<button><span>01</span> Workout Classes</button>" class=" item featured-section-three" style="background-image:url(https://via.placeholder.com/1920x770);">
-     <div class="container">
-        <div class="featured-text-two">
-          <h1>Workout Classes</h1>
-          <p>Enjoy our progressive programs with world class fitness equipment, trainers.</p>
-          <a href="#" class="theme-btn">EXPLORE WILDSMITH</a>
+  
+  <!-- Sección de Servicios -->
+  <section id="servicios" class="myslider owl-carousel owl-theme"> 
+    <div data-dot="<button><span>01</span> Clases de Calistenia</button>" class="item featured-section-three" style="background-image:url(https://via.placeholder.com/1920x770);">
+        <div class="container">
+            <div class="featured-text-two">
+                <h1>Clases de Calistenia</h1>
+                <p>Disfruta de nuestros programas progresivos con equipos de calistenia de primer nivel y entrenadores expertos.</p>
+                <a href="#" class="theme-btn" style="background-color: #FD6A01;">DESCUBRE MADBARZZ</a>
+            </div>
         </div>
-     </div>
     </div>
-    <div data-dot="<button><span>02</span> Cardio Program</button>" class=" item featured-section-three" style="background-image:url(https://via.placeholder.com/1920x770);">
-     <div class="container">
-        <div class="featured-text-two">
-          <h1>Cardio Program</h1>
-          <p>Enjoy our progressive programs with world class fitness equipment, trainers</p>
-          <a href="#" class="theme-btn">EXPLORE WILDSMITH</a>
+
+    <div data-dot="<button><span>02</span> Programa de Cardio</button>" class="item featured-section-three" style="background-image:url(https://via.placeholder.com/1920x770);">
+        <div class="container">
+            <div class="featured-text-two">
+                <h1>Programa de Cardio</h1>
+                <p>Mantente en forma con nuestras rutinas de cardio diseñadas para mejorar tu resistencia y fuerza.</p>
+                <a href="#" class="theme-btn" style="background-color: #FD6A01;">DESCUBRE MADBARZZ</a>
+            </div>
         </div>
-     </div>
     </div>
-    <div data-dot="<button><span>03</span> Fitness Studio </button>" class=" item featured-section-three" style="background-image:url(https://via.placeholder.com/1920x770);">
-     <div class="container">
-        <div class="featured-text-two">
-          <h1>Fitness Studio</h1>
-          <p>Enjoy our progressive programs with world class fitness equipment, trainers</p>
-          <a href="#" class="theme-btn">EXPLORE WILDSMITH</a>
+
+    <div data-dot="<button><span>03</span> Estudio de Fitness</button>" class="item featured-section-three" style="background-image:url(https://via.placeholder.com/1920x770);">
+        <div class="container">
+            <div class="featured-text-two">
+                <h1>Estudio de Fitness</h1>
+                <p>Accede a nuestro estudio de calistenia con entrenadores especializados y áreas adaptadas para todos los niveles.</p>
+                <a href="#" class="theme-btn" style="background-color: #FD6A01;">DESCUBRE MADBARZZ</a>
+            </div>
         </div>
-     </div>
     </div>
   </section>
-  <section class="gap history-style-one">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="history-data">
-            <figure>
-              <img class="w-100" src="https://via.placeholder.com/416x584" alt="Crain Image">
-            </figure>
-            <div class="details">
-              <h3>Weight Lifting</h3>
-              <p>Weightlifting, also called Olympic weightlifting, is an athletic discipline in the modern Olympic programe</p>
-              <a href="service-detail.html">
-                <i class="fa-solid fa-arrow-up-long"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="history-data">
-            <figure>
-              <img class="w-100" src="https://via.placeholder.com/416x584" alt="C-Man Image">
-            </figure>
-            <div class="details">
-              <h3>Yoga Relaxation</h3>
-              <p>Weightlifting, also called Olympic weightlifting, is an athletic discipline in the modern Olympic programe</p>
-              <a href="service-detail.html">
-                <i class="fa-solid fa-arrow-up-long"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="history-data">
-            <figure>
-              <img class="w-100" src="https://via.placeholder.com/416x584" alt="Building Image">
-            </figure>
-            <div class="details">
-              <h3>Diet Nutrition</h3>
-              <p>MWeightlifting, also called Olympic weightlifting, is an athletic discipline in the modern Olympic programe</p>
-              <a href="service-detail.html">
-                <i class="fa-solid fa-arrow-up-long"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
+  <!-- Sección CTA -->
   <section class="cta-section">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-7">
-          <div class="cta-data">
-            <h2>Let's Start Workout!</h2>
-            <p>Join our gym and let our expert Trainers guide you towards your fitness goals! Get personalized workouts, expert guidance.</p>
-            <a href="our-projects-2.html" data-bs-toggle="modal" data-bs-target="#exampleModal1" class="theme-btn">Join Us Today</a>
-          </div>
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="cta-data">
+                    <h2>¡Comienza tu Entrenamiento!</h2>
+                    <p>Únete a la Calistenia MadBarzz y deja que nuestros entrenadores expertos te guíen hacia tus metas de fuerza y resistencia. Obtén rutinas personalizadas y asesoramiento profesional.</p>
+                      <a href="https://wa.me/59176372337?text=Hola%2C%20me%20llamo%20[TU%20NOMBRE]%20y%20quiero%20unirme%20a%20la%20Calistenia%20MadBarzz.%20%C2%BFCu%C3%A1ndo%20puedo%20empezar%3F" 
+                        target="_blank" 
+                        class="theme-btn" style="background-color: #FD6A01;">
+                        ¡Únete Hoy!
+                      </a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="cta-data">
+                    <figure>
+                        <img src="https://via.placeholder.com/858x597" alt="Imagen Calistenia MadBarzz">
+                    </figure>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-5">
-          <div class="cta-data">
-            <figure>
-              <img src="https://via.placeholder.com/858x597" alt="Building-2 Pic">
-            </figure>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
-  <section class="gap shop-style-one timetable-section">
-    <div class="heading">
-      <figure>
-        <img src="assets/images/heading-icon.png" alt="heading-icon-2">
-      </figure>
-      <span>Sell your Products</span>
-      <h2>Industry Products</h2>
-    </div>
+
+  <!-- Sección de Entrenadores -->
+  <section id="entrenadores" class="gap">
     <div class="container">
-      <div class="row p-slider owl-carousel">
-        <div class="col-lg-12">
-          <div class="product">
-            <div class="main-data">
-              <div class="btn-hover">
-                <figure>
-                  <img src="https://via.placeholder.com/336x216" alt="Product Image 1">
-                </figure>
-                <a href="cart.html" class="theme-btn">Add to Cart <i class="fa-solid fa-bag-shopping"></i></a>
-              </div>
-              <div class="data">
-                <div class="ratings">
-                  <i class="fa-solid fa-star"></i>
-                  <span>5.0</span>
+        <div class="row">
+            <!-- Texto principal -->
+            <div class="col-lg-6">
+                <div class="data">
+                    <span style="color: #FD6A01;">EN CALISTENIA MADBARZZ</span>
+                    <h2>HACEMOS A LAS PERSONAS MÁS SALUDABLES, FELICES Y FUERTES. ¡ÚNETE A NOSOTROS!</h2>
                 </div>
-                <h3><a href="product-detail.html">Customised Gym Bottle</a></h3>
-                <div class="price-range">
-                  <span>$18.60</span>
-                </div>
-              </div>
-            </div> 
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="product">
-            <figure>
-              <img class="w-100" src="https://via.placeholder.com/336x216" alt="Product Image 2">
-            </figure>
-            <div class="btn-hover"> 
-              <a href="cart.html" class="theme-btn">Add to Cart <i class="fa-solid fa-bag-shopping"></i></a>
             </div>
-            <div class="ratings">
-              <i class="fa-solid fa-star"></i>
-              <span>5.0</span>
-            </div>
-            <h3><a href="product-detail.html">Gym Black T-shirt</a></h3>
-            <div class="price-range">
-              <span>$18.60</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="product">
-            <figure>
-              <img class="w-100" src="https://via.placeholder.com/336x216" alt="Product Image 3">
-            </figure>
-            <div class="btn-hover"> 
-              <a href="cart.html" class="theme-btn">Add to Cart <i class="fa-solid fa-bag-shopping"></i></a>
-            </div>
-            <div class="ratings">
-              <i class="fa-solid fa-star"></i>
-              <span>5.0</span>
-            </div>
-            <h3><a href="product-detail.html">Gym Workout Shoes</a></h3>
-            <div class="price-range">
-              <span>$18.60</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="product">
-            <figure>
-              <img class="w-100" src="https://via.placeholder.com/336x216" alt="Product Image 4">
-            </figure>
-            <div class="btn-hover"> 
-              <a href="cart.html" class="theme-btn">Add to Cart <i class="fa-solid fa-bag-shopping"></i></a>
-            </div>
-            <div class="ratings">
-              <i class="fa-solid fa-star"></i>
-              <span>5.0</span>
-            </div>
-            <h3><a href="product-detail.html">Gym Water Bottel</a></h3>
-            <div class="price-range">
-              <span>$18.60</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="inner-container">
-        <div class="table-outer">
-          <div class="table-inner">
-            <div class="table-title-box clearfix"> 
-              <div class="data">
-                <span>solutions for each project</span>
-                <h2>Project Completed</h2>
-              </div>
-              <div class="day" >MONDAY</div>
-              <div class="day">TUESDAY</div>
-              <div class="day">WEDNESDAY</div>
-              <div class="day">THURSDAY</div>
-              <div class="day">FRIDAY</div>
-              <div class="day">SATURDAY</div>
-            </div>
-            <div class="timetable-tabs tabs-box">
-              <ul class="tab-btns tab-buttons clearfix">
-                <li data-tab="#prod-cardio" class="tab-btn">CARDIO</li>
-                <li data-tab="#prod-crossfit" class="tab-btn">CROSSFIT</li>
-                <li data-tab="#prod-gym" class="tab-btn">GYM</li>
-                <li data-tab="#prod-powerlifting" class="tab-btn active-btn">POWERLIFTING</li>
-              </ul>
-              <div class="tabs-content">
-                <div class="tab" id="prod-cardio" style="display:none">
-                  <div class="content">
-                    <div class="clearfix">
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Cardio Burn <span>MAdona FRON <br> 11:00 -
-                              12:00</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Cardio Burn <span>MAdona FRON <br> 11:00 -
-                              12:00</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Crossfit Class <span>Madison fren <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Crossfit Class <span>Madison fren <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
+
+            <!-- Beneficios -->
+            <div class="col-lg-6">
+                <div class="making-people">
+                    <p>Estamos seguros de que nuestro personal y nuestras instalaciones pueden ayudarte a alcanzar tus objetivos de calistenia. Ya seas principiante o avanzado, ¡estamos aquí para apoyarte! Después de entrenar con nosotros, queremos que nuestros miembros se sientan una mejor versión de sí mismos.</p>
+                    <div class="features">
+                        <ul>
+                            <li><i class="fa-solid fa-circle-check" aria-hidden="true" style="color: #FD6A01;"></i> Alcanzarás tus objetivos</li>
+                            <li><i class="fa-solid fa-circle-check" aria-hidden="true" style="color: #FD6A01;"></i> Tendrás soporte ilimitado</li>
+                            <li><i class="fa-solid fa-circle-check" aria-hidden="true" style="color: #FD6A01;"></i> Encontrarás la ayuda útil</li>
+                            <li><i class="fa-solid fa-circle-check" aria-hidden="true" style="color: #FD6A01;"></i> Ganarás confianza</li>
+                            <li><i class="fa-solid fa-circle-check" aria-hidden="true" style="color: #FD6A01;"></i> Aprenderás algo nuevo cada día</li>
+                        </ul>
                     </div>
-                  </div>
                 </div>
-                <div class="tab" id="prod-crossfit" style="display:none">
-                  <div class="content">
-                    <div class="clearfix">
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Cardio Burn <span>MAdona FRON <br> 11:00 -
-                              12:00</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Cardio Burn <span>MAdona FRON <br> 11:00 -
-                              12:00</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Crossfit Class <span>Madison fren <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Crossfit Class <span>Madison fren <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab" id="prod-gym" style="display:none">
-                  <div class="content">
-                    <div class="clearfix">
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Cardio Burn <span>MAdona FRON <br> 11:00 -
-                              12:00</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Cardio Burn <span>MAdona FRON <br> 11:00 -
-                              12:00</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Crossfit Class <span>Madison fren <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Crossfit Class <span>Madison fren <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab active-tab" id="prod-powerlifting" style="display:block">
-                  <div class="content">
-                    <div class="clearfix">
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Cardio Burn <span>MAdona FRON <br> 11:00 -
-                              12:00</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Cardio Burn <span>MAdona FRON <br> 11:00 -
-                              12:00</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Crossfit Class <span>Madison fren <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Crossfit Class <span>Madison fren <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">GYM OPEN <span>11:00 - 12:00</span></div>
-                        </div>
-                      </div>
-                      <div class="time-box">
-                        <div class="box-inner">
-                          <div class="time">Power Lifting <span>Steve Cross <br> 11:00 -
-                              12:00</span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
-  <section class="gap" >
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="data">
-            <span>WE’RE MAKING PEOPLE</span>
-            <h2>HEALTHIER, HAPPIER & STRONGER. JOIN US! </h2>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="making-people">
-            <p>We are confident that our staff and facilities can help you to reach your fitness goals. Whether you’re a beginner or a pro... we’re here to help! After spending time with us, we want our members to walk out of our doors after a workout and feel a better version of themselves.</p>
-            <div class="features">
-                <ul>
-                  <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> You will achieve your goals</li>
-                  <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> You’ll have unlimited support</li>
-                  <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> You’ll find the help useful</li>
-                  <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> You’ll gain confidence</li>
-                  <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> You’ll learn something new</li> 
-                </ul>
-              </div>
-          </div>
-        </div>
-      </div>
-     </div>
+
+    <!-- Equipo de instructores -->
     <div class="marquee_text">
         <a href="team-detail.html">
-          <div class="team-style-2">
-            <figure>
-              <img src="https://via.placeholder.com/240x290" alt="IMG">
-            </figure>
-            <span>Fitness Instructor</span>
-            <h5>Thomas Marqos</h5>
-          </div>
+            <div class="team-style-2">
+                <figure>
+                    <img src="https://via.placeholder.com/240x290" alt="Instructor">
+                </figure>
+                <span style="color: #FD6A01;">Instructor de Calistenia</span>
+                <h5>Thomas Marqos</h5>
+            </div>
         </a>
         <a href="team-detail.html">
-          <div class="team-style-2">
-            <figure>
-              <img src="https://via.placeholder.com/240x290" alt="IMG">
-            </figure>
-            <span>Fitness Instructor</span>
-            <h5>Maria Robbert</h5>
-          </div>
+            <div class="team-style-2">
+                <figure>
+                    <img src="https://via.placeholder.com/240x290" alt="Instructor">
+                </figure>
+                <span style="color: #FD6A01;">Instructor de Calistenia</span>
+                <h5>Maria Robbert</h5>
+            </div>
         </a>
         <a href="team-detail.html">
-          <div class="team-style-2">
-            <figure>
-              <img src="https://via.placeholder.com/240x290" alt="IMG">
-            </figure>
-            <span>Fitness Instructor</span>
-            <h5>Petar Parkar</h5>
-          </div>
+            <div class="team-style-2">
+                <figure>
+                    <img src="https://via.placeholder.com/240x290" alt="Instructor">
+                </figure>
+                <span style="color: #FD6A01;">Instructor de Calistenia</span>
+                <h5>Petar Parkar</h5>
+            </div>
         </a>
         <a href="team-detail.html">
-          <div class="team-style-2">
-            <figure>
-              <img src="https://via.placeholder.com/240x290" alt="IMG">
-            </figure>
-            <span>Fitness Instructor</span>
-            <h5>Jessica Lorance</h5>
-          </div>
+            <div class="team-style-2">
+                <figure>
+                    <img src="https://via.placeholder.com/240x290" alt="Instructor">
+                </figure>
+                <span style="color: #FD6A01;">Instructor de Calistenia</span>
+                <h5>Jessica Lorance</h5>
+            </div>
         </a>
         <a href="team-detail.html">
-          <div class="team-style-2">
-            <figure>
-              <img src="https://via.placeholder.com/240x290" alt="IMG">
-            </figure>
-            <span>Fitness Instructor</span>
-            <h5>Oliver Rankis</h5>
-          </div>
+            <div class="team-style-2">
+                <figure>
+                    <img src="https://via.placeholder.com/240x290" alt="Instructor">
+                </figure>
+                <span style="color: #FD6A01;">Instructor de Calistenia</span>
+                <h5>Oliver Rankis</h5>
+            </div>
         </a>
         <a href="team-detail.html">
-          <div class="team-style-2">
-            <figure>
-              <img src="https://via.placeholder.com/240x290" alt="IMG">
-            </figure>
-            <span>Fitness Instructor</span>
-            <h5>Moniqa Linda</h5>
-          </div>
+            <div class="team-style-2">
+                <figure>
+                    <img src="https://via.placeholder.com/240x290" alt="Instructor">
+                </figure>
+                <span style="color: #FD6A01;">Instructor de Calistenia</span>
+                <h5>Moniqa Linda</h5>
+            </div>
         </a>
-      </div>
-  </section>
-  <section class="gap payment-product" style="background-image:url(https://via.placeholder.com/1920x846);">
-    <div class="heading">
-      <figure>
-        <img src="assets/images/heading-icon.png" alt="heading-icon-2">
-      </figure>
-      <span>GET IN TOUCH</span>
-      <h2>Quality Passion With Contact Form</h2>
     </div>
-     <div class="container">
-       <div class="row">
-         <div class="col-lg-6">
-           <div class="payment-product-card">
-            <img src="https://via.placeholder.com/363x446" alt="img">
-              <h5>Full Membership</h5>  
-              <h2>$55.00</h2>
-              <span>Subscription Type</span>
-              <select id="inputState-111" class="form-control">
-                  <option selected="">Select your subscription</option>
-                  <option>Monthly</option>
-                  <option>Yearly</option> 
-                </select> 
-              <p>Minimum subscription of 12 months</p>
-              <a href="#" class="theme-btn">Get Started</a>
-           </div> 
-         </div> 
-         <div class="col-lg-6">
-           <div class="payment-product-card">
-            <img src="https://via.placeholder.com/363x446" alt="img">
-              <h5>Full Membership</h5>  
-              <h2>$55.00</h2>
-              <span>Subscription Type</span>
-              <select id="inputState-111" class="form-control">
-                  <option selected="">Select your subscription</option>
-                  <option>Monthly</option>
-                  <option>Yearly</option> 
-                </select>  
-                  <p>Minimum subscription of 12 months</p>
-                  <a href="#" class="theme-btn">Get Started</a> 
-           </div> 
-         </div>
-       </div>
-     </div>
   </section>
-  <section class="contact-form-one gap no-bottom">
-     <div class="container">
+
+  <!-- Sección de Guías para principiantes -->
+  <section id="guias" class="contact-form-one gap no-bottom">
+    <div class="container">
       <div class="row align-items-center">
+        
+        <!-- Guía de inicio -->
         <div class="col-lg-6">
           <div class="data"> 
-            <span>GET IN TOUCH</span>
-            <h2>gym beginners guide</h2>
+            <span style="color: #FD6A01;">PONTE EN CONTACTO</span>
+            <h2>Guía para principiantes en Calistenia MadBarzz</h2>
           </div>
           <div class="acc2">
             <div class="accordion" id="accordionExample">
+              
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading-Two">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Two" aria-expanded="false" aria-controls="collapse-Two">
-                    How to start at the gym as a beginner?
+                    ¿Cómo empezar en Calistenia si soy principiante?
                   </button>
                 </h2>
                 <div id="collapse-Two" class="accordion-collapse collapse" aria-labelledby="heading-Two" data-bs-parent="#accordionExample">
                   <div class="accordion-body">
-                    Lorem ipsum dolor sit amet, consectetur adi piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    En Calistenia MadBarzz te recomendamos comenzar con ejercicios básicos de fuerza y flexibilidad, dedicando al menos 20-30 minutos al día para acostumbrarte a la rutina.
                   </div>
                 </div>
               </div>
+              
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading-One">
                   <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-One" aria-expanded="true" aria-controls="collapse-One">
-                    What is the basic information of gym?
+                    ¿Cuál es la información básica que debo conocer?
                   </button>
                 </h2>
                 <div id="collapse-One" class="accordion-collapse collapse show" aria-labelledby="heading-One" data-bs-parent="#accordionExample">
                   <div class="accordion-body">
-                    Lorem ipsum dolor sit amet, consectetur adi piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    Aprende sobre los diferentes tipos de ejercicios, seguridad, calentamiento y enfriamiento, y la importancia de la constancia en tu progreso.
                   </div>
                 </div>
               </div>
+              
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading-Three">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Three" aria-expanded="false" aria-controls="collapse-Three">
-                    What to do in the gym for the first time?
+                    ¿Qué hacer en tu primera sesión de calistenia?
                   </button>
                 </h2>
                 <div id="collapse-Three" class="accordion-collapse collapse" aria-labelledby="heading-Three" data-bs-parent="#accordionExample">
                   <div class="accordion-body">
-                    Lorem ipsum dolor sit amet, consectetur adi piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    Comienza con ejercicios sencillos como flexiones, sentadillas y planchas. Nuestros entrenadores te guiarán para que realices cada movimiento correctamente.
                   </div>
                 </div>
               </div>
+              
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading-Four">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Four" aria-expanded="false" aria-controls="collapse-Four">
-                    How do I find a gym routine for beginners?
+                    ¿Cómo encontrar una rutina adecuada para principiantes?
                   </button>
                 </h2>
                 <div id="collapse-Four" class="accordion-collapse collapse" aria-labelledby="heading-Four" data-bs-parent="#accordionExample">
                   <div class="accordion-body">
-                    Lorem ipsum dolor sit amet, consectetur adi piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    En Calistenia MadBarzz te proporcionamos rutinas personalizadas según tu nivel y objetivos. Puedes consultar con nuestros entrenadores para recibir orientación.
                   </div>
                 </div>
               </div>
+              
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading-Five">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Five" aria-expanded="false" aria-controls="collapse-Five">
-                    How to start a gym routine?
+                    ¿Cómo iniciar una rutina de entrenamiento?
                   </button>
                 </h2>
                 <div id="collapse-Five" class="accordion-collapse collapse" aria-labelledby="heading-Five" data-bs-parent="#accordionExample">
                   <div class="accordion-body">
-                    Lorem ipsum dolor sit amet, consectetur adi piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    leased.
+                    Comienza con 2-3 sesiones por semana, aumentando gradualmente la intensidad. La clave es la constancia y la técnica correcta para evitar lesiones.
                   </div>
                 </div>
               </div>
+              
             </div>
           </div>
         </div>
+        
+        <!-- Fotos de Instagram con fondo oscuro -->
         <div class="col-lg-6">
-          <div class="together">
-              <h4>together we thrive</h4>
-              <h2>2 months half price</h2>
-              <span>+ no joining fee</span>
-              <p>ends wednesday!</p>
-              <div id="countdown">
-                <ul>
-                  <li><span id="days"></span>days</li>
-                  <li><span id="hours"></span>Hour</li>
-                  <li><span id="minutes"></span>Min</li>
-                  <li class="mb-0"><span id="seconds"></span>Sec</li>
-                </ul>
+          <h4 style="color:#fff; text-align:center;">Síguenos en Instagram</h4>
+          
+          <div style="background-color:#111; padding:20px; border-radius:8px; display:flex; justify-content:center;">
+            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DBSfSuDRUVm/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#111; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;">
+              <div style="padding:16px;">
+                <a href="https://www.instagram.com/p/DBSfSuDRUVm/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#111; color:#fff; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                  Ver esta publicación en Instagram
+                </a>
               </div>
-              <a href="#" class="theme-btn">get started</a>
-              <a href="contact.html" class="theme-btn two">contact now</a>
+            </blockquote>
           </div>
+
+          <script async src="//www.instagram.com/embed.js"></script>
         </div>
       </div>
     </div>
   </section>
-  <section class="gap blog-style-three">
+
+  <footer id="contacto" class="footer-style-one" style="background-image: url(https://via.placeholder.com/1920x732);">
+
+   <div class="footer-p-2">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4">
-          <div class="blog-heading data">
-            <span>News Articles</span>
-            <h2>Latest News</h2>
-            <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit.</p>
-            <a href="our-blog-1.html" class="theme-btn">View All News</a>
+        <!-- Información -->
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="footer-col">
+            <h3>Información</h3>
+            <p>En Calistenia MadBarzz creemos que la constancia es la clave. Entrenar regularmente mejora tu fuerza, resistencia y bienestar, sin importar si algunos días tienes menos tiempo.</p>
+            <ul class="social-media">
+            <li>
+              <a href="https://www.facebook.com/MadBarzz" target="_blank">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://wa.me/{{ '591' . preg_replace('/\D/', '', $superadmin->persona->telefono ?? '') }}" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.instagram.com/calistenia_madbarzz?igsh=aW91eXl6ZnVtMGJ2" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+            </li>
+            </ul>
           </div>
         </div>
-        <div class="col-lg-8">
-          <div class="blog-posts row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
-              <div class="boxx">
-                <figure>
-                  <img src="https://via.placeholder.com/385x225" alt="Blog Image 1">
-                </figure>
-                <div class="space">
-                  <span class="date">January 9, 2025</span>
-                  <h3>
-                    <a href="blog-detail.html">
-                      Interval training, and focusing on compound exercises.
-                    </a>
-                  </h3>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
-              <div class="boxx">
-                <figure>
-                  <img src="https://via.placeholder.com/385x225" alt="Blog Image 2">
-                </figure>
-                <div class="space">
-                  <span class="date">January 9, 2025</span>
-                  <h3>
-                    <a href="blog-detail.html">
-                      How to Keep Your Body Healthy Over the Festive Season
-                    </a>
-                  </h3>
-                </div>
-              </div>
-            </div> 
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer class="footer-style-one" style="background-image: url(https://via.placeholder.com/1920x732);">
-    <div class="container">
-      <div class="footer-p-4">
-        <div class="footer-p-4-left">
-          <i class="flaticon-contact-form"></i>
-          <a href="#"> <h3>join now</h3></a>
-          <span>2 months half price + no joining fee</span>
-        </div>
-        <div class="footer-p-4-right">
-          <i class="flaticon-stopwatch-1"></i>
-          <a href="#"> <h3>book a tour</h3></a>
-          <span>choose uour nearest club</span>
-        </div>
-      </div>
-    </div>
-    <div class="footer-p-2">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-12">
-            <div class="footer-col">
-              <h3>Information</h3>
-              <p>Regular trips to the gym are great, but don't worry if you can't find a large chunk of time to exercise every day.</p>
-              <ul class="social-media">
-                <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="flaticon-twitter"></i></a></li>
-                <li><a href="#"><i class="flaticon-instagram"></i></a></li>
-                <li><a href="#"><i class="flaticon-pinterest"></i></a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-12">
-            <div class="footer-col">
-              <h3>Contact</h3>
-              <ul>
-                <li>
-                   <i class="flaticon-maps"></i>
-                  <p>901 N Pitt Str., Suite 170, VA 22314, USA</p>
-                </li>
-                <li>
-                   <i class="flaticon-iphone"></i>
-                  <p><a href="callto:(+380)503184707">(+380) 50 318 47 07</a></p>
-                </li>
-                <li>
-                   <i class="flaticon-mail"></i>
-                  <p><a href="mailto:username@domain.com">username@domain.com</a></p>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-12">
-            <div class="footer-col">
-              <h3>Newsletter</h3>
-              <p>Signup for our weekly newsletter to get the latest news.</p>
-              <form>
-                <input type="email" name="email" placeholder="Enter your email.">
-                <button>
-                  <i class="fa-solid fa-arrow-up-long"></i>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <ul class="image-gallery">
+        <!-- Contacto -->
+       <div class="col-lg-6 col-md-6 col-sm-12">
+  <div class="footer-col">
+    <h3>Contacto</h3>
+    <ul>
       <li>
-          <a href="https://via.placeholder.com/250x150" data-fancybox="gallery">
-              <i class="flaticon-instagram"></i>
-          </a>
-          <figure><img alt="girl" src="https://via.placeholder.com/250x150"></figure>
+        <span style="background-color: #FD6A01; padding: 8px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px;">
+          <i class="flaticon-maps" style="color: #ffffff; font-size: 16px;"></i>
+        </span>
+        <p>Av. Santos Dumont, 4to anillo, al lado de la HOT, Santa Cruz de la Sierra</p>
       </li>
       <li>
-          <a href="https://via.placeholder.com/250x150" data-fancybox="gallery">
-              <i class="flaticon-instagram"></i>
+        <span style="background-color: #FD6A01; padding: 8px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px;">
+          <i class="flaticon-iphone" style="color: #ffffff; font-size: 16px;"></i>
+        </span>
+        <p>
+          <a href="https://wa.me/{{ '591' . preg_replace('/\D/', '', $superadmin->persona->telefono ?? '') }}" target="_blank">
+            {{ $superadmin->persona->telefono ?? 'Número no disponible' }}
           </a>
-          <figure><img alt="girl" src="https://via.placeholder.com/250x150"></figure>
+        </p>
       </li>
       <li>
-          <a href="https://via.placeholder.com/250x150" data-fancybox="gallery">
-              <i class="flaticon-instagram"></i>
+        <span style="background-color: #FD6A01; padding: 8px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px;">
+          <i class="flaticon-mail" style="color: #ffffff; font-size: 16px;"></i>
+        </span>
+        <p>
+          <a href="mailto:{{ $superadmin->user->email ?? '' }}">
+            {{ $superadmin->user->email ?? 'Correo no disponible' }}
           </a>
-          <figure><img alt="girl" src="https://via.placeholder.com/250x150"></figure>
+        </p>
       </li>
-      <li>
-          <a href="https://via.placeholder.com/250x150" data-fancybox="gallery">
-              <i class="flaticon-instagram"></i>
-          </a>
-          <figure><img alt="girl" src="https://via.placeholder.com/250x150"></figure>
-      </li>
-      <li>
-          <a href="https://via.placeholder.com/250x150" data-fancybox="gallery">
-              <i class="flaticon-instagram"></i>
-          </a>
-          <figure><img alt="girl" src="https://via.placeholder.com/250x150"></figure>
-      </li>
-      <li>
-          <a href="https://via.placeholder.com/250x150" data-fancybox="gallery">
-              <i class="flaticon-instagram"></i>
-          </a>
-          <figure><img alt="girl" src="https://via.placeholder.com/250x150"></figure>
-      </li>
-      <li>
-          <a href="https://via.placeholder.com/250x150" data-fancybox="gallery">
-              <i class="flaticon-instagram"></i>
-          </a>
-          <figure><img alt="girl" src="https://via.placeholder.com/250x150"></figure>
-      </li> 
     </ul>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+
+
 
     <div class="footer-p-3 rights">
       <div class="container">
         <div class="row">
           <div class="footer-col">
-            <p>gym on fitness center<i class="fa-solid fa-heart"></i> © 2024 <a href="https://winsfolio.net/"> winsfolio.net</a> All rights reserved</p> 
+            <p>gym on fitness center<i class="fa-solid fa-heart" style="color: #FD6A01;"></i> © 2024 <a href="https://winsfolio.net/"> winsfolio.net</a> All rights reserved</p> 
           </div>
         </div>
       </div>
     </div>
   </footer>
-  <div id="lightbox" class="lightbox clearfix">
-        <div class="white_content">
-            <a href="javascript:;" class="textright" id="close"><i class="fa-regular fa-circle-xmark"></i></a>
-                <div class="cart-popup">
-                <ul>
+  
 
-                      <li class="d-flex align-items-center position-relative">
-
-                        <div class="p-img light-bg">
-
-                          <img src="assets/images/p-1.png" alt="Product Image">
-
-                        </div>
-
-                        <div class="p-data">
-
-                          <h3 class="font-semi-bold">Fosroc Galvafroid – 400ml</h3>
-
-                          <p class="theme-clr font-semi-bold">1 x $18.60</p>
-
-                        </div>
-
-                        <a href="JavaScript:void(0)" id="crosss"></a>
-
-                      </li>
-
-                      <li class="d-flex align-items-center position-relative">
-
-                        <div class="p-img light-bg">
-
-                          <img src="assets/images/p-1.png" alt="Product Image">
-
-                        </div>
-
-                        <div class="p-data">
-
-                          <h3 class="font-semi-bold">Fosroc Galvafroid – 400ml</h3>
-
-                          <p class="theme-clr font-semi-bold">1 x $18.60</p>
-
-                        </div>
-
-                        <a href="JavaScript:void(0)" id="cross"></a>
-
-                      </li>
-
-                </ul>
-                <div class="cart-btn">
-                  <div class="cart-total d-flex align-items-center justify-content-between">
-
-                  <span class="font-semi-bold">Total:</span>
-
-                  <span class="font-semi-bold"> $40.20 </span>
-
-                  </div>
-
-                  <div class="cart-btns d-flex align-items-center justify-content-between">
-
-                  <a class="font-bold" href="JavaScript:void">View Cart</a>
-
-                  <a class="font-bold theme-bg-clr text-white checkout" href="JavaScript:void">Checkout</a>
-
-                  </div>
-                </div>
-        </div>
-        </div>
-    </div>
   <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
-  <div class="modal fade popups conslt-popup" id="exampleModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <img src="https://via.placeholder.com/420x591" alt="img">
-            <div class="contact-form-one popup">
-              <div class="c-form-2">
-                <h3>Start Consulting</h3>
-                <div class="parallax" style="background-image: url(assets/images/pattren.png);"></div>
-                <form>
-                  <div class="row g-0">
-                    <input type="text" class="form-control" id="exampleInputText1"  placeholder="Complete Name">
-                  </div>
-                  <div class="row g-0">
-                    <input type="email" class="form-control" id="exampleInputEmail1"  placeholder="Email Address">
-                  </div>
-                  <div class="row g-0">
-                    <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Phone No">
-                  </div>
-                  <div class="row g-0">
-                    <select id="inputState-21" class="form-control">
-                      <option selected>Subject</option>
-                      <option>Subject 1</option>
-                      <option>Subject 2</option>
-                      <option>Subject 3</option>
-                    </select>
-                  </div>
-                  <div class="row g-0">
-                    <textarea placeholder="Question / Message?"></textarea>
-                  </div>
-                  <button type="submit" class="theme-btn">Submit Now</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/jquery.waypoints.min.js"></script>
   <script src="assets/js/jquery.counterup.min.js"></script>
@@ -1768,4 +516,5 @@
   <script src="assets/js/owl.carousel.min.js"></script>
   <script src="assets/js/marquee.js"></script> 
   <script src="assets/js/custom.js"></script> 
-</body></html>
+</body>
+</html>

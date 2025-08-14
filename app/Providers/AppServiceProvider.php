@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
    use App\Services\WhatsappService;
+use App\Models\Administrador;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,8 +20,26 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+
+    public function boot()
     {
-        //
+        view()->composer('*', function ($view) {
+            $superadmin = Administrador::with('persona')
+                ->where('nivel_acceso', 'superadmin')
+                ->first();
+            $view->with('superadmin', $superadmin);
+        });
+
+         view()->composer('*', function ($view) {
+        $superadmin = Administrador::with(['persona', 'user'])
+            ->where('nivel_acceso', 'superadmin')
+            ->first();
+        $view->with('superadmin', $superadmin);
+    });
     }
+
+
+
+
+
 }

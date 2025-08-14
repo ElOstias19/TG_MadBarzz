@@ -31,6 +31,10 @@ Route::get('/', function () {
     }
 });
 
+Route::get('/public', function () {
+    return view('layouts.public');
+})->name('public');
+
 Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
 
