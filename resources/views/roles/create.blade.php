@@ -7,33 +7,48 @@
         <div class="card custom-card">
 
             <div class="card-header d-flex justify-content-between align-items-center">
-                <div class="card-title">
-                    Datos del rol
+                <div class="card-title fs-24 fw-bold text-dark dark-text-white">
+    <h2 class="text-dark dark:text-white fw-bold mb-4">Crear Nuevo Rol</h2>
                 </div>
+
             </div>
 
             <div class="card-body">
+                @if($errors->any())
+                    <div class="alert alert-danger mb-3">
+                        <ul class="mb-0">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <form method="POST" action="{{ route('roles.store') }}">
                     @csrf
 
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label for="nombre" class="form-label fs-14 text-dark fw-semibold">Nombre</label>
+                            <label for="nombre" class="form-label fs-16 fw-bold text-dark dark-text-white">
+                                Nombre del Rol
+                            </label>
                             <input type="text" 
-                                   class="form-control" 
+                                   class="form-control"
                                    id="nombre" 
                                    name="nombre" 
                                    placeholder="Ingrese el nombre del rol" 
+                                   value="{{ old('nombre') }}"
                                    required>
                         </div>
-
-                        {{-- Aquí puedes agregar más campos si los tienes --}}
                     </div>
 
                     <div class="mt-4">
                         <button type="submit" class="btn btn-primary">
-                            <i class="fa-solid fa-circle-plus me-2"></i> Agregar
+                            <i class="fa-solid fa-circle-plus me-2"></i> Guardar
                         </button>
+                        <a href="{{ route('roles.index') }}" class="btn btn-secondary ms-2">
+                            Cancelar
+                        </a>
                     </div>
                 </form>
             </div>

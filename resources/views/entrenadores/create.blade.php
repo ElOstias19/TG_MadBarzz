@@ -1,98 +1,158 @@
 @extends('layouts.private')
 
 @section('contenido')
-<div class="container">
-    <h1>Registrar Entrenador</h1>
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Errores:</strong>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="card-title fs-24 fw-bold text-dark dark-text-white">
+                    <h2 class="fw-bold mb-4">Registrar Entrenador</h2>
+                </div>
+                <div>
+                    <a href="{{ route('entrenadores.index') }}" class="btn btn-secondary btn-sm">
+                        <i class="fa-solid fa-arrow-left me-1"></i> Volver
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger mb-3">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form action="{{ route('entrenadores.store') }}" method="POST">
+                    @csrf
+
+                    <h4 class="dark-text-white mt-3">Datos de Persona</h4>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark dark-text-white">Nombre Completo</label>
+                            <input type="text" name="nombre_completo" class="form-control" value="{{ old('nombre_completo') }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark dark-text-white">Apellido Paterno</label>
+                            <input type="text" name="apellido_paterno" class="form-control" value="{{ old('apellido_paterno') }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark dark-text-white">Apellido Materno</label>
+                            <input type="text" name="apellido_materno" class="form-control" value="{{ old('apellido_materno') }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark dark-text-white">Cédula de Identidad</label>
+                            <input type="text" name="ci" class="form-control" value="{{ old('ci') }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark dark-text-white">Teléfono</label>
+                            <input type="text" name="telefono" class="form-control" value="{{ old('telefono') }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark dark-text-white">Género</label>
+                            <select name="genero" class="form-control" required>
+                                <option value="">Seleccione</option>
+                                <option value="masculino" {{ old('genero')=='masculino'?'selected':'' }}>Masculino</option>
+                                <option value="femenino" {{ old('genero')=='femenino'?'selected':'' }}>Femenino</option>
+                                <option value="otro" {{ old('genero')=='otro'?'selected':'' }}>Otro</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark dark-text-white">Fecha de Nacimiento</label>
+                            <input type="date" name="fecha_nacimiento" class="form-control" value="{{ old('fecha_nacimiento') }}" required>
+                        </div>
+                    </div>
+
+                    <h4 class="dark-text-white mt-4">Datos de Usuario</h4>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark dark-text-white">Nombre de Usuario</label>
+                            <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark dark-text-white">Email</label>
+                            <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark dark-text-white">Contraseña</label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark dark-text-white">Confirmar Contraseña</label>
+                            <input type="password" name="password_confirmation" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <h4 class="dark-text-white mt-4">Datos del Entrenador</h4>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark dark-text-white">Especialidad</label>
+                            <select name="especialidad[]" id="especialidad" class="form-control" multiple required>
+                                @php
+                                    $opcionesEspecialidad = [
+                                        'Calistenia básica',
+                                        'Calistenia avanzada',
+                                        'Entrenamiento de fuerza',
+                                        'Resistencia',
+                                        'Flexibilidad y movilidad',
+                                        'Preparación física para competencias',
+                                        'Nutrición y hábitos saludables'
+                                    ];
+                                    $seleccionadasEspecialidad = old('especialidad', []);
+                                @endphp
+                                @foreach ($opcionesEspecialidad as $opcion)
+                                    <option value="{{ $opcion }}" {{ in_array($opcion, $seleccionadasEspecialidad) ? 'selected' : '' }}>
+                                        {{ $opcion }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark dark-text-white">Experiencia</label>
+                            <input type="text" name="experiencia" class="form-control" value="{{ old('experiencia') }}">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark dark-text-white">Disponibilidad</label>
+                            <select name="disponibilidad[]" id="disponibilidad" class="form-control" multiple required>
+                                <option value="Lunes">Lunes</option>
+                                <option value="Martes">Martes</option>
+                                <option value="Miércoles">Miércoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>
+                                <option value="Sábado">Sábado</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark dark-text-white">Estado</label>
+                            <select name="estado" class="form-control" required>
+                                <option value="">Seleccione estado</option>
+                                <option value="activo" {{ old('estado')=='activo'?'selected':'' }}>Activo</option>
+                                <option value="inactivo" {{ old('estado')=='inactivo'?'selected':'' }}>Inactivo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa-solid fa-save me-2"></i> Guardar
+                        </button>
+                        <a href="{{ route('entrenadores.index') }}" class="btn btn-secondary ms-2">
+                            Cancelar
+                        </a>
+                    </div>
+
+                </form>
+            </div>
+
         </div>
-    @endif
-
-    <form action="{{ route('entrenadores.store') }}" method="POST">
-        @csrf
-
-        <h4>Datos de Persona</h4>
-        <input type="text" name="nombre_completo" placeholder="Nombre completo" value="{{ old('nombre_completo') }}" class="form-control mb-2">
-        <input type="text" name="apellido_paterno" placeholder="Apellido paterno" value="{{ old('apellido_paterno') }}" class="form-control mb-2">
-        <input type="text" name="apellido_materno" placeholder="Apellido materno" value="{{ old('apellido_materno') }}" class="form-control mb-2">
-        <input type="text" name="ci" placeholder="CI" value="{{ old('ci') }}" class="form-control mb-2">
-        <input type="text" name="telefono" placeholder="Teléfono" value="{{ old('telefono') }}" class="form-control mb-2">
-
-        <select name="genero" class="form-control mb-2">
-            <option value="">Seleccione género</option>
-            <option value="masculino" {{ old('genero')=='masculino'?'selected':'' }}>Masculino</option>
-            <option value="femenino" {{ old('genero')=='femenino'?'selected':'' }}>Femenino</option>
-            <option value="otro" {{ old('genero')=='otro'?'selected':'' }}>Otro</option>
-        </select>
-
-        <input type="date" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}" class="form-control mb-4">
-
-        <h4>Datos de Usuario</h4>
-        <input type="text" name="name" placeholder="Usuario" value="{{ old('name') }}" class="form-control mb-2">
-        <input type="email" name="email" placeholder="Correo electrónico" value="{{ old('email') }}" class="form-control mb-2">
-        <input type="password" name="password" placeholder="Contraseña" class="form-control mb-2">
-        <input type="password" name="password_confirmation" placeholder="Confirmar contraseña" class="form-control mb-4">
-
-        <h4>Datos de Entrenador</h4>
-<div class="form-group">
-    <label for="especialidad">Especialidad</label>
-    <select name="especialidad[]" id="especialidad" class="form-control" multiple required>
-        @php
-            $opcionesEspecialidad = [
-                'Calistenia básica',
-                'Calistenia avanzada',
-                'Entrenamiento de fuerza',
-                'Resistencia',
-                'Flexibilidad y movilidad',
-                'Preparación física para competencias',
-                'Nutrición y hábitos saludables'
-            ];
-            $seleccionadasEspecialidad = old('especialidad', []);
-        @endphp
-        @foreach ($opcionesEspecialidad as $opcion)
-            <option value="{{ $opcion }}" {{ in_array($opcion, $seleccionadasEspecialidad) ? 'selected' : '' }}>
-                {{ $opcion }}
-            </option>
-        @endforeach
-    </select>
-    @error('especialidad')
-        <div class="text-danger">{{ $message }}</div>
-    @enderror
-    <small class="form-text text-muted">Mantén presionada la tecla CTRL (o Command en Mac) para seleccionar varias especialidades.</small>
+    </div>
 </div>
 
-        <input type="text" name="experiencia" placeholder="Experiencia" value="{{ old('experiencia') }}" class="form-control mb-2">
-        <div class="mb-3">
-            <label for="disponibilidad" class="form-label">Disponibilidad</label>
-            <select name="disponibilidad[]" id="disponibilidad" class="form-control" multiple required>
-                <option value="Lunes">Lunes</option>
-                <option value="Martes">Martes</option>
-                <option value="Miércoles">Miércoles</option>
-                <option value="Jueves">Jueves</option>
-                <option value="Viernes">Viernes</option>
-                <option value="Sábado">Sábado</option>
-            </select>
-            @error('disponibilidad')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-            <small class="form-text text-muted">Mantén presionada la tecla CTRL (o Command en Mac) para seleccionar varios días.</small>
-        </div>
-
-        <select name="estado" class="form-control mb-4">
-            <option value="">Seleccione estado</option>
-            <option value="activo" {{ old('estado')=='activo'?'selected':'' }}>Activo</option>
-            <option value="inactivo" {{ old('estado')=='inactivo'?'selected':'' }}>Inactivo</option>
-        </select>
-
-        <button type="submit" class="btn btn-primary">Guardar</button>
-        <a href="{{ route('entrenadores.index') }}" class="btn btn-secondary">Cancelar</a>
-    </form>
-</div>
 @endsection
