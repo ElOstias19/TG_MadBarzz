@@ -30,5 +30,19 @@ class Cliente extends Model
     {
         return $this->belongsTo(User::class, 'id_usuario');
     }
+
+
+
+    public function membresiaActual()
+    {
+        return $this->hasOne(MembresiaCliente::class, 'id_cliente')
+                ->where('fecha_fin', '>=', now())
+                ->latest();
+    }
+
+    public function asistencias()
+    {
+        return $this->hasMany(Asistencia::class, 'id_cliente');
+    }
 }
 

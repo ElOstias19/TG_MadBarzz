@@ -593,7 +593,7 @@
                             </div>
                         </div>
                         <ul class="navbar-nav header-right">
-                            <li class="nav-item">
+                          <!--  <li class="nav-item">
                                 <form>
                                     <div class="input-group search-area d-lg-inline-flex d-none me-3">
                                       <span class="input-group-text" id="header-search">
@@ -604,7 +604,7 @@
                                       <input type="text" class="form-control" placeholder="Buscar aquí" aria-label="Username" aria-describedby="header-search">
                                     </div>
                                 </form>
-                            </li>
+                            </li>-->
                             <li class="nav-item dropdown notification_dropdown">
                                 <a class="nav-link bell dz-theme-mode" href="javascript:void(0);" id="theme-toggle">
                                     <i id="icon-light" class="fas fa-sun"></i>
@@ -663,9 +663,8 @@
 <div class="deznav d-flex flex-column">
     <div class="deznav-scroll flex-grow-1">
         <ul class="metismenu" id="menu">
-            <!-- Panel de Control -->
             <li>
-<a href="{{ route('dashboard') }}">Panel de Control</a>
+                <a href="{{ route('dashboard') }}">Panel de Control</a>
 
                
             </li>

@@ -16,8 +16,9 @@ class Membresia extends Model
         'precio',
     ];
 
-    public function clientes()
-    {
-        return $this->hasMany(MembresiaCliente::class, 'id_membresia', 'id_membresia');
-    }
+public function clientes()
+{
+    return $this->belongsToMany(Cliente::class, 'membresia_cliente', 'id_membresia', 'id_cliente')
+                ->wherePivot('fecha_fin', '>=', now());
+}
 }
