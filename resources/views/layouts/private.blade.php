@@ -10,13 +10,12 @@
     <meta name="author" content="DexignZone">
     <meta name="robots" content="">
 
-    <!-- Prevenir flash de tema claro -->
     <script>
-        // Aplicar el tema inmediatamente, antes de que el DOM se cargue
-        (function() {
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        })();
+        // Forzar dark antes de que cargue el CSS
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark'); // Guardar en localStorage
+        window.dezSettingsOptions = window.dezSettingsOptions || {};
+        window.dezSettingsOptions.version = 'dark'; // Para que Gymove arranque ya en oscuro
     </script>
 
     <meta name="keywords" content="admin, panel de administración, plantilla admin, bootstrap, bootstrap 5, plantilla admin bootstrap 5, fitness, admin fitness, moderno, panel de administración responsive, panel de ventas, sass, kit de interfaz, aplicación web">
@@ -740,11 +739,6 @@
 
     </div>
 
-    <!-- Esto queda al final -->
-    <div class="copyright mt-auto text-center">
-        <p><strong>MadBarzz</strong> © 2025 Todos los Derechos Reservados</p>
-        <p>Hecho con Laravel <span class="heart"></span> por Robert Garrido</p>
-    </div>
 </div>
 
 
@@ -787,6 +781,12 @@
     <!--**********************************
         Scripts
     ***********************************-->
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        window.dezSettingsOptions = window.dezSettingsOptions || {};
+        window.dezSettingsOptions.version = savedTheme;
+    </script>
     <!-- Required vendors -->
     <script src="{{ asset('assets_private/vendor/global/global.min.js') }}"></script>
     <script src="{{ asset('assets_private/vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
@@ -885,16 +885,15 @@
         });
 
         jQuery(document).ready(function(){
-            setTimeout(function(){
-                // Verificar el tema guardado
+
+            
+            (function() {
                 const savedTheme = localStorage.getItem('theme') || 'dark';
-                if (savedTheme === 'dark') {
-                    dezSettingsOptions.version = 'dark';
-                } else {
-                    dezSettingsOptions.version = 'light';
-                }
-                new dezSettings(dezSettingsOptions);
-            },1000)
+                window.dezSettingsOptions = window.dezSettingsOptions || {};
+                window.dezSettingsOptions.version = savedTheme;
+                new dezSettings(window.dezSettingsOptions);
+            })();
+            
             
             jQuery(window).on('resize',function(){
                 const savedTheme = localStorage.getItem('theme') || 'dark';
