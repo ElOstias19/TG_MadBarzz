@@ -666,19 +666,9 @@
         <ul class="metismenu" id="menu">
             <!-- Panel de Control -->
             <li>
-                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-381-networking"></i>
-                    <span class="nav-text">Panel de Control</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="index.html">Panel de Control</a></li>
-                    <li><a href="index-2.html">Panel de Control Oscuro<span class="badge badge-xs badge-danger ms-1">Nuevo</span></a></li>
-                    <li><a href="workout-statistic.html">Estadísticas de Entrenamiento</a></li>
-                    <li><a href="workoutplan.html">Plan de Entrenamiento</a></li>
-                    <li><a href="distance-map.html">Mapa de Distancia</a></li>
-                    <li><a href="food-menu.html">Menú de Dieta</a></li>
-                    <li><a href="personal-record.html">Récord Personal</a></li>
-                </ul>
+<a href="{{ route('dashboard') }}">Panel de Control</a>
+
+               
             </li>
 
             <!-- Usuarios -->
