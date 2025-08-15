@@ -11,7 +11,6 @@
                     <div class="card-title fs-24 fw-bold text-dark dark-text-white">
                         <h2 class="fw-bold mb-0">Registrar Pago</h2>
                     </div>
-
                 </div>
 
                 <div class="card-body">
@@ -81,16 +80,18 @@
                                 <textarea name="observaciones" id="observaciones" class="form-control"></textarea>
                             </div>
 
-                            <div class="col-md-12 text-center">
-                                <label class="form-label fw-bold text-dark dark-text-white">QR de pago (referencia)</label><br>
-                                <img src="{{ asset('assets/images/QR0994.jpg') }}" alt="QR de pago" style="max-width: 300px; margin-bottom: 20px;">
-                            </div>
+                            <div id="qrSection" style="display:none;">
+                                <div class="col-md-12 text-center">
+                                    <label class="form-label fw-bold text-dark dark-text-white">QR de pago (referencia)</label><br>
+                                    <img src="{{ asset('assets/images/QR0994.jpg') }}" alt="QR de pago" style="max-width: 300px; margin-bottom: 20px;">
+                                </div>
 
-                            <div class="col-md-12 text-center">
-                                <label for="imagen_qr" class="form-label fw-bold text-dark dark-text-white">Imagen QR del pago (subir archivo)</label>
-                                <input type="file" name="imagen_qr" id="imagen_qr" class="form-control" accept="image/*" onchange="previewImage(event)">
-                                <div class="mt-3">
-                                    <img id="preview" src="#" alt="Vista previa" style="max-width: 300px; display: none; border: 1px solid #ccc; padding: 5px;">
+                                <div class="col-md-12 text-center">
+                                    <label for="imagen_qr" class="form-label fw-bold text-dark dark-text-white">Imagen QR del pago (subir archivo)</label>
+                                    <input type="file" name="imagen_qr" id="imagen_qr" class="form-control" accept="image/*" onchange="previewImage(event)">
+                                    <div class="mt-3">
+                                        <img id="preview" src="#" alt="Vista previa" style="max-width: 300px; display: none; border: 1px solid #ccc; padding: 5px;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -115,8 +116,18 @@
 <script>
 document.getElementById('id_membresia').addEventListener('change', function() {
     const precio = this.options[this.selectedIndex].getAttribute('data-precio');
-    const montoInput = document.getElementById('monto');
-    montoInput.value = precio || '';
+    document.getElementById('monto').value = precio || '';
+});
+
+document.getElementById('metodo_pago').addEventListener('change', function() {
+    const qrSection = document.getElementById('qrSection');
+    if (this.value === 'QR' || this.value === 'transferencia') {
+        qrSection.style.display = 'block';
+    } else {
+        qrSection.style.display = 'none';
+        document.getElementById('imagen_qr').value = '';
+        document.getElementById('preview').style.display = 'none';
+    }
 });
 
 function previewImage(event) {

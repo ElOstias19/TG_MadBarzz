@@ -28,7 +28,7 @@
                 <tr>
                     <td>{{ $pago->id_pago }}</td>
                     <td>{{ $pago->cliente->persona->nombre_completo }}</td>
-                    <td>{{ $pago->membresia->nombre }}</td>
+                    <td>{{ $pago->membresia->tipo_membresia }}</td>
                     <td>{{ $pago->monto }}</td>
                     <td>{{ $pago->fecha_pago }}</td>
                     <td>{{ $pago->metodo_pago }}</td>

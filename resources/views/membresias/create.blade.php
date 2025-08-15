@@ -1,55 +1,61 @@
 @extends('layouts.private')
 
 @section('contenido')
+<div class="container">
+    <h2 class="mb-4">Listado de Membresías</h2>
 
-<div class="row">
-    <div class="col-xl-12">
-        <div class="card custom-card">
+    {{-- Mensaje de éxito --}}
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
 
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <div class="card-title fs-24 fw-bold text-dark dark-text-white">
-                    <h2 class=" fw-bold mb-4">Nueva Membresía</h2>
-                </div>
+    {{-- Botón para crear nueva membresía --}}
+    <a href="{{ route('membresias.create') }}" class="btn btn-primary mb-3">
+        <i class="fa-solid fa-circle-plus me-2"></i> Nueva Membresía
+    </a>
 
-            </div>
-
-            <div class="card-body">
-                @if ($errors->any())
-                    <div class="alert alert-danger mb-3">
-                        <ul class="mb-0">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
-                <form action="{{ route('membresias.store') }}" method="POST">
-                    @csrf
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold text-dark dark-text-white">Tipo</label>
-                            <input type="text" name="tipo_membresia" class="form-control" placeholder="Ingrese el tipo de membresía" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold text-dark dark-text-white">Precio</label>
-                            <input type="number" step="0.01" name="precio" class="form-control" placeholder="Ingrese el precio" required>
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fa-solid fa-circle-plus me-2"></i> Guardar
-                        </button>
-                        <a href="{{ route('membresias.index') }}" class="btn btn-secondary ms-2">
-                            Cancelar
+    {{-- Tabla de membresías --}}
+    <table class="table table-bordered table-striped align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Precio (Bs)</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($membresias as $membresia)
+                <tr>
+                    <td>{{ $membresia->id_membresia }}</td>
+                    <td>{{ $membresia->tipo_membresia }}</td>
+                    <td>{{ number_format($membresia->precio, 2) }}</td>
+                    <td class="text-center">
+                        <a href="{{ route('membresias.edit', $membresia->id_membresia) }}" 
+                           class="btn btn-warning btn-sm" 
+                           title="Editar">
+                            <i class="fa-solid fa-pen-to-square"></i>
                         </a>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
+                        <form action="{{ route('membresias.destroy', $membresia->id_membresia) }}" 
+                              method="POST" 
+                              class="d-inline"
+                              onsubmit="return confirm('¿Eliminar esta membresía?');">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-sm" title="Eliminar">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="4" class="text-center text-muted">
+                        No hay membresías registradas.
+                    </td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
 </div>
-
 @endsection
