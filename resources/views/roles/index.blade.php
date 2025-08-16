@@ -17,7 +17,6 @@
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Eliminado</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -26,7 +25,6 @@
                 <tr>
                     <td>{{ $rol->id }}</td>
                     <td>{{ $rol->nombre }}</td>
-                    <td>{{ $rol->eliminado ? 'Sí' : 'No' }}</td>
                     <td class="d-flex justify-content-center align-items-center gap-1">
                         <a href="{{ route('roles.edit', $rol->id) }}" class="btn btn-warning btn-sm content-icon" aria-label="Editar rol {{ $rol->nombre }}">
                             <i class="fa-solid fa-pen-to-square"></i>
