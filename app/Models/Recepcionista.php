@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Recepcionista extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $primaryKey = 'id_recepcionista';
     protected $fillable = [
@@ -18,6 +18,8 @@ class Recepcionista extends Model
         'punto_atencion',
         'estado'
     ];
+ protected $dates = ['deleted_at']; // opcional, Laravel lo infiere
+
 
     public function persona() {
         return $this->belongsTo(Persona::class, 'id_persona');

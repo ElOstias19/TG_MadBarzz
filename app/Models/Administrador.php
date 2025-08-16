@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes; 
 
 class Administrador extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes; 
 
-    protected $table = 'administradores'; // 👈 nombre real de la tabla
-
-    protected $primaryKey = 'id_administrador'; // 👈 clave primaria
-
+    protected $table = 'administradores'; 
+    protected $primaryKey = 'id_administrador'; 
     public $timestamps = true;
 
     protected $fillable = [
@@ -22,8 +21,8 @@ class Administrador extends Model
         'area_responsable',
         'estado'
     ];
+        protected $dates = ['deleted_at']; // 👈 opcional, Laravel lo infiere
 
-    // Relaciones
 
     public function persona()
     {
@@ -34,6 +33,4 @@ class Administrador extends Model
     {
         return $this->belongsTo(User::class, 'id_usuario', 'id');
     }
-
-    
 }

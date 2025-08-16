@@ -127,13 +127,15 @@ class RecepcionistaController extends Controller
         return redirect()->route('recepcionistas.index')->with('success', 'Recepcionista actualizado correctamente.');
     }
 
-    public function destroy($id)
-    {
-        $recepcionista = Recepcionista::findOrFail($id);
-        $recepcionista->delete();
+        public function destroy($id)
+        {
+            $recepcionista = Recepcionista::findOrFail($id);
+            $recepcionista->deleted_at = now(); // marca como eliminado
+            $recepcionista->save();
 
-        return redirect()->route('recepcionistas.index')->with('success', 'Recepcionista eliminado correctamente.');
-    }
+            return redirect()->route('recepcionistas.index')->with('success', 'Recepcionista eliminado correctamente.');
+        }
+
 
     // En tu RecepcionistaController.php
 public function getRecepcionistaActivo()

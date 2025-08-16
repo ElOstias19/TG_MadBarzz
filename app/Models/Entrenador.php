@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes; // 👈 importar
 
 class Entrenador extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes; // 👈 habilitar eliminación lógica
 
     protected $table = 'entrenadores';
     protected $primaryKey = 'id_entrenador';
@@ -20,16 +21,19 @@ class Entrenador extends Model
         'disponibilidad',
         'estado',
     ];
+
     protected $casts = [
-    'disponibilidad' => 'array',
-     'especialidad'   => 'array',
-]; 
+        'disponibilidad' => 'array',
+        'especialidad'   => 'array',
+    ];
+
+        protected $dates = ['deleted_at']; // 👈 opcional
+
 
     public function persona()
     {
         return $this->belongsTo(Persona::class, 'id_persona');
     }
-    
 
     public function user()
     {

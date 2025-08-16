@@ -75,12 +75,12 @@ class RolController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        $rol = Rol::findOrFail($id);
-        $rol->eliminado = true;
-        $rol->save();
+public function destroy(string $id)
+{
+    $rol = Rol::findOrFail($id);
+    $rol->delete(); // Soft delete (marca fecha en deleted_at)
 
-        return redirect()->route('roles.index')->with('success', 'Rol eliminado exitosamente.');
-    }
+    return redirect()->route('roles.index')->with('success', 'Rol eliminado exitosamente.');
+}
+
 }

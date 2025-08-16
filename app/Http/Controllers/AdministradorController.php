@@ -122,8 +122,10 @@ class AdministradorController extends Controller
     public function destroy($id)
     {
         $administrador = Administrador::findOrFail($id);
-        $administrador->delete();
+        $administrador->deleted_at = now(); // marca como eliminado
+        $administrador->save();
 
         return redirect()->route('administradores.index')->with('success', 'Administrador eliminado correctamente.');
     }
+
 }

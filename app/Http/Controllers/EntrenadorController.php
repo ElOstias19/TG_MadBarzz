@@ -12,6 +12,7 @@ class EntrenadorController extends Controller
 {
     public function index()
     {
+        // Solo entrenadores activos (no eliminados)
         $entrenadores = Entrenador::with(['persona', 'user'])->get();
         return view('entrenadores.index', compact('entrenadores'));
     }
@@ -109,26 +110,21 @@ class EntrenadorController extends Controller
             'estado'           => 'required|in:activo,inactivo',
         ]);
 
-        $persona->update([
-            'nombre_completo'  => $request->nombre_completo,
-            'apellido_paterno' => $request->apellido_paterno,
-            'apellido_materno' => $request->apellido_materno,
-            'ci'               => $request->ci,
-            'telefono'         => $request->telefono,
-            'genero'           => $request->genero,
-            'fecha_nacimiento' => $request->fecha_nacimiento,
-        ]);
+        $persona->update($request->only([
+            'nombre_completo', 'apellido_paterno', 'apellido_materno',
+            'ci', 'telefono', 'genero', 'fecha_nacimiento'
+        ]));
 
-        $usuario->update([
+        $usuarioData = [
             'name'  => $request->name,
             'email' => $request->email,
-        ]);
+        ];
 
         if ($request->filled('password')) {
-            $usuario->update([
-                'password' => Hash::make($request->password),
-            ]);
+            $usuarioData['password'] = Hash::make($request->password);
         }
+
+        $usuario->update($usuarioData);
 
         $entrenador->update([
             'especialidad'   => implode(', ', $request->especialidad),
@@ -142,7 +138,11 @@ class EntrenadorController extends Controller
 
     public function destroy($id)
     {
-        Entrenador::findOrFail($id)->delete();
+        // Eliminación lógica
+        $entrenador = Entrenador::findOrFail($id);
+        $entrenador->deleted_at = now();
+        $entrenador->save();
+
         return redirect()->route('entrenadores.index')->with('success', 'Entrenador eliminado correctamente.');
     }
 }
