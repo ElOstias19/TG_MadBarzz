@@ -86,13 +86,16 @@ class RutinaController extends Controller
         return redirect()->route('rutinas.index')->with('success', 'Rutina actualizada correctamente.');
     }
 
-    public function destroy(Rutina $rutina)
-    {
-        if ($rutina->archivo && Storage::disk('public')->exists('rutinas/' . $rutina->archivo)) {
-            Storage::disk('public')->delete('rutinas/' . $rutina->archivo);
-        }
-        $rutina->delete();
-
-        return redirect()->route('rutinas.index')->with('success', 'Rutina eliminada correctamente.');
+public function destroy(Rutina $rutina)
+{
+    // Solo elimina el archivo físico si quieres
+    if ($rutina->archivo && Storage::disk('public')->exists('rutinas/' . $rutina->archivo)) {
+        Storage::disk('public')->delete('rutinas/' . $rutina->archivo);
     }
+
+    $rutina->delete(); // eliminación lógica
+
+    return redirect()->route('rutinas.index')->with('success', 'Rutina eliminada correctamente.');
+}
+
 }

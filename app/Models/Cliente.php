@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Cliente extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'clientes';
     protected $primaryKey = 'id_cliente';
@@ -23,15 +23,13 @@ class Cliente extends Model
 
     public function persona()
     {
-        return $this->belongsTo(Persona::class, 'id_persona');
+        return $this->belongsTo(Persona::class, 'id_persona')->withTrashed();
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_usuario');
+        return $this->belongsTo(User::class, 'id_usuario')->withTrashed();
     }
-
-
 
     public function membresiaActual()
     {
@@ -45,4 +43,3 @@ class Cliente extends Model
         return $this->hasMany(Asistencia::class, 'id_cliente');
     }
 }
-

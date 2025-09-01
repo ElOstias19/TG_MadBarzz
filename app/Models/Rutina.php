@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Rutina extends Model
 {
+    use HasFactory, SoftDeletes; // <-- Agregado SoftDeletes
+
     protected $table = 'rutinas';
     protected $primaryKey = 'id_rutina';
 
@@ -20,6 +24,7 @@ class Rutina extends Model
     protected $casts = [
         'fecha_subida' => 'datetime',
         'created_at' => 'datetime',
+        'deleted_at' => 'datetime', // <-- Agregado para soft deletes
     ];
 
     public function entrenador()

@@ -158,12 +158,10 @@ public function update(Request $request, $id)
 
 
     // ELIMINAR cliente (eliminación física o lógica)
-    public function destroy($id)
-    {
-        $cliente = Cliente::findOrFail($id);
-        // Si tienes soft deletes usa $cliente->delete();
-        $cliente->delete();
+public function destroy(Cliente $cliente)
+{
+    $cliente->delete(); // solo elimina lógicamente
+    return redirect()->route('clientes.index')->with('success', 'Cliente eliminado lógicamente.');
+}
 
-        return redirect()->route('clientes.index')->with('success', 'Cliente eliminado correctamente.');
-    }
 }

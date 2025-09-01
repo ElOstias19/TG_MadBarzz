@@ -74,12 +74,12 @@ class PagoController extends Controller
         return redirect()->route('pagos.index')->with('success', 'Pago actualizado correctamente.');
     }
 
-    public function destroy(Pago $pago)
-    {
-        if ($pago->imagen_qr && file_exists(storage_path('app/public/' . $pago->imagen_qr))) {
-            unlink(storage_path('app/public/' . $pago->imagen_qr));
+        public function destroy(Pago $pago)
+        {
+            // Solo marca el registro como eliminado en deleted_at
+            $pago->delete();
+
+            return redirect()->route('pagos.index')->with('success', 'Pago eliminado correctamente.');
         }
-        $pago->delete();
-        return redirect()->route('pagos.index')->with('success', 'Pago eliminado correctamente.');
-    }
+
 }

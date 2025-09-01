@@ -32,6 +32,18 @@
 
                         <div class="row g-3">
                             <div class="col-md-6">
+                                <label for="id_entrenador" class="form-label fw-bold text-dark dark-text-white">Entrenador</label>
+                                <select name="id_entrenador" id="id_entrenador" class="form-control" required>
+                                    <option value="">Seleccione un entrenador</option>
+                                    @foreach($entrenadores as $entrenador)
+                                        <option value="{{ $entrenador->id_entrenador }}" {{ $rutina->id_entrenador == $entrenador->id_entrenador ? 'selected' : '' }}>
+                                            {{ $entrenador->persona->nombre_completo }} {{ $entrenador->persona->apellido_paterno }} {{ $entrenador->persona->apellido_materno }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
                                 <label for="titulo" class="form-label fw-bold text-dark dark-text-white">Título</label>
                                 <input type="text" name="titulo" id="titulo" class="form-control" value="{{ old('titulo', $rutina->titulo) }}" required>
                             </div>
