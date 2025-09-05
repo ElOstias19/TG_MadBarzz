@@ -733,6 +733,24 @@
                     <li><a href="{{ route('rutinas.index') }}">Rutinas</a></li>
                 </ul>
             </li>
+
+            <!-- Reportes -->
+            <li class="has-arrow">
+                <a href="javascript:void()">
+                    <i class="fas fa-chart-bar"></i> <!-- Icono Font Awesome -->
+                    <span class="nav-text">Reportes</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ route('reportes.clientes.estado') }}">Clientes Activos/Inactivos</a></li>
+                    <li><a href="{{ route('reportes.clientes.nuevos') }}">Clientes Nuevos del Mes</a></li>
+                    <li><a href="{{ route('reportes.clientes.membresia_vencida') }}">Clientes Membresía Vencida</a></li>
+                    <li><a href="{{ route('reportes.pagos.mes') }}">Pagos por Mes</a></li>
+                </ul>
+            </li>
+
+
+
+                
         </ul>
 
 

@@ -20,6 +20,7 @@ use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\NotificacionController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\RutinaController;
+use App\Http\Controllers\ReporteController;
 
 
 
@@ -98,5 +99,48 @@ Route::post('/notificaciones/send-whatsapp', [NotificacionController::class, 'se
 
 Route::resource('pagos', PagoController::class);
 Route::resource('rutinas', RutinaController::class);
+
+
+
+
+
+
+// =============================
+// Reportes - Clientes Activos/Inactivos
+// =============================
+Route::get('/reportes/clientes-estado', [ReporteController::class, 'clientesEstado'])
+    ->name('reportes.clientes.estado');
+Route::get('/reportes/clientes-estado/pdf', [ReporteController::class, 'exportClientesEstadoPDF'])
+    ->name('reportes.clientes.estado.pdf');
+
+// =============================
+// Reportes - Clientes Nuevos del Mes
+// =============================
+Route::get('/reportes/clientes-nuevos', [ReporteController::class, 'clientesNuevos'])
+    ->name('reportes.clientes.nuevos');
+Route::get('/reportes/clientes-nuevos/pdf', [ReporteController::class, 'exportClientesNuevosPDF'])
+    ->name('reportes.clientes.nuevos.pdf');
+
+// =============================
+// Reportes - Clientes con Membresía Vencida o por Vencer
+// =============================
+Route::get('/reportes/clientes-membresia-vencida', [ReporteController::class, 'clientesMembresiaVencida'])
+    ->name('reportes.clientes.membresia_vencida');
+Route::get('/reportes/clientes-membresia-vencida/pdf', [ReporteController::class, 'exportClientesMembresiaVencidaPDF'])
+    ->name('reportes.clientes.membresia_vencida.pdf');
+
+// =============================
+// Reportes - Pagos por Mes
+// =============================
+Route::get('/reportes/pagos-por-mes', [ReporteController::class, 'pagosPorMes'])
+    ->name('reportes.pagos.mes');
+Route::get('/reportes/pagos-por-mes/pdf', [ReporteController::class, 'exportPagosPorMesPDF'])
+    ->name('reportes.pagos.mes.pdf');
+
+
+
+
+
+    
 
 require __DIR__.'/auth.php';
