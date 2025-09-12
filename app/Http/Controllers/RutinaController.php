@@ -6,7 +6,8 @@ use App\Models\Rutina;
 use App\Models\Entrenador;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use App\Models\Cliente;
+use Illuminate\Support\Facades\Auth;
 class RutinaController extends Controller
 {
     public function index()
@@ -46,10 +47,7 @@ class RutinaController extends Controller
         return redirect()->route('rutinas.index')->with('success', 'Rutina subida correctamente.');
     }
 
-    public function show(Rutina $rutina)
-    {
-        return view('rutinas.show', compact('rutina'));
-    }
+
 
     public function edit(Rutina $rutina)
     {
@@ -98,4 +96,23 @@ public function destroy(Rutina $rutina)
     return redirect()->route('rutinas.index')->with('success', 'Rutina eliminada correctamente.');
 }
 
+
+
+    public function show($id)
+    {
+        // Buscar el cliente asociado al usuario autenticado
+        $cliente = Cliente::where('id_usuario', Auth::id())->first();
+
+        if (!$cliente) {
+            return redirect()->back()->with('error', 'No tienes un perfil de cliente asociado.');
+        }
+
+        // Obtener todas las rutinas asignadas al cliente
+        $rutinas = Rutina::with(['entrenador.persona'])
+                        ->where('id_cliente', $cliente->id_cliente)
+                        ->orderBy('created_at', 'desc')
+                        ->get();
+
+        return view('rutinas.show', compact('rutinas', 'cliente'));
+    }
 }

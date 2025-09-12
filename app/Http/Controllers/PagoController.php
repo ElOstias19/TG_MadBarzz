@@ -6,6 +6,7 @@ use App\Models\Pago;
 use App\Models\Cliente;
 use App\Models\Membresia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PagoController extends Controller
 {
@@ -43,6 +44,32 @@ class PagoController extends Controller
         return redirect()->route('pagos.index')->with('success', 'Pago registrado correctamente.');
     }
 
+    // Método show estándar para ver un pago específico
+    public function show($id)
+    {
+        $pago = Pago::with(['cliente.persona', 'membresia'])->findOrFail($id);
+        return view('pagos.show', compact('pago'));
+    }
+
+    // Nuevo método para mostrar los pagos del cliente autenticado
+    public function misPagos()
+    {
+        // Buscar el cliente asociado al usuario autenticado
+        $cliente = Cliente::where('id_usuario', Auth::id())->first();
+
+        if (!$cliente) {
+            return redirect()->back()->with('error', 'No tienes un perfil de cliente asociado.');
+        }
+
+        // Obtener los pagos del cliente autenticado
+        $pagos = Pago::with('membresia')
+                    ->where('id_cliente', $cliente->id_cliente)
+                    ->orderBy('fecha_pago', 'desc')
+                    ->get();
+
+        return view('pagos.mis-pagos', compact('pagos', 'cliente'));
+    }
+
     public function edit(Pago $pago)
     {
         $clientes = Cliente::with('persona')->get();
@@ -74,12 +101,11 @@ class PagoController extends Controller
         return redirect()->route('pagos.index')->with('success', 'Pago actualizado correctamente.');
     }
 
-        public function destroy(Pago $pago)
-        {
-            // Solo marca el registro como eliminado en deleted_at
-            $pago->delete();
+    public function destroy(Pago $pago)
+    {
+        // Solo marca el registro como eliminado en deleted_at
+        $pago->delete();
 
-            return redirect()->route('pagos.index')->with('success', 'Pago eliminado correctamente.');
-        }
-
+        return redirect()->route('pagos.index')->with('success', 'Pago eliminado correctamente.');
+    }
 }

@@ -28,15 +28,15 @@
           @enderror
         </div>
 
-        <div class="remember d-flex justify-content-between align-items-center mb-3">
+        <!--  <div class="remember d-flex justify-content-between align-items-center mb-3">
           <div class="first">
             <input type="checkbox" name="remember" id="checkbox" {{ old('remember') ? 'checked' : '' }}>
             <label for="checkbox">Recuérdame</label>
           </div>
-        <!--  <div class="second">
+          <div class="second">
             <a href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
-          </div>-->
-        </div>
+          </div>
+        </div>-->
         <button type="submit" class="theme-btn w-100">Iniciar sesión</button>
       </form>
       <p style="margin-top: 30px;">¿Se te olvidó tu contraseña? <a href="{{ $whatsappLink }}" target="_blank">Solicita acceso en recepción</a></p>

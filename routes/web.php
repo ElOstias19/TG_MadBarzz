@@ -101,9 +101,22 @@ Route::resource('pagos', PagoController::class);
 Route::resource('rutinas', RutinaController::class);
 
 
+// Rutas para que el cliente vea solo sus asistencias
+
+
+// Rutas para asistencias
+Route::resource('asistencias', AsistenciaController::class);
+Route::get('mis-asistencias', [AsistenciaController::class, 'misAsistencias'])->name('asistencias.mis');
 
 
 
+
+// Rutas para pagos
+// Rutas para pagos (resource estándar)
+Route::resource('pagos', PagoController::class);
+
+// Ruta personalizada para los pagos del cliente autenticado
+Route::get('mis-pagos', [PagoController::class, 'misPagos'])->name('pagos.mis-pagos');
 
 // =============================
 // Reportes - Clientes Activos/Inactivos

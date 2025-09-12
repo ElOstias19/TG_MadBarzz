@@ -665,100 +665,115 @@
         <ul class="metismenu" id="menu">
             <li>
                 <a href="{{ route('dashboard') }}">Panel de Control</a>
-
-               
             </li>
 
-            <!-- Usuarios -->
-            <li class="has-arrow">
-                <a href="javascript:void()">
-                    <i class="flaticon-381-user-1"></i>
-                    <span class="nav-text">Usuarios</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('roles.index') }}">Roles</a></li>
-                    <li><a href="{{ route('users.index') }}">Usuarios del Sistema</a></li>
-                    <li><a href="{{ route('personas.index') }}">Personas</a></li>
-                </ul>
-            </li>
+            @php
+                $userRol = Auth::user()->rol->nombre ?? '';
+            @endphp
 
-            <!-- Clientes y Membresías -->
-            <li class="has-arrow">
-                <a href="javascript:void()">
-                    <i class="flaticon-381-id-card"></i>
-                    <span class="nav-text">Clientes y Membresías</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('clientes.index') }}">Clientes</a></li>
-                    <li><a href="{{ route('membresias.index') }}">Membresías</a></li>
-                    <li><a href="{{ route('membresia_cliente.index') }}">Membresías de Clientes</a></li>
-                </ul>
-            </li>
+            @if($userRol === 'Administrador')
+                <!-- Usuarios - Solo para Administrador -->
+                <li class="has-arrow">
+                    <a href="javascript:void()">
+                        <i class="flaticon-381-user-1"></i>
+                        <span class="nav-text">Usuarios</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{ route('roles.index') }}">Roles</a></li>
+                        <li><a href="{{ route('users.index') }}">Usuarios del Sistema</a></li>
+                        <li><a href="{{ route('personas.index') }}">Personas</a></li>
+                    </ul>
+                </li>
+            @endif
 
-            <!-- Personal -->
-            <li class="has-arrow">
-                <a href="javascript:void()">
-                    <i class="fas fa-users"></i>
-                    <span class="nav-text">Personal</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li>
-                        <a href="{{ route('entrenadores.index') }}">
-                            <i class="fas fa-dumbbell"></i> Entrenadores
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('recepcionistas.index') }}">
-                            <i class="fas fa-id-badge"></i> Recepcionistas
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('administradores.index') }}">
-                            <i class="fas fa-user-shield"></i> Administradores
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            @if(in_array($userRol, ['Administrador', 'Entrenador', 'Recepcionista', 'Cliente']))
+                <!-- Clientes y Membresías - Para todos excepto Cliente (Cliente verá versión limitada) -->
+                <li class="has-arrow">
+                    <a href="javascript:void()">
+                        <i class="flaticon-381-id-card"></i>
+                        <span class="nav-text">Clientes y Membresías</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        @if($userRol === 'Cliente')
+                            <li><a href="{{ route('clientes.show', Auth::user()->id) }}">Mi Membresía</a></li>
+                        @else
+                            <li><a href="{{ route('clientes.index') }}">Clientes</a></li>
+                            <li><a href="{{ route('membresias.index') }}">Membresías</a></li>
+                            <li><a href="{{ route('membresia_cliente.index') }}">Membresías de Clientes</a></li>
+                        @endif
+                    </ul>
+                </li>
+            @endif
 
-            <!-- Operaciones -->
-            <li class="has-arrow">
-                <a href="javascript:void()">
-                    <i class="flaticon-381-settings-2"></i>
-                    <span class="nav-text">Operaciones</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('asistencias.index') }}">Asistencias</a></li>
-                    <li><a href="{{ route('notificaciones.index') }}">Notificaciones</a></li>
-                    <li><a href="{{ route('pagos.index') }}">Pagos</a></li>
-                    <li><a href="{{ route('rutinas.index') }}">Rutinas</a></li>
-                </ul>
-            </li>
+            @if(in_array($userRol, ['Administrador', 'Entrenador', 'Recepcionista']))
+                <!-- Personal - Solo para Administrador, Entrenador y Recepcionista -->
+                <li class="has-arrow">
+                    <a href="javascript:void()">
+                        <i class="fas fa-users"></i>
+                        <span class="nav-text">Personal</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li>
+                            <a href="{{ route('entrenadores.index') }}">
+                                <i class="fas fa-dumbbell"></i> Entrenadores
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('recepcionistas.index') }}">
+                                <i class="fas fa-id-badge"></i> Recepcionistas
+                            </a>
+                        </li>
+                        @if($userRol === 'Administrador')
+                        <li>
+                            <a href="{{ route('administradores.index') }}">
+                                <i class="fas fa-user-shield"></i>Administradores
+                            </a>
+                        </li>
+                        @endif
+                    </ul>   
+                </li>
+            @endif
 
-            <!-- Reportes -->
-            <li class="has-arrow">
-                <a href="javascript:void()">
-                    <i class="fas fa-chart-bar"></i> <!-- Icono Font Awesome -->
-                    <span class="nav-text">Reportes</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('reportes.clientes.estado') }}">Clientes Activos/Inactivos</a></li>
-                    <li><a href="{{ route('reportes.clientes.nuevos') }}">Clientes Nuevos del Mes</a></li>
-                    <li><a href="{{ route('reportes.clientes.membresia_vencida') }}">Clientes Membresía Vencida</a></li>
-                    <li><a href="{{ route('reportes.pagos.mes') }}">Pagos por Mes</a></li>
-                </ul>
-            </li>
+            @if(in_array($userRol, ['Administrador', 'Entrenador', 'Recepcionista', 'Cliente']))
+                <!-- Operaciones - Para todos los roles -->
+                <li class="has-arrow">
+                    <a href="javascript:void()">
+                        <i class="flaticon-381-settings-2"></i>
+                        <span class="nav-text">Operaciones</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        @if($userRol === 'Cliente')
+                            <li><a href="{{ route('asistencias.mis') }}">Mis Asistencias</a></li>
+                             <li><a href="{{ route('pagos.mis-pagos') }}">Mis Pagos</a></li>
+                            <li><a href="{{ route('rutinas.show', Auth::user()->id) }}">Mi Rutina</a></li>
+                        @else
+                            <li><a href="{{ route('asistencias.index') }}">Asistencias</a></li>
+                            <li><a href="{{ route('notificaciones.index') }}">Notificaciones</a></li>
+                            <li><a href="{{ route('pagos.index') }}">Pagos</a></li>
+                            <li><a href="{{ route('rutinas.index') }}">Rutinas</a></li>
+                        @endif
+                    </ul>
+                </li>   
+            @endif
 
-
-
-                
+            @if(in_array($userRol, ['Administrador', 'Entrenador', 'Recepcionista']))
+                <!-- Reportes - Solo para Administrador, Entrenador y Recepcionista -->
+                <li class="has-arrow">
+                    <a href="javascript:void()">
+                        <i class="fas fa-chart-bar"></i>
+                        <span class="nav-text">Reportes</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{ route('reportes.clientes.estado') }}">Clientes Activos/Inactivos</a></li>
+                        <li><a href="{{ route('reportes.clientes.nuevos') }}">Clientes Nuevos del Mes</a></li>
+                        <li><a href="{{ route('reportes.clientes.membresia_vencida') }}">Clientes Membresía Vencida</a></li>
+                        <li><a href="{{ route('reportes.pagos.mes') }}">Pagos por Mes</a></li>
+                    </ul>
+                </li>
+            @endif
         </ul>
-
-
     </div>
-
 </div>
-
-
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -810,7 +825,7 @@
     <script src="{{ asset('assets_private/vendor/chart-js/chart.bundle.min.js') }}"></script>
     <script src="{{ asset('assets_private/vendor/owl-carousel/owl.carousel.js') }}"></script>
     <!-- Chart piety plugin files -->
-    <script src="{{ asset('assets_private/vendor/peity/jquery.peity.min.js') }}"></script>
+    <script src="{{ asset('assets_private/vendor极狐/peity/jquery.peity.min.js') }}"></script>
     <!-- Apex Chart -->
     <script src="{{ asset('assets_private/vendor/apexchart/apexchart.js') }}"></script>
     <!-- Dashboard 1 -->
@@ -871,7 +886,7 @@
                 iconLight.style.display = 'inline-block';
                 iconDark.style.display = 'none';
             } else {
-                html.setAttribute('data-theme', 'dark');
+                html.setAttribute极狐('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
                 iconLight.style.display = 'none';
                 iconDark.style.display = 'inline-block';
@@ -906,7 +921,7 @@
             
             (function() {
                 const savedTheme = localStorage.getItem('theme') || 'dark';
-                window.dezSettingsOptions = window.dezSettingsOptions || {};
+                window.de极狐zSettingsOptions = window.dezSettingsOptions || {};
                 window.dezSettingsOptions.version = savedTheme;
                 new dezSettings(window.dezSettingsOptions);
             })();
