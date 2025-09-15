@@ -2,6 +2,16 @@
 
 @section('contenido')
 <div class="container">
+    
+    
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
+    
     <h2 class="text-center">Pagos del Mes</h2>
     <a href="{{ route('reportes.pagos.mes.pdf') }}" class="btn btn-danger mb-3">Exportar PDF</a>
 

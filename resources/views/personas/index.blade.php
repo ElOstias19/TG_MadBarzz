@@ -4,9 +4,16 @@
 <div class="container">
     <h2>Listado de Personas</h2>
 
+
+
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
+
 
     <a href="{{ route('personas.create') }}" class="btn btn-primary mb-3">
         <i class="fa-solid fa-circle-plus me-2"></i> Agregar Persona

@@ -4,9 +4,17 @@
 <div class="container">
     <h2 class="mb-4">Lista de Recepcionistas</h2>
 
+
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
+
+
+
 
     <a href="{{ route('recepcionistas.create') }}" class="btn btn-primary mb-3">
         <i class="fa-solid fa-circle-plus me-2"></i> Agregar Recepcionista

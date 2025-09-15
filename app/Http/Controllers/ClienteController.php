@@ -156,15 +156,23 @@ class ClienteController extends Controller
     // ==============================
     // SHOW (Perfil del cliente logueado)
     // ==============================
-    public function show($id)
-    {
-        $cliente = Cliente::with(['persona', 'user'])->findOrFail($id);
 
-        // Membresía activa
-        $membresia = MembresiaCliente::where('id_cliente', $cliente->id)
-            ->where('fecha_fin', '>=', now())
-            ->orderBy('fecha_fin', 'desc')
-            ->first();
+    public function show()
+    {
+        // Obtener el cliente asociado al usuario logueado
+        $cliente = Cliente::with(['persona', 'user', 'membresias'])
+                    ->where('id_usuario', Auth::id())
+                    ->first();
+
+        if (!$cliente) {
+            return redirect()->back()->with('error', 'No tienes un perfil de cliente asociado.');
+        }
+
+        // Membresía activa más reciente
+        $membresia = $cliente->membresias()
+                            ->wherePivot('fecha_fin', '>=', now())
+                            ->orderByPivot('fecha_fin', 'desc')
+                            ->first();
 
         // Asistencias
         $asistencias = Asistencia::where('id_cliente', $cliente->id)->get();
@@ -177,4 +185,5 @@ class ClienteController extends Controller
 
         return view('clientes.show', compact('cliente', 'membresia', 'asistencias', 'pagos', 'rutinas'));
     }
+
 }

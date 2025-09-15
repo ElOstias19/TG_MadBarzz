@@ -155,5 +155,6 @@ Route::get('/reportes/pagos-por-mes/pdf', [ReporteController::class, 'exportPago
 
 
     
+Route::get('/rutinas/ver/{id}', [RutinaController::class, 'verRutina'])->name('rutinas.ver');
 
 require __DIR__.'/auth.php';

@@ -2,6 +2,16 @@
 
 @section('contenido')
 <div class="container">
+   
+   
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
+   
     <h2>📊 Módulo de Reportes</h2>
     <p>Selecciona el reporte que deseas exportar a PDF:</p>
 

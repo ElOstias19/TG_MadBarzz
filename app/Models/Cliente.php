@@ -42,4 +42,10 @@ class Cliente extends Model
     {
         return $this->hasMany(Asistencia::class, 'id_cliente');
     }
+    public function membresias()
+{
+    return $this->belongsToMany(Membresia::class, 'membresia_cliente', 'id_cliente', 'id_membresia')
+                ->withPivot('fecha_inicio', 'fecha_fin');
+}
+
 }

@@ -8,6 +8,10 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
+    @if(session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
+
     <a href="{{ route('rutinas.create') }}" class="btn btn-primary mb-3">
         <i class="fa-solid fa-circle-plus me-2"></i> Subir nueva rutina
     </a>

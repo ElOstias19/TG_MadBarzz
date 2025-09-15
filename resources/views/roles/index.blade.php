@@ -4,8 +4,13 @@
 <div class="container">
     <h2>Listado de Roles</h2>
 
+
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
 
     <a href="{{ route('roles.create') }}" class="btn btn-primary mb-3">

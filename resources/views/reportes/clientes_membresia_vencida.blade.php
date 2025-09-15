@@ -2,6 +2,15 @@
 
 @section('contenido')
 <div class="container">
+    
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
+    
     <h2 class="text-center">Clientes con Membresía Vencida</h2>
     <a href="{{ route('reportes.clientes.membresia_vencida.pdf') }}" class="btn btn-danger mb-3">Exportar PDF</a>
 
