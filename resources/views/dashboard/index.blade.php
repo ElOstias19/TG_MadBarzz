@@ -1,6 +1,15 @@
 @extends('layouts.private')
 
 @section('contenido')
+
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
+
     <!-- Sección de Bienvenida -->
     <div class="col-12 mb-4">
         <div class="card bg-primary text-white">
