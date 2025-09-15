@@ -80,7 +80,7 @@
         
         <!--**********************************
             Chat box start
-        ***********************************-->
+        ***********************************
         <div class="chatbox">
             <div class="chatbox-close"></div>
             <div class="custom-tab-1">
@@ -575,7 +575,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!--**********************************
             Chat box End
         ***********************************-->
@@ -664,12 +664,16 @@
     <div class="deznav-scroll flex-grow-1">
         <ul class="metismenu" id="menu">
             <li>
-                <a href="{{ route('dashboard') }}">Panel de Control</a>
-            </li>
+                @php
+                    $userRol = Auth::user()->rol->nombre ?? '';
+                @endphp
 
-            @php
-                $userRol = Auth::user()->rol->nombre ?? '';
-            @endphp
+                @if($userRol === 'Cliente')
+                    <a href="{{ route('dashboard.cliente') }}">Panel de Control</a>
+                @else
+                    <a href="{{ route('dashboard') }}">Panel de Control</a>
+                @endif
+            </li>
 
             @if($userRol === 'Administrador')
                 <!-- Usuarios - Solo para Administrador -->
@@ -799,7 +803,7 @@
         ***********************************-->
         <footer class="footer">
             <div class="copyright">
-                  <p>Copyright © Diseñado y Desarrollado por <a href="http://dexignzone.com/" target="_blank">DexignZone</a> 2023</p>
+                  <p>Copyright © Diseñado y Desarrollado por <a href="https://www.instagram.com/robertadrian.07?igsh=MThyMGpsb3gycjhpZg==" target="_blank">Robert Garrado Adrian</a> 2025</p>
             </div>
         </footer>
         <!--**********************************

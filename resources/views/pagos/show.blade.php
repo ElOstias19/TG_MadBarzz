@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row page-titles">
         <div class="col p-md-0">
-            <h4>Mis Pagos</h4>
+            <h4>MisSEXO Pagos</h4>
         </div>
     </div>
 

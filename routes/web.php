@@ -23,14 +23,29 @@ use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\ReporteController;
 
 
+// Ruta de dashboard general y cliente según rol
+Route::get('/dashboard', function () {
+    $user = Auth::user();
 
-Route::get('/', function () {
-    if (Auth::check()) {
-        return redirect()->route('dashboard');
-    } else {
-        return view('welcome'); 
+    if ($user && strtolower($user->rol) === 'cliente') {
+        return redirect()->route('dashboard.cliente');
     }
-});
+
+    return redirect()->route('dashboard.index');
+})->middleware('auth');
+
+
+
+
+// Dashboard administrador
+Route::get('/dashboard/index', [DashboardController::class, 'index'])
+    ->name('dashboard.index')
+    ->middleware('auth');
+
+// Dashboard cliente
+Route::get('/dashboard/cliente', [DashboardController::class, 'cliente'])
+    ->name('dashboard.cliente')
+    ->middleware('auth');
 
 
 
@@ -83,9 +98,9 @@ Route::post('/notificaciones/enviar', [NotificacionController::class, 'sendWhats
 
 
 
-Route::get('/notificaciones', [NotificacionController::class, 'index'])->name('notificaciones.index');
-Route::get('/notificaciones/create', [NotificacionController::class, 'create'])->name('notificaciones.create');
-Route::post('/notificaciones/store', [NotificacionController::class, 'store'])->name('notificaciones.store');
+//Route::get('/notificaciones', [NotificacionController::class, 'index'])->name('notificaciones.index');
+//Route::get('/notificaciones/create', [NotificacionController::class, 'create'])->name('notificaciones.create');
+//Route::post('/notificaciones/store', [NotificacionController::class, 'store'])->name('notificaciones.store');
 
 // Ruta para mostrar el formulario alternativo y enviar WhatsApp directo
 Route::get('/notificaciones/send', [NotificacionController::class, 'showForm'])->name('notificaciones.sendForm');
@@ -154,7 +169,6 @@ Route::get('/reportes/pagos-por-mes/pdf', [ReporteController::class, 'exportPago
 
 
 
-    
 Route::get('/rutinas/ver/{id}', [RutinaController::class, 'verRutina'])->name('rutinas.ver');
 
 require __DIR__.'/auth.php';

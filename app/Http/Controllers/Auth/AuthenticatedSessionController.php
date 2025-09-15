@@ -18,6 +18,16 @@ class AuthenticatedSessionController extends Controller
     {
         return view('auth.login');
     }
+protected function authenticated(Request $request, $user)
+{
+    // Redirigir según el rol
+    switch (strtolower($user->rol)) {
+        case 'cliente':
+            return redirect()->route('dashboard.cliente');
+        default:
+            return redirect()->route('dashboard.index');
+    }
+}
 
     /**
      * Handle an incoming authentication request.
