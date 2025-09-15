@@ -103,12 +103,13 @@ Route::post('/notificaciones/enviar', [NotificacionController::class, 'sendWhats
 //Route::post('/notificaciones/store', [NotificacionController::class, 'store'])->name('notificaciones.store');
 
 // Ruta para mostrar el formulario alternativo y enviar WhatsApp directo
-Route::get('/notificaciones/send', [NotificacionController::class, 'showForm'])->name('notificaciones.sendForm');
-Route::post('/notificaciones/sendWhatsapp', [NotificacionController::class, 'sendWhatsapp'])->name('notificaciones.sendWhatsapp');
+
+//Route::get('/notificaciones/send', [NotificacionController::class, 'showForm'])->name('notificaciones.sendForm');
+//Route::post('/notificaciones/sendWhatsapp', [NotificacionController::class, 'sendWhatsapp'])->name('notificaciones.sendWhatsapp');
 
 
 
-Route::post('/notificaciones/send-whatsapp', [NotificacionController::class, 'sendWhatsapp'])->name('notificaciones.sendWhatsapp');
+//Route::post('/notificaciones/send-whatsapp', [NotificacionController::class, 'sendWhatsapp'])->name('notificaciones.sendWhatsapp');
 
 
 
