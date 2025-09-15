@@ -10,11 +10,7 @@
                 <div class="card-title fs-24 fw-bold text-dark dark-text-white">
                     <h2 class="fw-bold mb-4">Registrar Cliente</h2>
                 </div>
-                <div>
-                    <a href="{{ route('clientes.index') }}" class="btn btn-secondary btn-sm">
-                        <i class="fa-solid fa-arrow-left me-1"></i> Volver
-                    </a>
-                </div>
+
             </div>
 
             <div class="card-body">

@@ -10,11 +10,7 @@
                 <div class="card-title fs-24 fw-bold text-dark dark-text-white">
                     <h2 class="text-dark dark:text-white fw-bold mb-4">Registrar Persona</h2>
                 </div>
-                <div>
-                    <a href="{{ route('personas.index') }}" class="btn btn-secondary btn-sm">
-                        <i class="fa-solid fa-arrow-left me-1"></i> Volver
-                    </a>
-                </div>
+
             </div>
 
             <div class="card-body">

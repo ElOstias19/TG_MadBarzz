@@ -2,60 +2,40 @@
 
 @section('contenido')
 <div class="container">
-    <h2 class="mb-4">Listado de Membresías</h2>
+    <h2 class="mb-4">Registrar Nueva Membresía</h2>
 
-    {{-- Mensaje de éxito --}}
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+    {{-- Mostrar errores de validación --}}
+    @if($errors->any())
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
 
-    {{-- Botón para crear nueva membresía --}}
-    <a href="{{ route('membresias.create') }}" class="btn btn-primary mb-3">
-        <i class="fa-solid fa-circle-plus me-2"></i> Nueva Membresía
-    </a>
+    {{-- Formulario --}}
+    <form action="{{ route('membresias.store') }}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label for="tipo_membresia" class="form-label">Tipo de Membresía</label>
+            <input type="text" name="tipo_membresia" id="tipo_membresia" class="form-control"
+                   value="{{ old('tipo_membresia') }}" required>
+        </div>
 
-    {{-- Tabla de membresías --}}
-    <table class="table table-bordered table-striped align-middle">
-        <thead class="table-dark">
-            <tr>
-                <th>ID</th>
-                <th>Tipo</th>
-                <th>Precio (Bs)</th>
-                <th class="text-center">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @forelse($membresias as $membresia)
-                <tr>
-                    <td>{{ $membresia->id_membresia }}</td>
-                    <td>{{ $membresia->tipo_membresia }}</td>
-                    <td>{{ number_format($membresia->precio, 2) }}</td>
-                    <td class="text-center">
-                        <a href="{{ route('membresias.edit', $membresia->id_membresia) }}" 
-                           class="btn btn-warning btn-sm" 
-                           title="Editar">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                        <form action="{{ route('membresias.destroy', $membresia->id_membresia) }}" 
-                              method="POST" 
-                              class="d-inline"
-                              onsubmit="return confirm('¿Eliminar esta membresía?');">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-sm" title="Eliminar">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="4" class="text-center text-muted">
-                        No hay membresías registradas.
-                    </td>
-                </tr>
-            @endforelse
-        </tbody>
-    </table>
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio (Bs)</label>
+            <input type="number" step="0.01" name="precio" id="precio" class="form-control"
+                   value="{{ old('precio') }}" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            <i class="fa-solid fa-save me-2"></i> Guardar
+        </button>
+        <a href="{{ route('membresias.index') }}" class="btn btn-secondary">
+            Cancelar
+        </a>
+    </form>
 </div>
 @endsection
