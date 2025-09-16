@@ -204,11 +204,11 @@
             <div class="footer-col">
               <h3>Información</h3>
               <p>En Calistenia MadBarzz creemos que la constancia es la clave para alcanzar tus objetivos fitness.</p>
-              <ul class="social-media">
+             <!-- <ul class="social-media">
                 <li><a href="#"><i class="flaticon-instagram"></i></a></li>
                 <li><a href="#"><i class="flaticon-whatsapp"></i></a></li>
                 <li><a href="#"><i class="flaticon-facebook"></i></a></li>
-              </ul>
+              </ul> -->
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12">
@@ -237,7 +237,7 @@
       <div class="container">
         <div class="row">
           <div class="footer-col">
-            <p>Calistenia MadBarzz <i class="fa-solid fa-heart"></i> © 2024 Todos los derechos reservados</p>
+            <p>Calistenia MadBarzz <i class="fa-solid fa-heart"></i> © 2025 Todos los derechos reservados</p>
           </div>
         </div>
       </div>

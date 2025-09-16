@@ -30,7 +30,9 @@
             @foreach($clientes as $index => $cliente)
             <tr>
                 <td>{{ $index + 1 }}</td>
-                <td>{{ $cliente->persona->nombre_completo ?? 'N/A' }}</td>
+ <td>{{ $cliente->persona->nombre_completo ?? 'N/A' }}
+                {{ $cliente->persona->apellido_paterno ?? 'N/A' }}
+                {{ $cliente->persona->apellido_materno ?? 'N/A' }}</td>
                 <td>{{ $cliente->persona->ci ?? 'N/A' }}</td>
                 <td>{{ $cliente->persona->telefono ?? 'N/A' }}</td>
                 <td>{{ $cliente->user->email ?? 'N/A' }}</td>

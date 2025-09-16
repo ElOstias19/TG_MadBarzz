@@ -21,6 +21,9 @@ class Pago extends Model
         'observaciones',
         'imagen_qr',
     ];
+protected $casts = [
+    'fecha_pago' => 'date',
+];
 
     public function cliente()
     {

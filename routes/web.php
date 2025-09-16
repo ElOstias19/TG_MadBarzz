@@ -23,6 +23,11 @@ use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\ReporteController;
 
 
+Route::get('/', function () {
+
+    return view('welcome');
+});
+
 // Ruta de dashboard general y cliente según rol
 Route::get('/dashboard', function () {
     $user = Auth::user();

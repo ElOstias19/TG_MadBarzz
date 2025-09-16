@@ -29,7 +29,9 @@
             @foreach($pagos as $index => $pago)
             <tr>
                 <td>{{ $index + 1 }}</td>
-                <td>{{ $pago->cliente->persona->nombre_completo ?? 'N/A' }}</td>
+                <td>{{ $pago->cliente->persona->nombre_completo ?? 'N/A' }}
+                {{ $pago->cliente->persona->apellido_paterno ?? 'N/A' }}
+                {{ $pago->cliente->persona->apellido_materno ?? 'N/A' }}</td>
                 <td>{{ $pago->cliente->persona->ci ?? 'N/A' }}</td>
                 <td>{{ $pago->fecha_pago->format('d/m/Y') }}</td>
                 <td>{{ number_format($pago->monto, 2) }} Bs</td>
