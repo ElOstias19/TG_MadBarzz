@@ -27,7 +27,7 @@
                     <h4 class="dark-text-white mt-3">Datos de la Persona</h4>
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label fw-bold text-dark dark-text-white">Nombre Completo</label>
+                            <label class="form-label fw-bold text-dark dark-text-white">Nombres</label>
                             <input type="text" name="nombre_completo" class="form-control @error('nombre_completo') is-invalid @enderror" value="{{ old('nombre_completo') }}" required>
                             @error('nombre_completo')
                                 <div class="invalid-feedback">{{ $message }}</div>

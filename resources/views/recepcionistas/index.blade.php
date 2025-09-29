@@ -40,8 +40,12 @@
                 @forelse($recepcionistas as $recepcionista)
                     <tr>
                         <td>{{ $recepcionista->id_recepcionista }}</td>
-                        <td>{{ $recepcionista->persona->nombre_completo ?? 'Sin nombre' }}</td>
-                        <td>{{ $recepcionista->persona->ci ?? 'Sin CI' }}</td>
+                        <td>
+                            {{ $recepcionista->persona->nombre_completo ?? '' }}
+                            {{ $recepcionista->persona->apellido_paterno ?? '' }}
+                            {{ $recepcionista->persona->apellido_materno ?? '' }}
+                        </td>
+                            <td>{{ $recepcionista->persona->ci ?? 'Sin CI' }}</td>
                         <td>{{ $recepcionista->persona->telefono ?? 'Sin teléfono' }}</td>
                         <td>{{ $recepcionista->user->email ?? 'Sin correo' }}</td>
                         <td>{{ $recepcionista->user->name ?? 'Sin usuario' }}</td>

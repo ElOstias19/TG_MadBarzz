@@ -20,7 +20,7 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nombres</th>
+                <th>Nombre Completo</th>
                 <th>CI</th>
                 <th>Teléfono</th>
                 <th>Correo</th>
@@ -35,7 +35,11 @@
             @forelse($clientes as $cliente)
                 <tr>
                     <td>{{ $cliente->id_cliente }}</td>
-                    <td>{{ optional($cliente->persona)->nombre_completo ?? 'Sin nombre' }}</td>
+                    <td>
+                        {{ $cliente->persona->nombre_completo ?? '' }}
+                        {{ $cliente->persona->apellido_paterno ?? '' }}
+                        {{ $cliente->persona->apellido_materno ?? '' }}
+                    </td>
                     <td>{{ optional($cliente->persona)->ci ?? 'Sin CI' }}</td>
                     <td>{{ optional($cliente->persona)->telefono ?? 'Sin teléfono' }}</td>
                     <td>{{ optional($cliente->user)->email ?? 'Sin correo' }}</td>

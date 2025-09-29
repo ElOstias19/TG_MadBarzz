@@ -30,7 +30,7 @@
                     <h4 class="dark-text-white mt-3">Datos de Persona</h4>
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label fw-bold text-dark dark-text-white">Nombre Completo</label>
+                            <label class="form-label fw-bold text-dark dark-text-white">Nombres</label>
                             <input type="text" name="nombre_completo" class="form-control" value="{{ old('nombre_completo', $administrador->persona->nombre_completo) }}" required>
                         </div>
                         <div class="col-md-6">
