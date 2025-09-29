@@ -147,10 +147,23 @@ class ClienteController extends Controller
     }
 
     // DESTROY
+
     public function destroy(Cliente $cliente)
     {
+        // Eliminar el cliente (soft delete)
         $cliente->delete();
-        return redirect()->route('clientes.index')->with('success', 'Cliente eliminado lógicamente.');
+
+        // Eliminar la persona asociada
+        if ($cliente->persona) {
+            $cliente->persona->delete();
+        }
+
+        // Eliminar el usuario asociado
+        if ($cliente->user) {
+            $cliente->user->delete();
+        }
+
+        return redirect()->route('clientes.index')->with('success', 'Cliente, persona y usuario eliminados lógicamente.');
     }
 
     // ==============================

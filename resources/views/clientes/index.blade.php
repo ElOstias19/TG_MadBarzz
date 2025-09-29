@@ -4,8 +4,6 @@
 <div class="container">
     <h2>Listado de Clientes</h2>
 
-
-    
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
@@ -13,7 +11,7 @@
     @if(session('error'))
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
-    
+
     <a href="{{ route('clientes.create') }}" class="btn btn-primary mb-3">
         <i class="fa-solid fa-circle-plus me-2"></i> Agregar Cliente
     </a>
@@ -22,7 +20,7 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nombre Completo</th>
+                <th>Nombres</th>
                 <th>CI</th>
                 <th>Teléfono</th>
                 <th>Correo</th>
@@ -37,11 +35,11 @@
             @forelse($clientes as $cliente)
                 <tr>
                     <td>{{ $cliente->id_cliente }}</td>
-                    <td>{{ $cliente->persona->nombre_completo ?? 'Sin nombre' }}</td>
-                    <td>{{ $cliente->persona->ci ?? 'Sin CI' }}</td>
-                    <td>{{ $cliente->persona->telefono ?? 'Sin teléfono' }}</td>
-                    <td>{{ $cliente->user->email ?? 'Sin correo' }}</td>
-                    <td>{{ $cliente->user->name ?? 'Sin usuario' }}</td>
+                    <td>{{ optional($cliente->persona)->nombre_completo ?? 'Sin nombre' }}</td>
+                    <td>{{ optional($cliente->persona)->ci ?? 'Sin CI' }}</td>
+                    <td>{{ optional($cliente->persona)->telefono ?? 'Sin teléfono' }}</td>
+                    <td>{{ optional($cliente->user)->email ?? 'Sin correo' }}</td>
+                    <td>{{ optional($cliente->user)->name ?? 'Sin usuario' }}</td>
                     <td>{{ $cliente->dias_asistidos }}</td>
                     <td>
                         @if ($cliente->huella_digital)
