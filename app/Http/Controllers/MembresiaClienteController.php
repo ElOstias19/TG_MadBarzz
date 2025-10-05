@@ -12,7 +12,6 @@ class MembresiaClienteController extends Controller
     // LISTAR
     public function index()
     {
-        // SoftDeletes ya filtra automáticamente, no hace falta el whereNull
         $membresiasClientes = MembresiaCliente::with(['cliente.persona', 'membresia'])->get();
 
         return view('membresia_cliente.index', compact('membresiasClientes'));
@@ -21,7 +20,14 @@ class MembresiaClienteController extends Controller
     // FORMULARIO CREAR
     public function create()
     {
-        $clientes = Cliente::with('persona')->get();
+        // ✅ Obtener todos los clientes que NO tienen una membresía activa
+        $clientes = Cliente::whereDoesntHave('membresias', function ($query) {
+            $query->where('fecha_fin', '>=', now());
+        })
+        ->with('persona')
+        ->get();
+
+        // ✅ Obtener todas las membresías
         $membresias = Membresia::all();
 
         return view('membresia_cliente.create', compact('clientes', 'membresias'));
@@ -39,11 +45,9 @@ class MembresiaClienteController extends Controller
             'descuento'        => 'nullable|numeric|min:0|max:100',
         ]);
 
-        // Obtener precio base de la membresía
         $membresia = Membresia::findOrFail($request->id_membresia);
         $precioBase = $membresia->precio;
 
-        // Calcular precio final aplicando descuento
         $precioFinal = $precioBase;
         if ($request->filled('descuento')) {
             $precioFinal = $precioBase - ($precioBase * ($request->descuento / 100));
@@ -118,3 +122,4 @@ class MembresiaClienteController extends Controller
             ->with('success', 'Membresía del cliente eliminada correctamente.');
     }
 }
+    

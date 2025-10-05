@@ -7,10 +7,9 @@
         <div class="card custom-card">
 
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h2 class=" fw-bold mb-0">
+                <h2 class="fw-bold mb-0">
                     <i class="fa-solid fa-id-card me-2"></i> Asignar Membresía a Cliente
                 </h2>
-
             </div>
 
             <div class="card-body">
@@ -35,6 +34,8 @@
                                 @foreach($clientes as $cliente)
                                     <option value="{{ $cliente->id_cliente }}">
                                         {{ $cliente->persona->nombre_completo ?? 'N/A' }}
+                                        {{ $cliente->persona->apellido_paterno ?? '' }}
+                                        {{ $cliente->persona->apellido_materno ?? '' }}
                                     </option>
                                 @endforeach
                             </select>
@@ -59,7 +60,7 @@
 
                         <div class="col-md-6">
                             <label for="fecha_fin" class="form-label fw-bold text-dark dark-text-white">Fecha Fin</label>
-                            <input type="date" name="fecha_fin" id="fecha_fin" class="form-control" required>
+                            <input type="date" name="fecha_fin" id="fecha_fin" class="form-control" required readonly>
                         </div>
 
                         <div class="col-md-6">
@@ -69,7 +70,6 @@
                                 <option value="UAGRM">UAGRM</option>
                                 <option value="UNIFRANZ">UNIFRANZ</option>
                                 <option value="Colegio de Auditores">Colegio de Auditores</option>
-                                <!-- Más opciones si es necesario -->
                             </select>
                         </div>
 
@@ -103,7 +103,11 @@
     const membresiaSelect = document.getElementById('id_membresia');
     const descuentoInput = document.getElementById('descuento');
     const precioFinalInput = document.getElementById('precio_final');
+    const nombreDescuentoSelect = document.getElementById('nombre_descuento');
+    const fechaInicioInput = document.getElementById('fecha_inicio');
+    const fechaFinInput = document.getElementById('fecha_fin');
 
+    // Calcular precio final
     function calcularPrecioFinal() {
         let precio = 0;
         if (membresiaSelect.value) {
@@ -118,8 +122,58 @@
         precioFinalInput.value = precioFinal.toFixed(2);
     }
 
+    // Auto completar descuento (20%)
+    nombreDescuentoSelect.addEventListener('change', () => {
+        if (nombreDescuentoSelect.value !== '') {
+            descuentoInput.value = 20;
+        } else {
+            descuentoInput.value = '';
+        }
+        calcularPrecioFinal();
+    });
+
     membresiaSelect.addEventListener('change', calcularPrecioFinal);
     descuentoInput.addEventListener('input', calcularPrecioFinal);
+
+    // Calcular fecha fin automáticamente según tipo de membresía (ajustado)
+    function calcularFechaFin() {
+        const fechaInicio = new Date(fechaInicioInput.value);
+        if (!fechaInicio || isNaN(fechaInicio)) return;
+
+        const tipoMembresia = membresiaSelect.options[membresiaSelect.selectedIndex]?.text.toLowerCase();
+        if (!tipoMembresia) return;
+
+        const diaInicio = fechaInicio.getDate();
+        let fechaFin = new Date(fechaInicio);
+
+        if (tipoMembresia.includes("mensual")) {
+            fechaFin.setMonth(fechaFin.getMonth() + 1);
+        } else if (tipoMembresia.includes("trimestral")) {
+            fechaFin.setMonth(fechaFin.getMonth() + 3);
+        } else if (tipoMembresia.includes("semestral")) {
+            fechaFin.setMonth(fechaFin.getMonth() + 6);
+        } else if (tipoMembresia.includes("anual")) {
+            fechaFin.setFullYear(fechaFin.getFullYear() + 1);
+        } else {
+            fechaFin.setMonth(fechaFin.getMonth() + 1);
+        }
+
+        // Mantener el mismo día del mes (o el último si no existe)
+        const ultimoDiaMes = new Date(fechaFin.getFullYear(), fechaFin.getMonth() + 1, 0).getDate();
+        if (diaInicio <= ultimoDiaMes) {
+            fechaFin.setDate(diaInicio);
+        } else {
+            fechaFin.setDate(ultimoDiaMes);
+        }
+
+        const year = fechaFin.getFullYear();
+        const month = String(fechaFin.getMonth() + 1).padStart(2, '0');
+        const day = String(fechaFin.getDate()).padStart(2, '0');
+        fechaFinInput.value = `${year}-${month}-${day}`;
+    }
+
+    fechaInicioInput.addEventListener('change', calcularFechaFin);
+    membresiaSelect.addEventListener('change', calcularFechaFin);
 </script>
 
 @endsection

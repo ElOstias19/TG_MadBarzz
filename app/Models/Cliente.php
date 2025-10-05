@@ -47,5 +47,10 @@ class Cliente extends Model
     return $this->belongsToMany(Membresia::class, 'membresia_cliente', 'id_cliente', 'id_membresia')
                 ->withPivot('fecha_inicio', 'fecha_fin');
 }
+public function ultimaMembresia()
+{
+    return $this->hasOne(MembresiaCliente::class, 'id_cliente')->latest('fecha_fin');
+}
+
 
 }
