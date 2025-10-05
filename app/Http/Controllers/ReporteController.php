@@ -136,29 +136,49 @@ public function exportClientesMembresiaVencidaPDF(Request $request)
 }
 
 
-    // =============================
-    // 4. Pagos por mes
-    // =============================
-    public function pagosPorMes()
-    {
-        $pagos = Pago::with(['cliente.persona'])
-            ->whereYear('fecha_pago', Carbon::now()->year)
-            ->whereMonth('fecha_pago', Carbon::now()->month)
-            ->get();
+// =============================
+// 4. Pagos por mes con filtros dinámicos
+// =============================
+public function pagosPorMes()
+{
+    // Obtener mes y año de la solicitud, si no vienen, usar el mes y año actual
+    $mes = request('mes', Carbon::now()->month);
+    $anio = request('anio', Carbon::now()->year);
 
-        return view('reportes.pagos_por_mes', compact('pagos'));
-    }
+    $pagos = Pago::with(['cliente.persona'])
+        ->when($anio, function($query, $anio) {
+            $query->whereYear('fecha_pago', $anio);
+        })
+        ->when($mes, function($query, $mes) {
+            $query->whereMonth('fecha_pago', $mes);
+        })
+        ->orderBy('fecha_pago', 'desc')
+        ->get();
 
-    public function exportPagosPorMesPDF()
-    {
-        $pagos = Pago::with(['cliente.persona'])
-            ->whereYear('fecha_pago', Carbon::now()->year)
-            ->whereMonth('fecha_pago', Carbon::now()->month)
-            ->get();
+    return view('reportes.pagos_por_mes', compact('pagos'));
+}
 
-        $pdf = Pdf::loadView('reportes.pdf.pagos_por_mes', compact('pagos'))
-                  ->setPaper('a4', 'landscape');
+public function exportPagosPorMesPDF()
+{
+    $mes = request('mes', Carbon::now()->month);
+    $anio = request('anio', Carbon::now()->year);
 
-        return $pdf->download('pagos_por_mes.pdf');
-    }
+    $pagos = Pago::with(['cliente.persona'])
+        ->when($anio, function ($query, $anio) {
+            $query->whereYear('fecha_pago', $anio);
+        })
+        ->when($mes, function ($query, $mes) {
+            $query->whereMonth('fecha_pago', $mes);
+        })
+        ->orderBy('fecha_pago', 'desc')
+        ->get();
+
+    // ✅ Se envían también $mes y $anio al PDF
+    $pdf = Pdf::loadView('reportes.pdf.pagos_por_mes', compact('pagos', 'mes', 'anio'))
+              ->setPaper('a4', 'landscape');
+
+    // ✅ El nombre del archivo incluirá el mes y año
+    return $pdf->download("pagos_por_mes_{$mes}_{$anio}.pdf");
+}
+
 }

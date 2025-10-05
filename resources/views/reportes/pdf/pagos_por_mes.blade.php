@@ -5,14 +5,23 @@
     <title>Reporte - Pagos por Mes</title>
     <style>
         body { font-family: DejaVu Sans, sans-serif; font-size: 12px; }
-        h2 { text-align: center; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #000; padding: 6px; text-align: center; }
+        h2, h4 { text-align: center; margin: 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #000; padding: 8px; text-align: center; }
         th { background-color: #f2f2f2; }
     </style>
 </head>
 <body>
     <h2>Reporte de Pagos por Mes</h2>
+    <br>
+
+    @if(isset($mes) && isset($anio))
+        <h4>
+            Mes: {{ \Carbon\Carbon::createFromDate($anio, $mes, 1)->locale('es')->isoFormat('MMMM') }} /
+            Año: {{ $anio }}
+        </h4>
+    @endif
+
     <table>
         <thead>
             <tr>
@@ -24,17 +33,23 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($pagos as $index => $pago)
+            @forelse($pagos as $index => $pago)
             <tr>
                 <td>{{ $index + 1 }}</td>
-                 <td>{{ $pago->cliente->persona->nombre_completo ?? 'N/A' }}
-                {{ $pago->cliente->persona->apellido_paterno ?? 'N/A' }}
-                {{ $pago->cliente->persona->apellido_materno ?? 'N/A' }}</td>
+                <td>
+                    {{ $pago->cliente->persona->nombre_completo ?? '' }}
+                    {{ $pago->cliente->persona->apellido_paterno ?? '' }}
+                    {{ $pago->cliente->persona->apellido_materno ?? '' }}
+                </td>
                 <td>{{ $pago->cliente->persona->ci ?? 'N/A' }}</td>
-                <td>{{ $pago->fecha_pago->format('d/m/Y') }}</td>
+                <td>{{ \Carbon\Carbon::parse($pago->fecha_pago)->format('d/m/Y') }}</td>
                 <td>{{ number_format($pago->monto, 2) }} Bs</td>
             </tr>
-            @endforeach
+            @empty
+            <tr>
+                <td colspan="5" class="text-center">No se registraron pagos en este mes.</td>
+            </tr>
+            @endforelse
         </tbody>
     </table>
 </body>

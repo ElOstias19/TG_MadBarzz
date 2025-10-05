@@ -29,43 +29,48 @@
                         @csrf
 
                         <div class="row g-3">
+
+                            {{-- Selección de cliente --}}
                             <div class="col-md-6">
                                 <label for="id_cliente" class="form-label fw-bold text-dark dark-text-white">Cliente</label>
                                 <select name="id_cliente" id="id_cliente" class="form-control" required>
                                     <option value="">Seleccione un cliente</option>
                                     @foreach($clientes as $cliente)
-                                        <option value="{{ $cliente->id_cliente }}">
-                                            {{ $cliente->persona->nombre_completo }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="id_membresia" class="form-label fw-bold text-dark dark-text-white">Membresía</label>
-                                <select name="id_membresia" id="id_membresia" class="form-control" required>
-                                    <option value="">Seleccione una membresía</option>
-                                    @foreach($membresias as $membresia)
+                                        @php
+                                            $membresiaAsignada = $cliente->membresiasClientes()->latest('fecha_fin')->first();
+                                        @endphp
                                         <option 
-                                            value="{{ $membresia->id_membresia }}" 
-                                            data-precio="{{ $membresia->precio }}"
+                                            value="{{ $cliente->id_cliente }}"
+                                            data-membresia-id="{{ $membresiaAsignada->id_membresia ?? '' }}"
+                                            data-membresia="{{ $membresiaAsignada->membresia->tipo_membresia ?? '' }}"
+                                            data-precio="{{ $membresiaAsignada->precio_final ?? '' }}"
                                         >
-                                            {{ $membresia->tipo_membresia }} - Bs. {{ number_format($membresia->precio, 2) }}
+                                            {{ $cliente->persona->nombre_completo ?? '' }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
 
+                            {{-- Membresía (autocompletada y bloqueada) --}}
+                            <div class="col-md-6">
+                                <label for="membresia" class="form-label fw-bold text-dark dark-text-white">Membresía</label>
+                                <input type="text" name="membresia" id="membresia" class="form-control" readonly placeholder="Seleccione un cliente">
+                                <input type="hidden" name="id_membresia" id="id_membresia">
+                            </div>
+
+                            {{-- Monto (autocompletado y bloqueado) --}}
                             <div class="col-md-6">
                                 <label for="monto" class="form-label fw-bold text-dark dark-text-white">Monto</label>
-                                <input type="number" step="0.01" name="monto" id="monto" class="form-control" required>
+                                <input type="number" step="0.01" name="monto" id="monto" class="form-control" required readonly>
                             </div>
 
+                            {{-- Fecha de pago --}}
                             <div class="col-md-6">
                                 <label for="fecha_pago" class="form-label fw-bold text-dark dark-text-white">Fecha de pago</label>
                                 <input type="date" name="fecha_pago" id="fecha_pago" class="form-control" required>
                             </div>
 
+                            {{-- Método de pago --}}
                             <div class="col-md-6">
                                 <label for="metodo_pago" class="form-label fw-bold text-dark dark-text-white">Método de pago</label>
                                 <select name="metodo_pago" id="metodo_pago" class="form-control" required>
@@ -75,11 +80,13 @@
                                 </select>
                             </div>
 
+                            {{-- Observaciones --}}
                             <div class="col-md-6">
                                 <label for="observaciones" class="form-label fw-bold text-dark dark-text-white">Observaciones</label>
                                 <textarea name="observaciones" id="observaciones" class="form-control"></textarea>
                             </div>
 
+                            {{-- Sección QR --}}
                             <div id="qrSection" style="display:none;">
                                 <div class="col-md-12 text-center">
                                     <label class="form-label fw-bold text-dark dark-text-white">QR de pago (referencia)</label><br>
@@ -94,8 +101,10 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
+                        {{-- Botones --}}
                         <div class="mt-4">
                             <button type="submit" class="btn btn-success">
                                 <i class="fa-solid fa-save me-2"></i> Guardar Pago
@@ -113,15 +122,28 @@
     </div>
 </div>
 
+{{-- Scripts --}}
 <script>
-document.getElementById('id_membresia').addEventListener('change', function() {
-    const precio = this.options[this.selectedIndex].getAttribute('data-precio');
-    document.getElementById('monto').value = precio || '';
+const clienteSelect = document.getElementById('id_cliente');
+const membresiaInput = document.getElementById('membresia');
+const idMembresiaInput = document.getElementById('id_membresia');
+const montoInput = document.getElementById('monto');
+const metodoPago = document.getElementById('metodo_pago');
+
+clienteSelect.addEventListener('change', function() {
+    const selectedOption = this.options[this.selectedIndex];
+    const tipoMembresia = selectedOption.getAttribute('data-membresia');
+    const precio = selectedOption.getAttribute('data-precio');
+    const idMembresia = selectedOption.getAttribute('data-membresia-id');
+
+    membresiaInput.value = tipoMembresia || '';
+    montoInput.value = precio || '';
+    idMembresiaInput.value = idMembresia || '';
 });
 
-document.getElementById('metodo_pago').addEventListener('change', function() {
+metodoPago.addEventListener('change', function() {
     const qrSection = document.getElementById('qrSection');
-    if (this.value === 'QR' || this.value === 'transferencia') {
+    if(this.value === 'QR' || this.value === 'transferencia') {
         qrSection.style.display = 'block';
     } else {
         qrSection.style.display = 'none';
@@ -131,9 +153,9 @@ document.getElementById('metodo_pago').addEventListener('change', function() {
 });
 
 function previewImage(event) {
-    let preview = document.getElementById('preview');
-    let file = event.target.files[0];
-    if (file) {
+    const preview = document.getElementById('preview');
+    const file = event.target.files[0];
+    if(file) {
         preview.src = URL.createObjectURL(file);
         preview.style.display = 'block';
     } else {

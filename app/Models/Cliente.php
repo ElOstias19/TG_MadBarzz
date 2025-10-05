@@ -51,6 +51,9 @@ public function ultimaMembresia()
 {
     return $this->hasOne(MembresiaCliente::class, 'id_cliente')->latest('fecha_fin');
 }
+public function membresiasClientes() {
+    return $this->hasMany(MembresiaCliente::class, 'id_cliente', 'id_cliente');
+}
 
 
 }

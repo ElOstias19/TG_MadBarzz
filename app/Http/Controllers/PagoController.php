@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Pago;
 use App\Models\Cliente;
-use App\Models\Membresia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,9 +17,10 @@ class PagoController extends Controller
 
     public function create()
     {
-        $clientes = Cliente::with('persona')->get();
-        $membresias = Membresia::all();
-        return view('pagos.create', compact('clientes', 'membresias'));
+        // Obtener clientes con su última membresía asignada
+        $clientes = Cliente::with(['persona', 'membresiasClientes.membresia'])->get();
+
+        return view('pagos.create', compact('clientes'));
     }
 
     public function store(Request $request)
@@ -44,24 +44,20 @@ class PagoController extends Controller
         return redirect()->route('pagos.index')->with('success', 'Pago registrado correctamente.');
     }
 
-    // Método show estándar para ver un pago específico
     public function show($id)
     {
         $pago = Pago::with(['cliente.persona', 'membresia'])->findOrFail($id);
         return view('pagos.show', compact('pago'));
     }
 
-    // Nuevo método para mostrar los pagos del cliente autenticado
     public function misPagos()
     {
-        // Buscar el cliente asociado al usuario autenticado
         $cliente = Cliente::where('id_usuario', Auth::id())->first();
 
         if (!$cliente) {
             return redirect()->back()->with('error', 'No tienes un perfil de cliente asociado.');
         }
 
-        // Obtener los pagos del cliente autenticado
         $pagos = Pago::with('membresia')
                     ->where('id_cliente', $cliente->id_cliente)
                     ->orderBy('fecha_pago', 'desc')
@@ -72,9 +68,10 @@ class PagoController extends Controller
 
     public function edit(Pago $pago)
     {
-        $clientes = Cliente::with('persona')->get();
-        $membresias = Membresia::all();
-        return view('pagos.edit', compact('pago', 'clientes', 'membresias'));
+        // Clientes con su última membresía asignada
+        $clientes = Cliente::with(['persona', 'membresiasClientes.membresia'])->get();
+
+        return view('pagos.edit', compact('pago', 'clientes'));
     }
 
     public function update(Request $request, Pago $pago)
@@ -103,7 +100,6 @@ class PagoController extends Controller
 
     public function destroy(Pago $pago)
     {
-        // Solo marca el registro como eliminado en deleted_at
         $pago->delete();
 
         return redirect()->route('pagos.index')->with('success', 'Pago eliminado correctamente.');
