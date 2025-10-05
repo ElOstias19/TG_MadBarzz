@@ -22,11 +22,62 @@ use App\Http\Controllers\PagoController;
 use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\ReporteController;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Minishlink\WebPush\WebPush;
+use Minishlink\WebPush\Subscription;
 
 Route::get('/', function () {
 
     return view('welcome');
 });
+
+
+// #region Push notification
+Route::post('/save-subscription', function (Request $request) {
+    // Guardar la suscripción en storage/app/subscription.json
+    $path = storage_path('app/subscription.json');
+
+    File::put($path, json_encode($request->all()));
+
+    return response()->json(['success' => true]);
+});
+
+Route::get('/send-push', function () {
+    // Ruta del archivo donde guardaste la suscripción
+    $path = storage_path('app/subscription.json');
+
+    if (!file_exists($path)) {
+        return response('No se encontró la suscripción. Primero suscríbete desde el navegador.', 404);
+    }
+
+    $subscription = json_decode(file_get_contents($path), true);
+
+    $webPush = new WebPush([
+        'VAPID' => [
+            'subject' => 'mailto:jhons.crespo@gmail.com',
+            'publicKey' => env('VAPID_PUBLIC_KEY'),
+            'privateKey' => env('VAPID_PRIVATE_KEY'),
+        ],
+    ]);
+
+    $payload = json_encode([
+            'title' => 'Notificación de Prueba 🎉',
+            'body' => 'Tu PWA Laravel funciona correctamente 🚀',
+        ]);
+
+    $report = $webPush->sendOneNotification(Subscription::create($subscription), $payload);
+
+    // Verificar resultado
+    $endpoint = $report->getRequest()->getUri()->__toString();
+    if ($report->isSuccess()) {
+        return "✅ Notificación enviada correctamente a {$endpoint}";
+    } else {
+        return "❌ Error al enviar: " . $report->getReason();
+    }
+});
+// #endregion
+
 
 // Ruta de dashboard general y cliente según rol
 Route::get('/dashboard', function () {

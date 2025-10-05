@@ -10,6 +10,17 @@
     <meta name="author" content="DexignZone">
     <meta name="robots" content="">
 
+
+    <!-- PWA -->
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
+    <meta name="theme-color" content="#1E88E5">
+    <link rel="apple-touch-icon" href="{{ asset('images/icons/icon-144x144.png') }}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="MiApp">
+
+
+
     <script>
         // Forzar dark antes de que cargue el CSS
         document.documentElement.setAttribute('data-theme', 'dark');
@@ -31,7 +42,7 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets_private/images/favicon.png') }}">
-    <link rel="stylesheet" href="vendor/chartist/css/chartist.min.css">
+    <!--<link rel="stylesheet" href="vendor/chartist/css/chartist.min.css">-->
     <link href="{{ asset('assets_private/vendor/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets_private/vendor/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
     <link href="{{ asset('assets_private/css/style.css') }}" rel="stylesheet">
@@ -589,7 +600,7 @@
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
                             <div class="dashboard_bar">
-                                Panel de Control
+                                Panel de Control <button id="btnSubscribe">Activar Notificaciones</button>
                             </div>
                         </div>
                         <ul class="navbar-nav header-right">
@@ -822,6 +833,68 @@
         Main wrapper end
     ***********************************-->
 
+    <!-- SERVICE WORKER -->
+
+<script>
+const publicVapidKey = {!! json_encode(env('VAPID_PUBLIC_KEY')) !!};
+
+function urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+    const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+    const rawData = atob(base64);
+    return new Uint8Array([...rawData].map(c => c.charCodeAt(0)));
+}
+
+async function subscribeUser() {
+    if (!('serviceWorker' in navigator)) return alert('Service Worker no soportado');
+
+    try {
+        // 1️⃣ Registrar SW
+        const register = await navigator.serviceWorker.register('/serviceworker.js');
+        await navigator.serviceWorker.ready;
+        console.log('Service Worker registrado');
+
+        // 2️⃣ Eliminar suscripción previa
+        const existing = await register.pushManager.getSubscription();
+        if (existing) {
+            await existing.unsubscribe();
+            console.log('Suscripción previa eliminada');
+        }
+
+        // 3️⃣ Crear nueva suscripción
+        const subscription = await register.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
+        });
+        console.log('Suscripción creada:', subscription);
+
+        // 4️⃣ Guardar en backend Laravel
+        await fetch('/save-subscription', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify(subscription)
+        });
+
+        console.log('Suscripción enviada al servidor');
+        alert('Notificaciones activadas!');
+    } catch (err) {
+        console.error('Error registrando suscripción:', err);
+        console.log('err.name:', err.name);
+        console.log('err.message:', err.message);
+        console.log('err.stack:', err.stack);
+        console.log('Todo el objeto err:', err);
+        alert('Error registrando suscripción: ' + err.message);
+    }
+}
+
+document.getElementById('btnSubscribe').addEventListener('click', subscribeUser);
+</script>
+
+
+
     <!--**********************************
         Scripts
     ***********************************-->
@@ -837,11 +910,11 @@
     <script src="{{ asset('assets_private/vendor/chart-js/chart.bundle.min.js') }}"></script>
     <script src="{{ asset('assets_private/vendor/owl-carousel/owl.carousel.js') }}"></script>
     <!-- Chart piety plugin files -->
-    <script src="{{ asset('assets_private/vendor极狐/peity/jquery.peity.min.js') }}"></script>
+    <!--    <script src="{{ asset('assets_private/vendor极狐/peity/jquery.peity.min.js') }}"></script>-->
     <!-- Apex Chart -->
-    <script src="{{ asset('assets_private/vendor/apexchart/apexchart.js') }}"></script>
+    <!--<script src="{{ asset('assets_private/vendor/apexchart/apexchart.js') }}"></script>-->
     <!-- Dashboard 1 -->
-    <script src="{{ asset('assets_private/js/dashboard/dashboard-1.js') }}"></script>
+    <!--<script src="{{ asset('assets_private/js/dashboard/dashboard-1.js') }}"></script>-->
     <script src="{{ asset('assets_private/js/custom.min.js') }}"></script>
     <script src="{{ asset('assets_private/js/deznav-init.js') }}"></script>
     <script>
